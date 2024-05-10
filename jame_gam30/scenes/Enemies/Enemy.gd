@@ -4,12 +4,16 @@ class_name Enemy
 @export var settings : EnemySetting
 var parent_path : Path3D
 
+func _ready():
+	global_position = Vector3(500, 500, 500)
+
 func follow_path(new_parent: Path3D) -> void:
+	
 	new_parent.add_child(self)
 	parent_path = new_parent
 	progress_ratio = 0
-	position = parent_path.curve.get_point_position(0)
-	rotation = parent_path.curve.get_point_position(1) - position
+	# position = parent_path.curve.get_point_position(0)
+	# rotation = parent_path.curve.get_point_position(1) - position
 
 
 func _physics_process(delta):
@@ -18,6 +22,7 @@ func _physics_process(delta):
 	# check if we reached the end of the path
 	if progress_ratio < old_ratio:
 		parent_path.remove_child(self)
+		ResourceManager._change_health(-settings.damage)
 		queue_free()
 
 	
