@@ -29,14 +29,14 @@ var current_rotation : Vector3
 var isShooting: bool = false
 var head_start_rotation : Vector3
 
-@onready var hitbox : Detectionbox_Component = get_parent().get_node("Detectionbox_Component") as Detectionbox_Component
+@export var detectionbox_Component : Detectionbox_Component
 @onready var timer : Timer =$Timer
 func _ready():
 	timer.wait_time = attack_speed
-	timer.timeout.connect(on_attack_speed_timer_timeout())
-	hitbox.knockback.connect(on_knockback)
-	hitbox.target_lost.connect(on_target_lost)
-	hitbox.target_new.connect(on_target_new)
+	timer.timeout.connect(on_attack_speed_timer_timeout)
+	# detectionbox_Component.knockback.connect(on_knockback)
+	detectionbox_Component.target_lost.connect(on_target_lost)
+	detectionbox_Component.target_new.connect(on_target_new)
 	head_start_rotation  = head.rotation
 
 #ATTACK_SPEED TIMER TIMEOUT

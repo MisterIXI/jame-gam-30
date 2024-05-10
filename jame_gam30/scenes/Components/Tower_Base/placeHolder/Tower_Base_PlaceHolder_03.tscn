@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw20i0fe1c3v0"]
+
+[ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="1_l4e3i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_q5iow"]
+inner_radius = 2.345
+outer_radius = 1.575
+
+[node name="Tower_Base" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_l4e3i")
+mesh = SubResource("BoxMesh_ibxrm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5jkfw")
+
+[node name="TowerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0954101, -0.460009, -0.141259)
+
+[node name="Tower2" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0519986, 1.1361, 0.347864)
+material_override = ExtResource("1_l4e3i")
+mesh = SubResource("TorusMesh_q5iow")
+skeleton = NodePath("../../..")

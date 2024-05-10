@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=8 format=3 uid="uid://c8ldnghlk8r5c"]
 
 [ext_resource type="Material" uid="uid://b7y6mqdcjh4av" path="res://resources/Material/Prototype_Tower.tres" id="1_x6qgi"]
 [ext_resource type="PackedScene" uid="uid://c00qbuq1xv873" path="res://scenes/Components/Detectionbox_component.tscn" id="2_8wa7x"]
 [ext_resource type="PackedScene" uid="uid://dk88g1ey27j75" path="res://scenes/Components/Tower_Base/blunt_shooter_component.tscn" id="3_eoc4x"]
+[ext_resource type="PackedScene" uid="uid://cdc2sh0rk7wxe" path="res://scenes/GameObjects/Bullets/muzzle_01_blunt.tscn" id="4_r5qti"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
 
@@ -38,4 +39,7 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detectionbox_Component"]
 shape = SubResource("CylinderShape3D_davcb")
 
-[node name="Blunt_Shooter_Component" parent="." instance=ExtResource("3_eoc4x")]
+[node name="Blunt_Shooter_Component" parent="." node_paths=PackedStringArray("head", "detectionbox_Component") instance=ExtResource("3_eoc4x")]
+head = NodePath("../TowerHead")
+muzzle_scene = ExtResource("4_r5qti")
+detectionbox_Component = NodePath("../Detectionbox_Component")

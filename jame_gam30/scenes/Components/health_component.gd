@@ -9,11 +9,5 @@ var current_health : int = 1
 func _ready(): 
 	current_health = max_Health
 
-func damage(damage_amount : int, _damage_type :int):
-	pass
-## INFO: For visuals progressbar
-func get_health_percent():
-	if max_Health <=0:
-		return 0
-
-	return min(current_health / max_Health,1)
+func damage(_damage_amount : int, _damage_type :int):
+	print("Get_Damage: ",_damage_amount)
