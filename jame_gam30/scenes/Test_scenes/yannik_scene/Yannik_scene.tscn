@@ -1,14 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://clyaj0i4seejo"]
+[gd_scene load_steps=10 format=3 uid="uid://clyaj0i4seejo"]
 
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_scene.gd" id="1_kpogu"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="2_ue6dk"]
-
-[sub_resource type="Curve3D" id="Curve3D_nty2n"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 10, 0, 0, 5.61297, 0, -3.94351, 0, 0, 0, -9.74, 0, 0, 2.91394, 0, 10.6902, 0, 0, 0, 0, 0, 0, -1.9767, 0, 0.639722),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
+[ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="3_s2dtn"]
+[ext_resource type="Script" path="res://scenes/Test_scenes/yannik_local/yannik_test.gd" id="3_uipiq"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wx5te"]
 
@@ -19,16 +14,27 @@ albedo_color = Color(0.136826, 0.136826, 0.136826, 1)
 material = SubResource("StandardMaterial3D_ctmiw")
 size = Vector2(50, 50)
 
+[sub_resource type="Curve3D" id="Curve3D_304s5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8.72462, 0, -9.27233, 0, 0, 0, 0, 0, 0, 2.47098, 0, -5.65412, 0, 0, 0, 0, 0, 0, -3.80961, 0, 0.0826664),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_6nhtg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.0638, 0, 9.94272, 0, 0, 0, 0, 0, 0, 5.42328, 0, 0.0366735, 0, 0, 0, 0, 0, 0, -2.42853, 0, 7.02641),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="YannikScene" type="Node3D" node_paths=PackedStringArray("test_path")]
 script = ExtResource("1_kpogu")
-test_path = NodePath("Path3D")
+test_path = NodePath("")
 test_enemy = ExtResource("2_ue6dk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0360083, 0.790471, -0.611441, -0.443718, 0.560867, 0.698958, 0.895443, 0.246139, 0.370942, -7.38388, 5.2075, 1.01618)
-
-[node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_nty2n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -37,3 +43,20 @@ shape = SubResource("WorldBoundaryShape3D_wx5te")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_h0kcd")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_uipiq")
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_304s5")
+
+[node name="Path3D3" type="Path3D" parent="."]
+curve = SubResource("Curve3D_6nhtg")
+
+[node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("paths")]
+script = ExtResource("3_s2dtn")
+test_enemy = ExtResource("2_ue6dk")
+paths = [NodePath("../Path3D2"), NodePath("../Path3D3")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.376994, 0.731897, -0.567628, 0, 0.612847, 0.790202, 0.926216, -0.297902, 0.23104, -9.40136, 10.5102, 4.16433)
