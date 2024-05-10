@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://0rjbyjvmfyc3"]
+
+[ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_tbji5"]
+[ext_resource type="Script" path="res://resources/enemy_setting.gd" id="2_svwlc"]
+
+[sub_resource type="Resource" id="Resource_f816k"]
+script = ExtResource("2_svwlc")
+start_health = 100
+regeneration = 0.0
+normal_resistance = 0.0
+explosion_resistance = 0.0
+laser_resistance = 0.0
+speed = 1.0
+damage = 1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gsueh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jpu2a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1i2ba"]
+
+[node name="Node3D" type="PathFollow3D"]
+script = ExtResource("1_tbji5")
+settings = SubResource("Resource_f816k")
+
+[node name="AnimatableBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+mesh = SubResource("CapsuleMesh_gsueh")
+
+[node name="nose" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(0.592571, 0, 0, 0, 0.592571, 0, 0, 0, 0.592571, 0, 0.323927, 0.408382)
+mesh = SubResource("SphereMesh_jpu2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("CapsuleShape3D_1i2ba")
