@@ -1,18 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=7 format=3 uid="uid://c8ldnghlk8r5c"]
 
 [ext_resource type="Material" uid="uid://b7y6mqdcjh4av" path="res://resources/Material/Prototype_Tower.tres" id="1_x6qgi"]
+[ext_resource type="PackedScene" uid="uid://c00qbuq1xv873" path="res://scenes/Components/Detectionbox_component.tscn" id="2_8wa7x"]
+[ext_resource type="PackedScene" uid="uid://dk88g1ey27j75" path="res://scenes/Components/Tower_Base/blunt_shooter_component.tscn" id="3_eoc4x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_davcb"]
+height = 3.97007
+radius = 9.82389
+
+[node name="Tower_Base" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Tower" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1, -0.145)
 material_override = ExtResource("1_x6qgi")
 mesh = SubResource("BoxMesh_ibxrm")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_5jkfw")
+
+[node name="TowerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0954101, -0.460009, -0.141259)
+
+[node name="Tower2" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(0.326268, 0, 0, 0, 0.23242, 0, 0, 0, 1.23889, 0.0519986, 1.1361, 0.647864)
+material_override = ExtResource("1_x6qgi")
+mesh = SubResource("BoxMesh_ibxrm")
+skeleton = NodePath("../../..")
+
+[node name="Detectionbox_Component" parent="." instance=ExtResource("2_8wa7x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detectionbox_Component"]
+shape = SubResource("CylinderShape3D_davcb")
+
+[node name="Blunt_Shooter_Component" parent="." instance=ExtResource("3_eoc4x")]

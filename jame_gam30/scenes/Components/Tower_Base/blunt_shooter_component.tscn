@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk88g1ey27j75"]
+
+[ext_resource type="Script" path="res://scenes/Components/Tower_Base/blunt_shooter_component.gd" id="1_lpb1l"]
+
+[node name="Blunt_Shooter_Component" type="Node"]
+script = ExtResource("1_lpb1l")
+
+[node name="Timer" type="Timer" parent="."]

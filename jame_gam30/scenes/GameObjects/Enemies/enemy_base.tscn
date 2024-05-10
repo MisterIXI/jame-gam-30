@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://de108xb3lwj4j"]
+
+[ext_resource type="Script" path="res://scenes/GameObjects/Enemies/enemy_base.gd" id="1_ekih3"]
+[ext_resource type="Material" uid="uid://dlohb8pguv21p" path="res://resources/Material/Enemy_Material.tres" id="2_7qxgm"]
+[ext_resource type="PackedScene" uid="uid://b70xrlnesj3ms" path="res://scenes/Components/Hurtbox_Component.tscn" id="3_vmgty"]
+[ext_resource type="PackedScene" uid="uid://dgwkctgt6jp1r" path="res://scenes/Components/health_component.tscn" id="4_mbln5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q2cyb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mvqbh"]
+radius = 1.0
+height = 4.0
+
+[node name="Enemy_Base" type="Node3D"]
+script = ExtResource("1_ekih3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_7qxgm")
+mesh = SubResource("CapsuleMesh_q2cyb")
+
+[node name="Hurtbox_Component" parent="." instance=ExtResource("3_vmgty")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox_Component"]
+shape = SubResource("CapsuleShape3D_mvqbh")
+
+[node name="Health_Component" parent="." instance=ExtResource("4_mbln5")]

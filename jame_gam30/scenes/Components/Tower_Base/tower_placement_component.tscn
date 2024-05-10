@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co3o1ga7qbrcu"]
+
+[ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_placement_component.gd" id="1_qcpm4"]
+
+[node name="Tower_Placement_Component" type="Node"]
+script = ExtResource("1_qcpm4")
