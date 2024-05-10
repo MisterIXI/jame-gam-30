@@ -10,6 +10,8 @@ var spawning_active: bool = false
 @export var spawning_fair: bool = false
 var next_spawn_id: int = 0
 
+signal wave_started(wave: int)
+
 class WaveInfo:
 	func _init(spawn_arr: Array[SpawnInfo]):
 		self.spawn_infos = spawn_arr
@@ -46,6 +48,8 @@ func build_wave():
 		WaveInfo.new([
 			SpawnInfo.new(1, 1, 5, test_enemy),
 			SpawnInfo.new(2.5, 0.25, 5, test_enemy),
+			SpawnInfo.new(5, 0.03, 50, test_enemy),
+			SpawnInfo.new(5, 0.01, 5000, test_enemy),
 		]),
 	]
 
@@ -60,6 +64,7 @@ func start_spawning():
 			if spawn_info.start_time > current_time:
 				print("Waiting for " + str(spawn_info.start_time - current_time) + " seconds")
 				await get_tree().create_timer(spawn_info.start_time - current_time).timeout
+			wave_started.emit(current_wave)
 			trigger_spawn(spawn_info)
 		current_wave += 1
 
