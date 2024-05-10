@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2kohnu2yx86s"]
+
+[ext_resource type="Material" uid="uid://7h5d0yo5eb8i" path="res://resources/Material/Prototype_Tower_03.tres" id="2_5kowk"]
+[ext_resource type="PackedScene" uid="uid://c00qbuq1xv873" path="res://scenes/Components/Detectionbox_component.tscn" id="2_oybtl"]
+[ext_resource type="PackedScene" uid="uid://dk88g1ey27j75" path="res://scenes/Components/Tower_Base/blunt_shooter_component.tscn" id="3_kia45"]
+[ext_resource type="PackedScene" uid="uid://cdc2sh0rk7wxe" path="res://scenes/GameObjects/Bullets/muzzle_01_blunt.tscn" id="4_gi1w0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_q5iow"]
+inner_radius = 2.345
+outer_radius = 1.575
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_davcb"]
+height = 3.97007
+radius = 9.82389
+
+[node name="Tower_Base" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_5kowk")
+mesh = SubResource("BoxMesh_ibxrm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5jkfw")
+
+[node name="TowerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0954101, -0.460009, -0.141259)
+
+[node name="Tower2" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0519986, 1.1361, 0.347864)
+material_override = ExtResource("2_5kowk")
+mesh = SubResource("TorusMesh_q5iow")
+skeleton = NodePath("../../..")
+
+[node name="Detectionbox_Component" parent="." instance=ExtResource("2_oybtl")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detectionbox_Component"]
+shape = SubResource("CylinderShape3D_davcb")
+
+[node name="Blunt_Shooter_Component" parent="." node_paths=PackedStringArray("head", "detectionbox_Component") instance=ExtResource("3_kia45")]
+head = NodePath("../TowerHead")
+muzzle_scene = ExtResource("4_gi1w0")
+detectionbox_Component = NodePath("../Detectionbox_Component")

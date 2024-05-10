@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://p2y8403u37nt"]
+
+[ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="1_od5ju"]
+[ext_resource type="Material" uid="uid://cwcob5aogeb4r" path="res://resources/Material/Prototype_Tower_04.tres" id="1_xwxjb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
+
+[sub_resource type="TextMesh" id="TextMesh_71wkm"]
+text = "Super Tower"
+font_size = 127
+
+[sub_resource type="SphereMesh" id="SphereMesh_wl2fq"]
+
+[node name="Tower_Base" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_od5ju")
+mesh = SubResource("BoxMesh_ibxrm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5jkfw")
+
+[node name="TowerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.355, 0)
+
+[node name="Tower2" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(-1.42616e-08, 0, 1.23889, 0, 0.23242, 0, -0.326268, 0, -5.41536e-08, 0.0519986, 1.1361, 0.647864)
+material_override = ExtResource("1_od5ju")
+material_overlay = ExtResource("1_xwxjb")
+mesh = SubResource("TextMesh_71wkm")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47193, 0)
+material_override = ExtResource("1_od5ju")
+mesh = SubResource("SphereMesh_wl2fq")

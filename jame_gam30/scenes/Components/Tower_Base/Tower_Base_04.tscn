@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca1762gdd7o1u"]
+
+[ext_resource type="Material" uid="uid://b7y6mqdcjh4av" path="res://resources/Material/Prototype_Tower.tres" id="1_aacyg"]
+[ext_resource type="Material" uid="uid://cwcob5aogeb4r" path="res://resources/Material/Prototype_Tower_04.tres" id="1_tgl1y"]
+[ext_resource type="PackedScene" uid="uid://c00qbuq1xv873" path="res://scenes/Components/Detectionbox_component.tscn" id="2_c4h80"]
+[ext_resource type="PackedScene" uid="uid://dk88g1ey27j75" path="res://scenes/Components/Tower_Base/blunt_shooter_component.tscn" id="3_77qq0"]
+[ext_resource type="PackedScene" uid="uid://cdc2sh0rk7wxe" path="res://scenes/GameObjects/Bullets/muzzle_01_blunt.tscn" id="4_s7x0n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
+
+[sub_resource type="TextMesh" id="TextMesh_71wkm"]
+text = "Super Tower"
+font_size = 127
+
+[sub_resource type="SphereMesh" id="SphereMesh_wl2fq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_davcb"]
+height = 3.97007
+radius = 9.82389
+
+[node name="Tower_Base" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_tgl1y")
+mesh = SubResource("BoxMesh_ibxrm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5jkfw")
+
+[node name="TowerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.355, 0)
+
+[node name="Tower2" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(-1.42616e-08, 0, 1.23889, 0, 0.23242, 0, -0.326268, 0, -5.41536e-08, 0.0519986, 1.1361, 0.647864)
+material_override = ExtResource("1_aacyg")
+material_overlay = ExtResource("1_tgl1y")
+mesh = SubResource("TextMesh_71wkm")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TowerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47193, 0)
+material_override = ExtResource("1_tgl1y")
+mesh = SubResource("SphereMesh_wl2fq")
+
+[node name="Detectionbox_Component" parent="." instance=ExtResource("2_c4h80")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detectionbox_Component"]
+shape = SubResource("CylinderShape3D_davcb")
+
+[node name="Blunt_Shooter_Component" parent="." node_paths=PackedStringArray("head", "detectionbox_Component") instance=ExtResource("3_77qq0")]
+head = NodePath("../TowerHead")
+muzzle_scene = ExtResource("4_s7x0n")
+detectionbox_Component = NodePath("../Detectionbox_Component")
