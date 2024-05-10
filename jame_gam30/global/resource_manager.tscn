@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4kc5gseb2281"]
+
+[ext_resource type="Script" path="res://global/resource_manager.gd" id="1_iy4rl"]
+
+[node name="ResourceManager" type="Node"]
+script = ExtResource("1_iy4rl")
+start_money = 100
