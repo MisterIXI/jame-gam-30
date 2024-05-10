@@ -1,0 +1,146 @@
+[gd_scene load_steps=6 format=3 uid="uid://of3kv2msfshv"]
+
+[ext_resource type="Theme" uid="uid://duy45gx2wijm5" path="res://resources/Themes/button.tres" id="1_h12pm"]
+[ext_resource type="Script" path="res://scenes/Components/userInterface/resources.gd" id="1_lmd0e"]
+[ext_resource type="Texture2D" uid="uid://rjsuenbgydbx" path="res://assets/userInterface/icons/icons8-heart-1001.png" id="2_0jsr6"]
+[ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="3_rdou1"]
+
+[sub_resource type="Theme" id="Theme_r34ep"]
+
+[node name="Resources" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 15.0
+offset_right = 164.0
+offset_bottom = 65.0
+grow_horizontal = 2
+script = ExtResource("1_lmd0e")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h12pm")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -18.0
+offset_right = 123.0
+offset_bottom = 17.0
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("2_0jsr6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="healthtext" type="RichTextLabel" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_r34ep")
+theme_override_colors/default_color = Color(0.643149, 0, 0.0856907, 1)
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[b]100[/b]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+text_direction = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -18.0
+offset_right = -7.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="moneytext" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_r34ep")
+theme_override_colors/default_color = Color(0, 0.471945, 8.66354e-07, 1)
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[b]100[/b]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+text_direction = 2
+
+[node name="fuckyou" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("3_rdou1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -23.0
+offset_right = 46.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "[center][b]Wave[/b][/center]"
+fit_content = true
+
+[node name="wavecount" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]1 / 10[/b][/center]"
+fit_content = true
