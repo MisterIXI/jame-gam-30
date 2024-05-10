@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://du4i6ixtx4so4"]
+[gd_scene load_steps=9 format=3 uid="uid://du4i6ixtx4so4"]
 
 [ext_resource type="Script" path="res://scenes/Components/userInterface/shop.gd" id="1_x3wxm"]
 [ext_resource type="PackedScene" uid="uid://da8nnethmust3" path="res://scenes/Components/userInterface/shop_button.tscn" id="2_bhjue"]
+[ext_resource type="Texture2D" uid="uid://cxqn5r31w82hd" path="res://assets/userInterface/icons/xmark-solid.svg" id="3_0epln"]
 [ext_resource type="Theme" uid="uid://duy45gx2wijm5" path="res://resources/Themes/button.tres" id="4_bicb2"]
 [ext_resource type="Texture2D" uid="uid://cui5amfvxymw7" path="res://assets/userInterface/icons/chevron-down-solid.svg" id="5_5fqgi"]
+[ext_resource type="Script" path="res://scenes/Components/userInterface/buttonhover.gd" id="6_m35p2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r5ah"]
 bg_color = Color(0.0980392, 0.662745, 0.913725, 1)
@@ -68,6 +70,16 @@ alignment = 1
 
 [node name="ShopButton" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
+_icon = ExtResource("3_0epln")
+
+[node name="Spacer" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="ShopButton2" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
+layout_mode = 2
+cost = 200
 
 [node name="button" type="Button" parent="."]
 layout_mode = 1
@@ -88,3 +100,4 @@ theme_override_constants/icon_max_width = 30
 icon = ExtResource("5_5fqgi")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("6_m35p2")

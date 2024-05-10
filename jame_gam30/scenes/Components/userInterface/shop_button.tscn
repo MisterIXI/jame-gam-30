@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://da8nnethmust3"]
+[gd_scene load_steps=9 format=3 uid="uid://da8nnethmust3"]
 
 [ext_resource type="Script" path="res://scenes/Components/userInterface/shop_button.gd" id="1_alofr"]
 [ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="1_je5oi"]
@@ -31,11 +31,25 @@ corner_radius_bottom_left = 15
 corner_detail = 20
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xa3t6"]
+bg_color = Color(0.525191, 0.466483, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+anti_aliasing = false
+
 [sub_resource type="Theme" id="Theme_grl5m"]
 Button/styles/disabled = SubResource("StyleBoxFlat_lc2p7")
 Button/styles/hover = SubResource("StyleBoxFlat_mpuf2")
 Button/styles/normal = SubResource("StyleBoxFlat_mpuf2")
-Button/styles/pressed = SubResource("StyleBoxFlat_mpuf2")
+Button/styles/pressed = SubResource("StyleBoxFlat_xa3t6")
 
 [sub_resource type="Theme" id="Theme_r34ep"]
 
@@ -85,7 +99,7 @@ texture = ExtResource("1_je5oi")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="icon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,3 +113,5 @@ offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_yfcea")
+expand_mode = 4
+stretch_mode = 5

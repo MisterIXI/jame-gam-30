@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqyyrrnwkml13"]
+[gd_scene load_steps=6 format=3 uid="uid://cqyyrrnwkml13"]
 
 [ext_resource type="Theme" uid="uid://duy45gx2wijm5" path="res://resources/Themes/button.tres" id="1_8t331"]
 [ext_resource type="Texture2D" uid="uid://cd03l4dathmun" path="res://assets/userInterface/icons/icons8-home-50(2).png" id="2_uqnjx"]
+[ext_resource type="Script" path="res://scenes/Components/userInterface/pause_button.gd" id="3_bckya"]
 [ext_resource type="PackedScene" uid="uid://of3kv2msfshv" path="res://scenes/Components/userInterface/resources.tscn" id="3_l31m7"]
 [ext_resource type="PackedScene" uid="uid://du4i6ixtx4so4" path="res://scenes/Components/userInterface/shop.tscn" id="5_bxjol"]
 
@@ -24,7 +25,7 @@ offset_top = 16.0
 offset_right = 66.0
 offset_bottom = 66.0
 
-[node name="Button" type="Button" parent="Menu"]
+[node name="pauseButton" type="Button" parent="Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +38,7 @@ theme_override_constants/icon_max_width = 30
 icon = ExtResource("2_uqnjx")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_bckya")
 
 [node name="Resources" parent="." instance=ExtResource("3_l31m7")]
 layout_mode = 1
