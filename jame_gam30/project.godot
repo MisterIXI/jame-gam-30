@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ResourceManager="*res://global/resource_manager.tscn"
+SoundManager="*res://scenes/Manager/sound_manager.gd"
 
 [display]
 
