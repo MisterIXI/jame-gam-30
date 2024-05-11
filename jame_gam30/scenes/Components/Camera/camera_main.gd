@@ -32,7 +32,10 @@ var camera_isdragging : bool =false
 var camera_current_speed: float = 5
 var camera_movement_vector : Vector3 = Vector3.ZERO
 var directions :Array[bool] = [false,false,false,false]
+################# MOUSE  CAMERA MOVEMENT
+var mouse_pos : Vector2
 func _process(delta):
+	
 	if camera_movement_vector == Vector3.ZERO:
 		return
 	self.translate(camera_movement_vector* camera_current_speed* delta)
@@ -40,8 +43,10 @@ func _process(delta):
 func _input(event):
 	var input_vector = Input.get_vector("camera_left", "camera_right", "camera_down", "camera_up")
 	camera_movement_vector = Vector3(input_vector.x,input_vector.y*1.5,0)
-	if event is InputEventMouseMotion && camera_isdragging:
-			camera_current_speed = camera_drag_speed
+	if event is InputEventMouseMotion:
+			if camera_isdragging:
+				var _temp :Vector2 = event.position-mouse_pos
+				self.translate(Vector3(_temp.x, -_temp.y,0)*0.005)
 
 	if event is InputEventMouseButton:
 		var mouse_event = event as InputEventMouseButton
@@ -50,6 +55,7 @@ func _input(event):
 			camera_isdragging = false
 			print ("release dragging")
 			camera_current_speed = camera_scroll_speed
+			mouse_pos =  event.position
 		if mouse_event.pressed and mouse_event.button_index == MOUSE_BUTTON_MIDDLE:
 			camera_isdragging = true
 			camera_current_speed = camera_drag_speed
