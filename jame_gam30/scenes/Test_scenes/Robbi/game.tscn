@@ -1,13 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://cabkb0dq6mv3d"]
+[gd_scene load_steps=15 format=3 uid="uid://cabkb0dq6mv3d"]
 
 [ext_resource type="Script" path="res://scenes/Test_scenes/Robbi/game.gd" id="1_fypjg"]
 [ext_resource type="Material" uid="uid://dsx70oifxf32p" path="res://resources/Material/Prototype.tres" id="2_bvnb0"]
+[ext_resource type="PackedScene" uid="uid://cqmgbsp57nsoc" path="res://scenes/_Game/world_environment.tscn" id="2_ojt5c"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="3_4xtgx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_38ybw"]
+[ext_resource type="Sky" uid="uid://egs4qvg72uny" path="res://resources/Material/new_sky.tres" id="3_tels8"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_8v7jb"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="5_ld0x3"]
 [ext_resource type="PackedScene" uid="uid://de108xb3lwj4j" path="res://scenes/GameObjects/Enemies/enemy_base.tscn" id="6_88ec0"]
 [ext_resource type="Shader" path="res://resources/Shader/Vignette.gdshader" id="7_vu736"]
+
+[sub_resource type="Environment" id="Environment_buj1l"]
+background_mode = 2
+background_energy_multiplier = 3.08
+sky = ExtResource("3_tels8")
+sky_custom_fov = 16.1
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.25
+tonemap_mode = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0158
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
 
@@ -23,9 +36,12 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 [node name="Game" type="Node"]
 script = ExtResource("1_fypjg")
 
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_ojt5c")]
+
 [node name="Camera3D" parent="." instance=ExtResource("3_4xtgx")]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 26.26, 20.39, 29.014)
-size = 11.703
+environment = SubResource("Environment_buj1l")
+size = 11.0
 
 [node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("camera", "foreground") instance=ExtResource("3_38ybw")]
 camera = NodePath("../Camera3D")

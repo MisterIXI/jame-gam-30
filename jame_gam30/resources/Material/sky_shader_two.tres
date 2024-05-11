@@ -1,0 +1,101 @@
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://bwiremkwd0syj"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_oai8j"]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_fay7k"]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_egadt"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_un426"]
+default_input_values = [0, 0.0, 1, 0.01, 2, 0.0]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_k4kf0"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l05o6"]
+
+[sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_yq8c7"]
+default_input_values = [0, 0.0, 1, -0.01, 2, 0.0]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_rncvd"]
+parameter_name = "skybox_texture"
+texture_type = 1
+color_default = 2
+texture_filter = 1
+texture_repeat = 1
+
+[resource]
+code = "shader_type sky;
+render_mode use_half_res_pass, use_quarter_res_pass;
+
+uniform sampler2D skybox_texture : source_color, hint_default_transparent, filter_nearest, repeat_enable;
+
+
+
+void sky() {
+// Input:11
+	vec2 n_out11p0 = SCREEN_UV;
+
+
+// Input:12
+	float n_out12p0 = TIME;
+
+
+// MultiplyAdd:13
+	float n_in13p1 = 0.01000;
+	float n_in13p2 = 0.00000;
+	float n_out13p0 = fma(n_out12p0, n_in13p1, n_in13p2);
+
+
+// MultiplyAdd:17
+	float n_in17p1 = -0.01000;
+	float n_in17p2 = 0.00000;
+	float n_out17p0 = fma(n_out12p0, n_in17p1, n_in17p2);
+
+
+// VectorCompose:14
+	float n_in14p2 = 0.00000;
+	vec3 n_out14p0 = vec3(n_out13p0, n_out17p0, n_in14p2);
+
+
+// VectorOp:15
+	vec3 n_out15p0 = vec3(n_out11p0, 0.0) + n_out14p0;
+
+
+	vec4 n_out10p0;
+// Texture2D:10
+	n_out10p0 = texture(skybox_texture, vec2(n_out15p0.xy));
+
+
+// Output:0
+	COLOR = vec3(n_out10p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(379.331, -162.412)
+mode = 3
+flags/use_half_res_pass = true
+flags/use_quarter_res_pass = true
+flags/disable_fog = false
+flags/use_debanding = false
+nodes/sky/0/position = Vector2(1460, -20)
+nodes/sky/9/node = SubResource("VisualShaderNodeTexture2DParameter_rncvd")
+nodes/sky/9/position = Vector2(640, 40)
+nodes/sky/10/node = SubResource("VisualShaderNodeTexture_oai8j")
+nodes/sky/10/position = Vector2(1160, -240)
+nodes/sky/11/node = SubResource("VisualShaderNodeInput_fay7k")
+nodes/sky/11/position = Vector2(540, -320)
+nodes/sky/12/node = SubResource("VisualShaderNodeInput_egadt")
+nodes/sky/12/position = Vector2(-40, -180)
+nodes/sky/13/node = SubResource("VisualShaderNodeMultiplyAdd_un426")
+nodes/sky/13/position = Vector2(260, -200)
+nodes/sky/14/node = SubResource("VisualShaderNodeVectorCompose_k4kf0")
+nodes/sky/14/position = Vector2(480, -180)
+nodes/sky/15/node = SubResource("VisualShaderNodeVectorOp_l05o6")
+nodes/sky/15/position = Vector2(860, -320)
+nodes/sky/17/node = SubResource("VisualShaderNodeMultiplyAdd_yq8c7")
+nodes/sky/17/position = Vector2(260, 0)
+nodes/sky/connections = PackedInt32Array(9, 0, 10, 2, 10, 0, 0, 0, 12, 0, 13, 0, 13, 0, 14, 0, 11, 0, 15, 0, 15, 0, 10, 0, 14, 0, 15, 1, 12, 0, 17, 0, 17, 0, 14, 1)

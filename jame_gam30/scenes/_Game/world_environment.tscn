@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqmgbsp57nsoc"]
+
+[ext_resource type="Sky" uid="uid://egs4qvg72uny" path="res://resources/Material/new_sky.tres" id="1_j5ggb"]
+
+[sub_resource type="Environment" id="Environment_4eoo5"]
+background_mode = 2
+sky = ExtResource("1_j5ggb")
+fog_enabled = true
+fog_light_energy = 1.66
+fog_aerial_perspective = 0.219
+fog_sky_affect = 0.295
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0158
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_4eoo5")
