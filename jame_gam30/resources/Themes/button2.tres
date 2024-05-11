@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cgnq60kbsgot1"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cgnq60kbsgot1"]
+
+[ext_resource type="FontFile" uid="uid://crr3howgvsqxv" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="1_p4vnb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qef12"]
 bg_color = Color(0.419813, 0.419813, 0.419813, 1)
@@ -69,6 +71,7 @@ anti_aliasing = false
 
 [resource]
 Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_p4vnb")
 Button/styles/disabled = SubResource("StyleBoxFlat_qef12")
 Button/styles/hover = SubResource("StyleBoxFlat_3r3fd")
 Button/styles/normal = SubResource("StyleBoxFlat_3r3fd")

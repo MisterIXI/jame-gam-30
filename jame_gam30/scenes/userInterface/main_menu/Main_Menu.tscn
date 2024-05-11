@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ces428q6vjwdh"]
+[gd_scene load_steps=6 format=3 uid="uid://ces428q6vjwdh"]
 
 [ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu_background.tscn" id="1_an7dg"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_eo2dl"]
 [ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
 [ext_resource type="Texture2D" uid="uid://dtm0a4h5sfqua" path="res://assets/userInterface/Games-designstyle-games-m.png" id="3_ugwl8"]
+[ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -104,7 +105,7 @@ text = "Quit"
 [node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Quit" instance=ExtResource("3_j686n")]
 layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Logo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -116,3 +117,6 @@ offset_bottom = 164.0
 grow_horizontal = 2
 texture = ExtResource("3_ugwl8")
 stretch_mode = 5
+
+[node name="Vignette" parent="." instance=ExtResource("5_s2tn3")]
+layout_mode = 1
