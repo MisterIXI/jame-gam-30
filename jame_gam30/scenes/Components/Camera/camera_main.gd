@@ -4,6 +4,7 @@ class_name MainCamera
 signal mouse_clicked_on(pos: Vector3)
 signal mouse_placeholding(_value : bool)
 signal mouse_position(pos : Vector3)
+signal mouse_clicked_right(pos: Vector3)
 
 func emit_mouse_placeholding(_value : bool) -> void:
 	mouse_placeholding.emit(_value)
@@ -13,3 +14,6 @@ func emit_mouse_clicked_on(pos: Vector3) -> void:
 
 func emit_mouse_position(pos : Vector3) -> void:
 	mouse_position.emit(pos)
+
+func emit_mouse_clicked_right(pos: Vector3):
+	mouse_clicked_right.emit(pos)
