@@ -42,15 +42,18 @@ func _process(delta):
 
 func handle_velocity(_delta : float):
 	velocity =  next_direction * player_speed
-func handle_rotation():
-		visual_rotation.rotation.y = lerp_angle( rotation.y, atan2( target_position.x, target_position.z ), 1 )
+
+func handle_rotation(target_pos: Vector3):
+	visual_rotation.look_at(target_pos, Vector3.UP)
+
+
 func on_mouse_right_cllicked(pos : Vector3):
 	target_position = pos
 	mouse_marker.visible = true
 	mouse_marker.global_position = target_position
 	state_machine.travel("Walking")
 	#ANIMATE PLAYER WALKING
-	handle_rotation()
+	handle_rotation(target_position)
 
 
 func on_mouse_left_clicked(_pos : Vector3):
