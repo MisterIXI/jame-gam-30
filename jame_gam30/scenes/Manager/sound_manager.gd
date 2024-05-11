@@ -12,23 +12,30 @@ enum soundType{
 	signal_charge,
 	signal_empty,
 	win,
-	lose
+	lose,
+	menu_music,
+	game_music
 }
-@onready var menu_click_sound :AudioStreamPlayer=$menu_click
-@onready var menu_error_sound :AudioStreamPlayer= $menu_error
-@onready var player_moving_sound :AudioStreamPlayer3D=$player_moving
-@onready var player_stop_sound :AudioStreamPlayer3D=$player_stop
-@onready var enemy_hit_sound:AudioStreamPlayer3D= $enemy_hit
-@onready var enemy_die_sound :AudioStreamPlayer3D=$enemy_die
-@onready var enemy_walk_sound :AudioStreamPlayer3D=$enemy_walk
-@onready var tower_attack_sound :AudioStreamPlayer3D=$tower_attack
-@onready var tower_lookat_sound :AudioStreamPlayer3D=$tower_lookat
-@onready var signal_charge_sound:AudioStreamPlayer3D =$signal_charge
-@onready var signal_empty_sound :AudioStreamPlayer3D= $signal_empty
-@onready var win_sound :AudioStreamPlayer= $win
-@onready var lose_sound :AudioStreamPlayer=$lose
-@onready var menu_music :AudioStreamPlayer= $menu
-@onready var game_music :AudioStreamPlayer= $music
+
+# Menu_Music by Crazyblox_ - 2018-04-24: https://twitter.com/Crazyblox_  -song : https://tinyurl.com/5n88we5p
+# music by https://twitter.com/nobonoko 2021-10-11: WIP 13.09 ~ 11.10.2021 -song : https://tinyurl.com/yp4yd4ke
+
+@onready var menu_click_sound :AudioStreamPlayer=$s_menu_click
+@onready var menu_error_sound :AudioStreamPlayer=$s_menu_error
+@onready var player_moving_sound :AudioStreamPlayer3D=$s_player_moving
+@onready var player_stop_sound :AudioStreamPlayer3D=$s_player_stop
+@onready var enemy_hit_sound:AudioStreamPlayer3D=$s_enemy_hit
+@onready var enemy_die_sound :AudioStreamPlayer3D=$s_enemy_die
+@onready var enemy_walk_sound :AudioStreamPlayer3D=$s_enemy_walk
+@onready var tower_attack_sound :AudioStreamPlayer3D=$s_tower_attack
+@onready var tower_lookat_sound :AudioStreamPlayer3D=$s_tower_lookat
+@onready var signal_charge_sound:AudioStreamPlayer3D =$s_signal_charge
+@onready var signal_empty_sound :AudioStreamPlayer3D= $s_signal_empty
+@onready var win_sound :AudioStreamPlayer=$s_win
+@onready var lose_sound :AudioStreamPlayer=$s_lose
+@onready var menu_music_sound :AudioStreamPlayer=$s_menu_music
+@onready var game_music_sound :AudioStreamPlayer=$s_game_music
+
 
 func play_global(_sound: AudioStreamPlayer):
 	if _sound.playing:
@@ -71,3 +78,8 @@ func Play_Sound(_soundtype: soundType, _pos :Vector3):
 			play_global(win_sound)
 		soundType.lose:
 			play_global(lose_sound)
+		soundType.menu_music:
+			print("do menu music")
+			play_global(menu_music_sound)
+		soundType.game_music:
+			play_global(game_music_sound)
