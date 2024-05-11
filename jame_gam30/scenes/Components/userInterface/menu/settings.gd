@@ -26,7 +26,6 @@ func _ready() -> void:
 	master_text = get_node("Panel/VBoxContainer/master/masterlabel")
 	var master_value = round(db_to_linear(AudioServer.get_bus_volume_db(master_index))*100)
 	master_slider.value = master_value
-	print(str(AudioServer.get_bus_volume_db(master_index)))
 	master_text.text = "[center]" + str(master_value) + "[/center]"
 
 	music_slider = get_node("Panel/VBoxContainer/music/musicslider")
