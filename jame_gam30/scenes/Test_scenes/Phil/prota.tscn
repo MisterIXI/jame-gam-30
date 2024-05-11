@@ -993,6 +993,7 @@ visual_rotation = NodePath("Armature")
 [node name="Armature" type="Node3D" parent="."]
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 bones/0/name = "ROOT"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.47841e-16, 0, 0, 0, 1, -1.47841e-16, -1, 0, 0, 0, 0)
