@@ -7,8 +7,8 @@ var _resource_manager
 
 
 func _ready() -> void:
-	healthText = get_node("HBoxContainer2/healthtext")
-	moneyText = get_node("HBoxContainer/moneytext")
+	healthText = get_node("Panel/HBoxContainer2/healthtext")
+	moneyText = get_node("Panel/HBoxContainer/moneytext")
 
 	_resource_manager = get_node("/root/ResourceManager")
 	_resource_manager.health_changed.connect(_on_health_changed)
@@ -19,8 +19,8 @@ func _ready() -> void:
 
 
 func _on_health_changed() -> void:
-	healthText.text = "[b]" + str(_resource_manager._get_health()) + "[/b]"
+	healthText.text = str(_resource_manager._get_health())
 
 
 func _on_money_changed() -> void:
-	moneyText.text = "[b]" + str(_resource_manager._get_money()) + "[/b]"
+	moneyText.text = str(_resource_manager._get_money())
