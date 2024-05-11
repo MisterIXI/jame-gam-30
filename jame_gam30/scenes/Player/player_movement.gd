@@ -14,6 +14,7 @@ extends CharacterBody3D
 ## Variables ##
 @onready var anim : AnimationTree = $AnimationTree
 @onready var mouse_marker : Node3D = $Mouse_Marker
+var state_machine : AnimationNodeStateMachinePlayback
 var next_direction : Vector3
 var target_velocity : Vector3
 var target_position : Vector3 = Vector3.ZERO
@@ -22,6 +23,7 @@ const ACCELERATION_SMOOTHING =25
 func _ready():
 	camera.mouse_clicked_right.connect(on_mouse_right_cllicked)
 	camera.mouse_clicked_on.connect(on_mouse_left_clicked)
+	state_machine = anim["parameters/playback"]
 
 
 func _process(delta):
@@ -42,10 +44,12 @@ func on_mouse_right_cllicked(pos : Vector3):
 	target_position = pos
 	mouse_marker.visible = true
 	mouse_marker.global_position = target_position
+	state_machine.travel("Walking")
 	#ANIMATE PLAYER WALKING
-	
+
 
 func on_mouse_left_clicked(_pos : Vector3):
 	target_position = Vector3.ZERO
 	mouse_marker.visible = false
+	state_machine.travel("Idle")
 	#ANIMATE PLAYER IDLE
