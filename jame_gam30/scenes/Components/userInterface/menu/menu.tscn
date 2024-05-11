@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://45wicskmk4r7"]
+
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_4yufn"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="2_scsys"]
+[ext_resource type="Texture2D" uid="uid://dtm0a4h5sfqua" path="res://assets/userInterface/Games-designstyle-games-m.png" id="3_v4jpr"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -300.0
+offset_right = 150.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4yufn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_4yufn")
+text = "Start Game"
+
+[node name="Buttonhover" parent="Panel/VBoxContainer/Start" instance=ExtResource("2_scsys")]
+layout_mode = 1
+
+[node name="Spacer" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_4yufn")
+text = "Settings"
+
+[node name="Buttonhover" parent="Panel/VBoxContainer/Settings" instance=ExtResource("2_scsys")]
+layout_mode = 1
+
+[node name="Spacer2" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Credits" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_4yufn")
+text = "Credits"
+
+[node name="Buttonhover" parent="Panel/VBoxContainer/Credits" instance=ExtResource("2_scsys")]
+layout_mode = 1
+
+[node name="Spacer3" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_4yufn")
+text = "Quit"
+
+[node name="Buttonhover" parent="Panel/VBoxContainer/Quit" instance=ExtResource("2_scsys")]
+layout_mode = 1
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -413.0
+offset_top = -57.0
+offset_right = 413.0
+offset_bottom = 143.0
+grow_horizontal = 2
+texture = ExtResource("3_v4jpr")
+stretch_mode = 5

@@ -1,0 +1,236 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2gstoaqud0ge"]
+
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_5asf0"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="2_ff5jx"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="3_1iguq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b5xe"]
+bg_color = Color(0.951388, 0.401872, 0.336173, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.546299, 0.12535, 0.0944519, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.147672, 0.147672, 0.147672, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(3, 3)
+
+[node name="Credits" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 453.0
+offset_top = 101.0
+offset_right = -453.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5asf0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 35.0
+offset_right = -26.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 58.065)
+layout_mode = 2
+focus_mode = 0
+text = "Return"
+
+[node name="Buttonhover" parent="Panel/VBoxContainer/Button" instance=ExtResource("2_ff5jx")]
+layout_mode = 1
+
+[node name="Spacer3" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="phil" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 74.99)
+layout_mode = 2
+theme = ExtResource("1_5asf0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+
+[node name="philipp" type="RichTextLabel" parent="Panel/VBoxContainer/phil"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5asf0")
+bbcode_enabled = true
+text = "[center]Sazzles
+[/center]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/phil"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]3d Art / Animation[/center]"
+fit_content = true
+
+[node name="Spacer" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="robi" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 74.99)
+layout_mode = 2
+theme = ExtResource("1_5asf0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+
+[node name="robert" type="RichTextLabel" parent="Panel/VBoxContainer/robi"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5asf0")
+bbcode_enabled = true
+text = "[center]Chocobo
+[/center]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/robi"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]Programming / 2d Art[/center]"
+fit_content = true
+
+[node name="Spacer2" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="yani" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 74.99)
+layout_mode = 2
+theme = ExtResource("1_5asf0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+
+[node name="yannik" type="RichTextLabel" parent="Panel/VBoxContainer/yani"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5asf0")
+bbcode_enabled = true
+text = "[center]MisterIXI
+[/center]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/yani"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]Programming[/center]"
+fit_content = true
+
+[node name="Spacer4" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="oli" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 74.99)
+layout_mode = 2
+theme = ExtResource("1_5asf0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+
+[node name="oliver" type="RichTextLabel" parent="Panel/VBoxContainer/oli"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5asf0")
+bbcode_enabled = true
+text = "[center]Gnadus
+[/center]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/oli"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]Programming / 2d Art[/center]"
+fit_content = true
+
+[node name="SwapContainer" parent="." node_paths=PackedStringArray("button") instance=ExtResource("3_1iguq")]
+layout_mode = 1
+button = NodePath("../Panel/VBoxContainer/Button")

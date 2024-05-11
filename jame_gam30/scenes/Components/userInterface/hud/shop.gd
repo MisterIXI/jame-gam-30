@@ -1,9 +1,8 @@
 extends Control
 
-var button_pos = [130, 30]
+var button_pos = [120, 15]
 var button : Button
 
-var container_pos = [182, 57]
 var container : Control
 
 var move_up = false
