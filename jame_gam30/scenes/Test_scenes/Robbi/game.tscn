@@ -25,7 +25,7 @@ script = ExtResource("1_fypjg")
 
 [node name="Camera3D" parent="." instance=ExtResource("3_4xtgx")]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 6.995, 6.341, 6.529)
-size = 14.232
+size = 9.745
 
 [node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("camera", "foreground") instance=ExtResource("3_38ybw")]
 camera = NodePath("../Camera3D")
@@ -48,6 +48,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17708, 0.952207, 6.529)
 
 [node name="boi" parent="ForeGround" node_paths=PackedStringArray("camera", "visual_rotation") instance=ExtResource("5_ld0x3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
 player_speed = 2.0
