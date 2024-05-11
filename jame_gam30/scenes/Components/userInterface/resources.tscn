@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://of3kv2msfshv"]
 
-[ext_resource type="Theme" uid="uid://duy45gx2wijm5" path="res://resources/Themes/button.tres" id="1_h12pm"]
 [ext_resource type="Script" path="res://scenes/Components/userInterface/resources.gd" id="1_lmd0e"]
 [ext_resource type="Texture2D" uid="uid://rjsuenbgydbx" path="res://assets/userInterface/icons/icons8-heart-1001.png" id="2_0jsr6"]
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_nehn4"]
 [ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="3_rdou1"]
 
 [sub_resource type="Theme" id="Theme_r34ep"]
@@ -16,18 +16,19 @@ anchor_right = 0.5
 offset_left = -164.0
 offset_top = 15.0
 offset_right = 164.0
-offset_bottom = 65.0
+offset_bottom = 68.0
 grow_horizontal = 2
 script = ExtResource("1_lmd0e")
 
 [node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(43.5, 30.285)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_h12pm")
+theme = ExtResource("2_nehn4")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 1

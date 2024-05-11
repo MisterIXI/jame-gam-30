@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://duy45gx2wijm5" path="res://resources/Themes/button.tres" id="1_8t331"]
 [ext_resource type="Texture2D" uid="uid://cd03l4dathmun" path="res://assets/userInterface/icons/icons8-home-50(2).png" id="2_uqnjx"]
-[ext_resource type="Script" path="res://scenes/Components/userInterface/pause_button.gd" id="3_bckya"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_c6u8m"]
 [ext_resource type="PackedScene" uid="uid://of3kv2msfshv" path="res://scenes/Components/userInterface/resources.tscn" id="3_l31m7"]
 [ext_resource type="PackedScene" uid="uid://du4i6ixtx4so4" path="res://scenes/Components/userInterface/shop.tscn" id="5_bxjol"]
 
@@ -38,7 +38,9 @@ theme_override_constants/icon_max_width = 30
 icon = ExtResource("2_uqnjx")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("3_bckya")
+
+[node name="Buttonhover" parent="Menu/pauseButton" instance=ExtResource("3_c6u8m")]
+layout_mode = 1
 
 [node name="Resources" parent="." instance=ExtResource("3_l31m7")]
 layout_mode = 1

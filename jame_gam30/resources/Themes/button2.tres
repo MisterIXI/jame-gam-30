@@ -1,0 +1,76 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cgnq60kbsgot1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qef12"]
+bg_color = Color(0.419813, 0.419813, 0.419813, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.129412, 0.313726, 0, 1)
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r3fd"]
+bg_color = Color(1.58831e-06, 0.740314, 0.23987, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.131243, 0.313669, 9.62615e-08, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.129412, 0.313726, 0, 1)
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wei5w"]
+bg_color = Color(1.56425e-06, 0.551306, 0.169052, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.129412, 0.313726, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.129412, 0.313726, 0, 1)
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lir6g"]
+bg_color = Color(0.0995742, 0.661041, 0.914309, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.334556, 0.514489, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1.26343e-07, 0.171024, 0.224006, 0.52549)
+shadow_size = 6
+shadow_offset = Vector2(6, 6)
+anti_aliasing = false
+
+[resource]
+Button/font_sizes/font_size = 40
+Button/styles/disabled = SubResource("StyleBoxFlat_qef12")
+Button/styles/hover = SubResource("StyleBoxFlat_3r3fd")
+Button/styles/normal = SubResource("StyleBoxFlat_3r3fd")
+Button/styles/pressed = SubResource("StyleBoxFlat_wei5w")
+Panel/styles/panel = SubResource("StyleBoxFlat_lir6g")
