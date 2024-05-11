@@ -40,7 +40,6 @@ enum soundType{
 func play_global(_sound: AudioStreamPlayer):
 	if _sound.playing:
 		return
-	_sound.pitch_scale = randf_range(0.8,1.2)
 	_sound.play()
 
 func play_on_pos(_sound: AudioStreamPlayer3D, pos : Vector3):
