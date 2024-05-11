@@ -81,7 +81,7 @@ alignment = 1
 
 [node name="ShopButton" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
-keybind = 1
+index = 1
 _icon = ExtResource("3_0epln")
 
 [node name="Spacer" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
@@ -91,8 +91,7 @@ layout_mode = 2
 
 [node name="ShopButton2" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
-cost = 200
-keybind = 2
+index = 2
 
 [node name="Spacer2" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -101,8 +100,7 @@ layout_mode = 2
 
 [node name="ShopButton3" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
-cost = 200
-keybind = 3
+index = 3
 
 [node name="Spacer3" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -111,8 +109,7 @@ layout_mode = 2
 
 [node name="ShopButton4" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
-cost = 200
-keybind = 4
+index = 4
 
 [node name="Spacer4" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -121,7 +118,7 @@ layout_mode = 2
 
 [node name="ShopButton5" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
-keybind = 5
+index = 5
 _icon = ExtResource("3_0epln")
 
 [node name="Cancel" type="RichTextLabel" parent="container"]

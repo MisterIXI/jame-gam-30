@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://47icuen4mh12"]
+[gd_scene load_steps=6 format=3 uid="uid://tru5o87o7mnn"]
 
 [ext_resource type="Material" uid="uid://dsx70oifxf32p" path="res://resources/Material/Prototype.tres" id="1_22ocy"]
 [ext_resource type="PackedScene" uid="uid://de108xb3lwj4j" path="res://scenes/GameObjects/Enemies/enemy_base.tscn" id="2_6vu44"]

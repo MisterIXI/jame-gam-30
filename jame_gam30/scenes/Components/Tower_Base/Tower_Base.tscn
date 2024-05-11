@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/blunt_shooter.gd" id="1_jh7ps"]
 [ext_resource type="Material" uid="uid://b7y6mqdcjh4av" path="res://resources/Material/Prototype_Tower.tres" id="1_x6qgi"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="2_7fph4"]
-[ext_resource type="PackedScene" path="res://scenes/Components/Tower_Base/bullet.tscn" id="2_tlk78"]
+[ext_resource type="PackedScene" uid="uid://bbnn6theu8v4x" path="res://scenes/Components/Tower_Base/bullet.tscn" id="2_tlk78"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="6_r4adf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]

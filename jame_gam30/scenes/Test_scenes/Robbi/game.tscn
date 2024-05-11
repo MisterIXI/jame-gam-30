@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Test_scenes/Robbi/game.gd" id="1_fypjg"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="3_4xtgx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_38ybw"]
-[ext_resource type="PackedScene" uid="uid://47icuen4mh12" path="res://scenes/Components/Tower_Base/fore_ground.tscn" id="4_6m4q0"]
+[ext_resource type="PackedScene" uid="uid://tru5o87o7mnn" path="res://scenes/Components/Tower_Base/fore_ground.tscn" id="4_6m4q0"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_8v7jb"]
 [ext_resource type="Shader" path="res://resources/Shader/Vignette.gdshader" id="7_vu736"]
 
