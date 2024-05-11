@@ -35,6 +35,12 @@ folder_colors={
 "res://scenes/": "blue"
 }
 
+[global_group]
+
+Enemy="This is an Enemy"
+Tower="This is a Tower"
+Player="This is the player"
+
 [importer_defaults]
 
 scene={

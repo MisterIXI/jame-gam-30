@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://clyaj0i4seejo"]
+[gd_scene load_steps=12 format=3 uid="uid://clyaj0i4seejo"]
 
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_scene.gd" id="1_kpogu"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="2_ue6dk"]
 [ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="3_s2dtn"]
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_test.gd" id="3_uipiq"]
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="5_waa5j"]
+[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="6_soxc1"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wx5te"]
 
@@ -61,7 +62,31 @@ spawning_fair = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -2.08163, 10.5102, 10.1915)
-projection = 1
 size = 17.744
 
 [node name="hud" parent="." instance=ExtResource("5_waa5j")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57731, -9.53674e-07, 3.60893)
+targeting = NodePath("TowerTargeting")
+tower_base = NodePath("TowerHead")
+shot_cd_timer = NodePath("Shot_Timeout")
+
+[node name="Tower_Base2" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18848, 0, 9.35651)
+targeting = NodePath("TowerTargeting")
+tower_base = NodePath("TowerHead")
+shot_cd_timer = NodePath("Shot_Timeout")
+
+[node name="Tower_Base3" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55294, -0.0104046, -5.56395)
+targeting = NodePath("TowerTargeting")
+tower_base = NodePath("TowerHead")
+shot_cd_timer = NodePath("Shot_Timeout")
+
+[node name="Tower_Base4" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3361, 0, 3.75918)
+targeting = NodePath("TowerTargeting")
+tower_base = NodePath("TowerHead")
+shot_cd_timer = NodePath("Shot_Timeout")
