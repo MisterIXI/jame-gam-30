@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyhdehb4p623l"]
+
+[ext_resource type="Script" path="res://scenes/Components/userInterface/menu_background.gd" id="1_g1el6"]
+[ext_resource type="Texture2D" uid="uid://c1rtyt43f2uty" path="res://assets/userInterface/balloonBackground.png" id="2_1osqi"]
+
+[node name="Background" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_g1el6")
+
+[node name="TextureRect1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1923.0
+offset_bottom = 1072.26
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1920.0
+offset_right = 3853.0
+offset_bottom = 1072.26
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3840.0
+offset_right = 5763.0
+offset_bottom = 1072.26
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRecty1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_right = 1923.0
+offset_bottom = -7.745
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRecty2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1920.0
+offset_top = -1080.0
+offset_right = 3853.0
+offset_bottom = -7.745
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRecty3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3840.0
+offset_top = -1080.0
+offset_right = 5763.0
+offset_bottom = -7.745
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRecta1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2160.0
+offset_right = 1923.0
+offset_bottom = -1087.74
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRecta2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1920.0
+offset_top = -2160.0
+offset_right = 3853.0
+offset_bottom = -1087.74
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1
+
+[node name="TextureRecta3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3840.0
+offset_top = -2160.0
+offset_right = 5763.0
+offset_bottom = -1087.74
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1osqi")
+stretch_mode = 1

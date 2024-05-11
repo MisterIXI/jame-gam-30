@@ -1,13 +1,16 @@
-extends Button
+extends Control
 
 
 var _focusing = false
 var _unfocusing = false
 
+var parent : Button
+
 
 func _ready() -> void:
-	self.mouse_entered.connect(_on_mouse_entered)
-	self.mouse_exited.connect(_on_mouse_exited)
+	parent = get_parent()
+	parent.mouse_entered.connect(_on_mouse_entered)
+	parent.mouse_exited.connect(_on_mouse_exited)
 
 
 func _on_mouse_entered() -> void:
@@ -21,19 +24,19 @@ func _on_mouse_exited() -> void:
 
 
 func _process(delta: float) -> void:
-	if self.button_pressed == false and self.disabled == false and _focusing:
-		if self.self_modulate.r >= 0.8:
-			self.self_modulate.r -= 1 * delta
-			self.self_modulate.g -= 1 * delta
-			self.self_modulate.b -= 1 * delta
+	if parent.button_pressed == false and parent.disabled == false and _focusing:
+		if parent.self_modulate.r >= 0.8:
+			parent.self_modulate.r -= 1 * delta
+			parent.self_modulate.g -= 1 * delta
+			parent.self_modulate.b -= 1 * delta
 		else:
 			_focusing = false
 
 
-	if self.button_pressed == false and self.disabled == false and _unfocusing:
-		if self.self_modulate.r <= 1:
-			self.self_modulate.r += 1 * delta
-			self.self_modulate.g += 1 * delta
-			self.self_modulate.b += 1 * delta
+	if parent.button_pressed == false and parent.disabled == false and _unfocusing:
+		if parent.self_modulate.r <= 1:
+			parent.self_modulate.r += 1 * delta
+			parent.self_modulate.g += 1 * delta
+			parent.self_modulate.b += 1 * delta
 		else:
 			_unfocusing = false
