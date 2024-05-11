@@ -17,18 +17,14 @@ material = SubResource("StandardMaterial3D_ctmiw")
 size = Vector2(50, 50)
 
 [sub_resource type="Curve3D" id="Curve3D_304s5"]
+bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8.72462, 0, -9.27233, 0, 0, 0, 0, 0, 0, 2.47098, 0, -5.65412, 0, 0, 0, 0, 0, 0, -3.80961, 0, 0.0826664),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.08109, 0, 30.6169, 0, 0, 0, 14.54, 0, 0, 18.7007, 0, -24.7861, -11.17, 0, 0, 32.325, 0, 0, 24.5861, 0.133314, 2.18588, 0, 0, 0, 0, 0, 0, 27.1752, 0, -5.33784, 0, 0, 0, 0, 0, 0, 36.4933, 0, -9.75113, 0, 0, 0, 0, 0, 0, 26.5016, -1.90735e-06, -15.2047, 0, 0, 0, 0, 0, 0, 61.7617, -3.8147e-06, -47.0714),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 3
+point_count = 7
 
-[sub_resource type="Curve3D" id="Curve3D_6nhtg"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.0638, 0, 9.94272, 0, 0, 0, 0, 0, 0, 5.42328, 0, 0.0366735, 0, 0, 0, 0, 0, 0, -2.42853, 0, 7.02641),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sjbn7"]
 
 [node name="YannikScene" type="Node3D"]
 script = ExtResource("1_kpogu")
@@ -49,44 +45,44 @@ mesh = SubResource("PlaneMesh_h0kcd")
 script = ExtResource("3_uipiq")
 
 [node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8325, 0, 8.19485)
 curve = SubResource("Curve3D_304s5")
-
-[node name="Path3D3" type="Path3D" parent="."]
-curve = SubResource("Curve3D_6nhtg")
 
 [node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("paths")]
 script = ExtResource("3_s2dtn")
 test_enemy = ExtResource("2_ue6dk")
-paths = [NodePath("../Path3D2"), NodePath("../Path3D3")]
+paths = [NodePath("../Path3D2")]
 spawning_fair = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -2.08163, 10.5102, 10.1915)
+transform = Transform3D(0.99945, -0.0289842, 0.0160965, 0, 0.485507, 0.874233, -0.0331539, -0.873752, 0.48524, 0.816711, 45.4173, 36.3238)
 size = 17.744
 
 [node name="hud" parent="." instance=ExtResource("5_waa5j")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57731, -9.53674e-07, 3.60893)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7204, -9.53674e-07, 14.1523)
 targeting = NodePath("TowerTargeting")
 tower_base = NodePath("TowerHead")
 shot_cd_timer = NodePath("Shot_Timeout")
+bullet_speed = 40.0
 
-[node name="Tower_Base2" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18848, 0, 9.35651)
-targeting = NodePath("TowerTargeting")
-tower_base = NodePath("TowerHead")
-shot_cd_timer = NodePath("Shot_Timeout")
+[node name="OOB" type="Area3D" parent="."]
+collision_layer = 31
 
-[node name="Tower_Base3" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55294, -0.0104046, -5.56395)
-targeting = NodePath("TowerTargeting")
-tower_base = NodePath("TowerHead")
-shot_cd_timer = NodePath("Shot_Timeout")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OOB"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 50, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_sjbn7")
 
-[node name="Tower_Base4" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3361, 0, 3.75918)
-targeting = NodePath("TowerTargeting")
-tower_base = NodePath("TowerHead")
-shot_cd_timer = NodePath("Shot_Timeout")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="OOB"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -50, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_sjbn7")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="OOB"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 50)
+shape = SubResource("WorldBoundaryShape3D_sjbn7")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="OOB"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50)
+shape = SubResource("WorldBoundaryShape3D_sjbn7")

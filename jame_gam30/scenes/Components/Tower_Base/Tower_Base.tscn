@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=10 format=3 uid="uid://c8ldnghlk8r5c"]
 
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/blunt_shooter.gd" id="1_jh7ps"]
 [ext_resource type="Material" uid="uid://b7y6mqdcjh4av" path="res://resources/Material/Prototype_Tower.tres" id="1_x6qgi"]
@@ -12,7 +12,9 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_davcb"]
 height = 3.97007
-radius = 9.82389
+radius = 44.4369
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xjv68"]
 
 [node name="Tower_Base" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer")]
 collision_layer = 0
@@ -52,12 +54,17 @@ material_override = ExtResource("1_x6qgi")
 mesh = SubResource("BoxMesh_ibxrm")
 skeleton = NodePath("../../..")
 
-[node name="TowerTargeting" type="Node" parent="." node_paths=PackedStringArray("distance_trigger")]
+[node name="TowerTargeting" type="Node" parent="." node_paths=PackedStringArray("distance_trigger", "t_cl")]
 script = ExtResource("6_r4adf")
 distance_trigger = NodePath("../DistanceTrigger")
+t_cl = NodePath("../MeshInstance3D")
 
 [node name="Shot_Timeout" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 6.115, 0, 0, 0, 1, 0, 0, -10.7375)
+mesh = SubResource("CylinderMesh_xjv68")
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]
