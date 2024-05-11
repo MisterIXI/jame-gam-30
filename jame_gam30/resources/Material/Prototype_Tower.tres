@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bn0da56wink4t" path="res://resources/Textures/Prototype_Material_Texture.png" id="1_30si6"]
 
 [resource]
-no_depth_test = true
 albedo_texture = ExtResource("1_30si6")
 uv1_triplanar = true
