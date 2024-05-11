@@ -20,6 +20,11 @@ func get_shot(damage: float) -> void:
 	health -= damage
 	if health <= 0:
 		queue_free()
+		
+func take_damage(damage: float):
+	health -= damage
+	if health <= 0:
+		queue_free()
 
 func _physics_process(delta):
 	var old_ratio = progress_ratio
