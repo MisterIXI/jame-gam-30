@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bndrwtvqnx4su"]
+[gd_scene load_steps=31 format=3 uid="uid://bndrwtvqnx4su"]
 
 [ext_resource type="Script" path="res://scenes/Manager/sound_manager.gd" id="1_h0jjp"]
 [ext_resource type="AudioStream" uid="uid://bvgnvnmrk40sm" path="res://assets/Sounds/Balloon_hit_05_best.mp3" id="2_bmpvy"]
@@ -12,10 +12,14 @@
 [ext_resource type="AudioStream" uid="uid://eobuhccgtskl" path="res://assets/Sounds/Balloon_menu_start.mp3" id="10_7d3r5"]
 [ext_resource type="AudioStream" uid="uid://citifioiolf1u" path="res://assets/Sounds/Balloon_filled_02.mp3" id="11_xd8ep"]
 [ext_resource type="AudioStream" uid="uid://dx2jp1pnpdegw" path="res://assets/Sounds/Balloon_hit_03.mp3" id="12_kc218"]
+[ext_resource type="AudioStream" uid="uid://djh2r02k38u6u" path="res://assets/Sounds/Balloon_die_01.mp3" id="13_5s3e7"]
 [ext_resource type="AudioStream" uid="uid://ln17ukkaapf0" path="res://assets/Sounds/Balloon_loose_air_01.mp3" id="13_c3vaq"]
+[ext_resource type="AudioStream" uid="uid://m6maxygnx6v" path="res://assets/Sounds/Balloon_die_02.mp3" id="14_cmio5"]
 [ext_resource type="AudioStream" uid="uid://cfh8kxrb005fm" path="res://assets/Sounds/Balloon_loose_air_02.mp3" id="14_gw37r"]
+[ext_resource type="AudioStream" uid="uid://da55edaplq8d6" path="res://assets/Sounds/Balloon_die_03.mp3" id="15_7wu0p"]
 [ext_resource type="AudioStream" uid="uid://cry74ysvnbbwi" path="res://assets/Sounds/Balloon_loose_air_03.mp3" id="15_tdocd"]
 [ext_resource type="AudioStream" uid="uid://dre7xt5jodsh0" path="res://assets/Sounds/Balloon_stretch_01.mp3" id="16_b82r5"]
+[ext_resource type="AudioStream" uid="uid://vismw4h4uk1d" path="res://assets/Sounds/Balloon_die_04.mp3" id="16_wqa88"]
 [ext_resource type="AudioStream" uid="uid://dgpwu0awjya7v" path="res://assets/Sounds/Balloon_stretch_02.mp3" id="17_c2j5i"]
 [ext_resource type="AudioStream" uid="uid://cra1swm42014p" path="res://assets/Sounds/Balloon_stretch_03.mp3" id="18_4oeul"]
 [ext_resource type="AudioStream" uid="uid://d3a5cobgevucq" path="res://assets/Sounds/Balloon_stretch_04.mp3" id="19_6ylu4"]
@@ -46,6 +50,13 @@ stream_3/stream = ExtResource("7_lligk")
 stream_4/stream = ExtResource("2_bmpvy")
 stream_5/stream = ExtResource("3_arsnr")
 stream_6/stream = ExtResource("4_1uf6c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_halgg"]
+streams_count = 4
+stream_0/stream = ExtResource("13_5s3e7")
+stream_1/stream = ExtResource("14_cmio5")
+stream_2/stream = ExtResource("15_7wu0p")
+stream_3/stream = ExtResource("16_wqa88")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ld614"]
 streams_count = 3
@@ -95,7 +106,7 @@ stream = SubResource("AudioStreamRandomizer_ousuh")
 
 [node name="enemy_die" type="AudioStreamPlayer3D" parent="."]
 top_level = true
-stream = ExtResource("2_bmpvy")
+stream = SubResource("AudioStreamRandomizer_halgg")
 
 [node name="enemy_walk" type="AudioStreamPlayer3D" parent="."]
 top_level = true
