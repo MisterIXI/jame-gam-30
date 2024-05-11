@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bn0da56wink4t" path="res://resources/Textures/Prototype_Material_Texture.png" id="1_tdgav"]
 
 [resource]
-no_depth_test = true
 albedo_color = Color(0.00784314, 1, 0, 1)
 albedo_texture = ExtResource("1_tdgav")
 uv1_triplanar = true

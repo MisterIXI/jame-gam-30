@@ -1,6 +1,7 @@
 extends CharacterBody3D
 ## TIPP: Camera var need for mouseposition
 @export var camera : Camera3D
+@export var visual_rotation : Node3D
 ## TIPP: NEED CORRECT MAP BORDERS -TODO- need to change
 @export var grid_size : Vector2i = Vector2(50,50)
 
@@ -18,6 +19,7 @@ var state_machine : AnimationNodeStateMachinePlayback
 var next_direction : Vector3
 var target_velocity : Vector3
 var target_position : Vector3 = Vector3.ZERO
+var player_angle :float
 const ACCELERATION_SMOOTHING =25
 
 func _ready():
@@ -30,6 +32,7 @@ func _process(delta):
 	if target_position == Vector3.ZERO:
 		return
 	if global_position.distance_to(target_position) <= 0.05:
+		state_machine.travel("Idle")
 		global_position = target_position
 		target_position =Vector3.ZERO
 		return
@@ -39,15 +42,15 @@ func _process(delta):
 
 func handle_velocity(_delta : float):
 	velocity =  next_direction * player_speed
-	
-	#velocity = velocity.lerp(target_velocity, 1- exp(-_delta * ACCELERATION_SMOOTHING))
-
+func handle_rotation():
+		visual_rotation.rotation.y = lerp_angle( rotation.y, atan2( target_position.x, target_position.z ), 1 )
 func on_mouse_right_cllicked(pos : Vector3):
 	target_position = pos
 	mouse_marker.visible = true
 	mouse_marker.global_position = target_position
 	state_machine.travel("Walking")
 	#ANIMATE PLAYER WALKING
+	handle_rotation()
 
 
 func on_mouse_left_clicked(_pos : Vector3):
