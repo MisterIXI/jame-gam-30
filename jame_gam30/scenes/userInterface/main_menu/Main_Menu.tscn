@@ -1,25 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://ces428q6vjwdh"]
+[gd_scene load_steps=11 format=3 uid="uid://ces428q6vjwdh"]
 
-[ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu_background.tscn" id="1_an7dg"]
+[ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu/menu_background.tscn" id="1_an7dg"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_eo2dl"]
 [ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
 [ext_resource type="Texture2D" uid="uid://dtm0a4h5sfqua" path="res://assets/userInterface/Games-designstyle-games-m.png" id="3_ugwl8"]
 [ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b5xe"]
-bg_color = Color(0.951388, 0.401872, 0.336173, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.546299, 0.12535, 0.0944519, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.147672, 0.147672, 0.147672, 0.6)
-shadow_size = 3
-shadow_offset = Vector2(3, 3)
+[ext_resource type="Script" path="res://scenes/Components/userInterface/menu/quit.gd" id="5_sfqs2"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
+[ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="6_sf5sh"]
+[ext_resource type="PackedScene" uid="uid://b2gstoaqud0ge" path="res://scenes/Components/userInterface/menu/credits.tscn" id="8_5otex"]
+[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -119,6 +109,7 @@ size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("2_eo2dl")
 text = "Quit"
+script = ExtResource("5_sfqs2")
 
 [node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Quit" instance=ExtResource("3_j686n")]
 layout_mode = 1
@@ -136,438 +127,24 @@ grow_horizontal = 2
 texture = ExtResource("3_ugwl8")
 stretch_mode = 5
 
-[node name="Settings" type="Control" parent="."]
-visible = false
+[node name="startSwapContainer" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+targetContainer = NodePath("../../Confirm")
+button = NodePath("../Panel/VBoxContainer/Start")
 
-[node name="Panel" type="Panel" parent="Settings"]
+[node name="SettingsSwapContainer" parent="Menu" node_paths=PackedStringArray("button") instance=ExtResource("6_3fers")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 453.0
-offset_top = 135.0
-offset_right = -453.0
-offset_bottom = -135.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_eo2dl")
+button = NodePath("../Panel/VBoxContainer/Settings")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel"]
+[node name="CreditsSwapContainer2" parent="Menu" node_paths=PackedStringArray("button") instance=ExtResource("6_3fers")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = 35.0
-offset_right = -26.0
-offset_bottom = -35.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+button = NodePath("../Panel/VBoxContainer/Credits")
 
-[node name="Button" type="Button" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 58.065)
-layout_mode = 2
-focus_mode = 0
-text = "Return"
-
-[node name="Buttonhover" parent="Settings/Panel/VBoxContainer/Button" instance=ExtResource("3_j686n")]
+[node name="Settings" parent="." instance=ExtResource("6_sf5sh")]
 layout_mode = 1
 
-[node name="Spacer3" type="Control" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 84.575)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="MasterVolume" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel"]
+[node name="Credits" parent="." instance=ExtResource("8_5otex")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 45.0
-grow_horizontal = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]Master Volume[/center]"
-fit_content = true
-
-[node name="masterslider" type="HSlider" parent="Settings/Panel/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 33.0
-offset_top = 6.7125
-offset_right = -35.0
-offset_bottom = 24.7125
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme = ExtResource("2_eo2dl")
-value = 100.0
-allow_greater = true
-allow_lesser = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -129.0
-offset_top = -21.575
-offset_right = 129.0
-offset_bottom = -5.575
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 13
-bbcode_enabled = true
-text = "[center]100[/center]"
-fit_content = true
-
-[node name="Spacer" type="Control" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="Panel2" type="Panel" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 84.575)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="musicvolume" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 45.0
-grow_horizontal = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]Music Volume[/center]"
-fit_content = true
-
-[node name="musicslider" type="HSlider" parent="Settings/Panel/VBoxContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 33.0
-offset_top = 7.7125
-offset_right = -35.0
-offset_bottom = 23.7125
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme = ExtResource("2_eo2dl")
-value = 100.0
-allow_greater = true
-allow_lesser = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -129.0
-offset_top = -21.575
-offset_right = 129.0
-offset_bottom = -5.575
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 13
-bbcode_enabled = true
-text = "[center]100[/center]"
-fit_content = true
-
-[node name="Spacer2" type="Control" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="Panel3" type="Panel" parent="Settings/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 84.575)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="sfxvolume" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 45.0
-grow_horizontal = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]SFX Volume[/center]"
-fit_content = true
-
-[node name="sfxslider" type="HSlider" parent="Settings/Panel/VBoxContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 33.0
-offset_top = 8.7125
-offset_right = -35.0
-offset_bottom = 24.7125
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme = ExtResource("2_eo2dl")
-value = 100.0
-allow_greater = true
-allow_lesser = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -129.0
-offset_top = -21.575
-offset_right = 129.0
-offset_bottom = -5.575
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 13
-bbcode_enabled = true
-text = "[center]100[/center]"
-fit_content = true
-
-[node name="Credits" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="Credits"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 453.0
-offset_top = 101.0
-offset_right = -453.0
-offset_bottom = -101.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_eo2dl")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = 35.0
-offset_right = -26.0
-offset_bottom = -35.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Button" type="Button" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 58.065)
-layout_mode = 2
-focus_mode = 0
-text = "Return"
-
-[node name="Buttonhover" parent="Credits/Panel/VBoxContainer/Button" instance=ExtResource("3_j686n")]
-layout_mode = 1
-
-[node name="Spacer3" type="Control" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="phil" type="Panel" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 74.99)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="philipp" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/phil"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -27.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]Sazzles
-[/center]"
-fit_content = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/phil"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 6.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
-theme_override_font_sizes/normal_font_size = 15
-bbcode_enabled = true
-text = "[center]3d Art / Animation[/center]"
-fit_content = true
-
-[node name="Spacer" type="Control" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="robi" type="Panel" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 74.99)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="robert" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/robi"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -27.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]Chocobo
-[/center]"
-fit_content = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/robi"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 6.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
-theme_override_font_sizes/normal_font_size = 15
-bbcode_enabled = true
-text = "[center]Programming / 2d Art[/center]"
-fit_content = true
-
-[node name="Spacer2" type="Control" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="yani" type="Panel" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 74.99)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="yannik" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/yani"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -27.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]MisterIXI
-[/center]"
-fit_content = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/yani"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 6.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
-theme_override_font_sizes/normal_font_size = 15
-bbcode_enabled = true
-text = "[center]Programming[/center]"
-fit_content = true
-
-[node name="Spacer4" type="Control" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="oli" type="Panel" parent="Credits/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 74.99)
-layout_mode = 2
-theme = ExtResource("2_eo2dl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
-
-[node name="oliver" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/oli"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -27.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_eo2dl")
-bbcode_enabled = true
-text = "[center]Gnadus
-[/center]"
-fit_content = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Panel/VBoxContainer/oli"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 6.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.899258, 0.899258, 0.899258, 1)
-theme_override_font_sizes/normal_font_size = 15
-bbcode_enabled = true
-text = "[center]Programming / 2d Art[/center]"
-fit_content = true
 
 [node name="Confirm" type="Control" parent="."]
 visible = false
@@ -637,3 +214,12 @@ custom_minimum_size = Vector2(155.805, 0)
 layout_mode = 2
 theme = ExtResource("2_eo2dl")
 text = "Yes"
+
+[node name="SwapContainer" parent="Confirm" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
+layout_mode = 1
+targetContainer = NodePath("../../Menu")
+button = NodePath("../Panel/HBoxContainer/Button2")
+
+[node name="SwapScene" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
+layout_mode = 1
+button = NodePath("../Panel/HBoxContainer/Button")

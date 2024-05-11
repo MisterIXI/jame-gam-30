@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyhdehb4p623l"]
 
-[ext_resource type="Script" path="res://scenes/Components/userInterface/menu_background.gd" id="1_g1el6"]
+[ext_resource type="Script" path="res://scenes/Components/userInterface/menu/menu_background.gd" id="1_g1el6"]
 [ext_resource type="Texture2D" uid="uid://c1rtyt43f2uty" path="res://assets/userInterface/balloonBackground.png" id="2_1osqi"]
 
 [node name="Background" type="Control"]

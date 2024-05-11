@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://da8nnethmust3"]
 
-[ext_resource type="Script" path="res://scenes/Components/userInterface/shop_button.gd" id="1_alofr"]
+[ext_resource type="Script" path="res://scenes/Components/userInterface/hud/shop_button.gd" id="1_alofr"]
 [ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="1_je5oi"]
 [ext_resource type="FontFile" uid="uid://crr3howgvsqxv" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="2_a04t7"]
 [ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_yfcea"]
