@@ -1,20 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://7cnjuv8xx0fj"]
+[gd_scene load_steps=16 format=3 uid="uid://7cnjuv8xx0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_rnm01"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_tep6n"]
 [ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="5_e1juu"]
-[ext_resource type="PackedScene" uid="uid://dg0y6jjwr4dpv" path="res://assets/Models/tile.glb" id="5_v6rb6"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="6_8cp7c"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="6_sqh3a"]
 [ext_resource type="PackedScene" uid="uid://c2kohnu2yx86s" path="res://scenes/Components/Tower_Base/Tower_Base_03.tscn" id="6_xj7uk"]
 [ext_resource type="PackedScene" uid="uid://ca1762gdd7o1u" path="res://scenes/Components/Tower_Base/Tower_Base_04.tscn" id="7_ti55p"]
-[ext_resource type="Script" path="res://scenes/Components/map/tile.gd" id="8_7x7vh"]
 [ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="8_n5jxw"]
 [ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="9_6s53o"]
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="10_1ybim"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="11_eh0w8"]
+[ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="14_qqbmp"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
 
@@ -53,7 +52,5 @@ camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
 player_speed = 2.0
 
-[node name="tile" parent="Map" instance=ExtResource("5_v6rb6")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="tile" parent="Map" instance=ExtResource("14_qqbmp")]
 visible = false
-script = ExtResource("8_7x7vh")
