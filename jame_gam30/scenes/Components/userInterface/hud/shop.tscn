@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://du4i6ixtx4so4"]
+
+[ext_resource type="Script" path="res://scenes/Components/userInterface/hud/shop.gd" id="1_x3wxm"]
+[ext_resource type="PackedScene" uid="uid://da8nnethmust3" path="res://scenes/Components/userInterface/hud/shop_button.tscn" id="2_bhjue"]
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_fabo1"]
+[ext_resource type="Texture2D" uid="uid://cxqn5r31w82hd" path="res://assets/userInterface/icons/xmark-solid.svg" id="3_0epln"]
+[ext_resource type="Texture2D" uid="uid://cui5amfvxymw7" path="res://assets/userInterface/icons/chevron-down-solid.svg" id="5_5fqgi"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="6_r6vft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6v1o"]
+bg_color = Color(0.0995742, 0.661041, 0.914309, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.334556, 0.514489, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1.26343e-07, 0.171024, 0.224006, 0.52549)
+shadow_size = 6
+shadow_offset = Vector2(6, 6)
+anti_aliasing = false
+
+[node name="Shop" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_x3wxm")
+
+[node name="container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -111.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 283.0
+offset_top = -11.0
+offset_right = -283.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fabo1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_t6v1o")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 295.0
+offset_top = 16.0
+offset_right = -295.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="container/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ShopButton" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
+layout_mode = 2
+keybind = 1
+_icon = ExtResource("3_0epln")
+
+[node name="Spacer" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="ShopButton2" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
+layout_mode = 2
+cost = 200
+keybind = 2
+
+[node name="Spacer2" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="ShopButton3" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
+layout_mode = 2
+cost = 200
+keybind = 3
+
+[node name="Spacer3" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="ShopButton4" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
+layout_mode = 2
+cost = 200
+keybind = 4
+
+[node name="Spacer4" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="ShopButton5" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
+layout_mode = 2
+keybind = 5
+_icon = ExtResource("3_0epln")
+
+[node name="Cancel" type="RichTextLabel" parent="container"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "[center][b]Cancel Placement[/b][/center]"
+fit_content = true
+
+[node name="button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = -153.0
+offset_right = 72.5
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_fabo1")
+theme_override_constants/icon_max_width = 30
+icon = ExtResource("5_5fqgi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Buttonhover" parent="button" instance=ExtResource("6_r6vft")]
+layout_mode = 1
+offset_top = -2.0
+offset_bottom = -2.0

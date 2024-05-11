@@ -1,0 +1,229 @@
+[gd_scene load_steps=11 format=3 uid="uid://ces428q6vjwdh"]
+
+[ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu/menu_background.tscn" id="1_an7dg"]
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_eo2dl"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
+[ext_resource type="Texture2D" uid="uid://dtm0a4h5sfqua" path="res://assets/userInterface/Games-designstyle-games-m.png" id="3_ugwl8"]
+[ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
+[ext_resource type="Script" path="res://scenes/Components/userInterface/menu/quit.gd" id="5_sfqs2"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
+[ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="6_sf5sh"]
+[ext_resource type="PackedScene" uid="uid://b2gstoaqud0ge" path="res://scenes/Components/userInterface/menu/credits.tscn" id="8_5otex"]
+[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" parent="." instance=ExtResource("1_an7dg")]
+layout_mode = 1
+
+[node name="Vignette" parent="." instance=ExtResource("5_s2tn3")]
+layout_mode = 1
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -300.0
+offset_right = 150.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eo2dl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Menu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_eo2dl")
+text = "Start Game"
+
+[node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Start" instance=ExtResource("3_j686n")]
+layout_mode = 1
+
+[node name="Spacer" type="Control" parent="Menu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="Menu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_eo2dl")
+text = "Settings"
+
+[node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Settings" instance=ExtResource("3_j686n")]
+layout_mode = 1
+
+[node name="Spacer2" type="Control" parent="Menu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Credits" type="Button" parent="Menu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_eo2dl")
+text = "Credits"
+
+[node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Credits" instance=ExtResource("3_j686n")]
+layout_mode = 1
+
+[node name="Spacer3" type="Control" parent="Menu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Menu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_eo2dl")
+text = "Quit"
+script = ExtResource("5_sfqs2")
+
+[node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Quit" instance=ExtResource("3_j686n")]
+layout_mode = 1
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -413.0
+offset_top = -57.0
+offset_right = 413.0
+offset_bottom = 143.0
+grow_horizontal = 2
+texture = ExtResource("3_ugwl8")
+stretch_mode = 5
+
+[node name="none" parent="Menu" instance=ExtResource("6_3fers")]
+layout_mode = 1
+
+[node name="startSwapContainer" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
+layout_mode = 1
+targetContainer = NodePath("../../Confirm")
+button = NodePath("../Panel/VBoxContainer/Start")
+
+[node name="SettingsSwapContainer" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
+layout_mode = 1
+targetContainer = NodePath("../../Settings")
+button = NodePath("../Panel/VBoxContainer/Settings")
+
+[node name="CreditsSwapContainer2" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
+layout_mode = 1
+targetContainer = NodePath("../../Credits")
+button = NodePath("../Panel/VBoxContainer/Credits")
+
+[node name="Settings" parent="." instance=ExtResource("6_sf5sh")]
+layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("8_5otex")]
+layout_mode = 1
+
+[node name="Confirm" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -97.0
+offset_right = 285.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eo2dl")
+
+[node name="text" type="RichTextLabel" parent="Confirm/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.5
+offset_bottom = -17.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Do you want to play the tutorial?
+[/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Confirm/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -82.0
+offset_right = -26.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button2" type="Button" parent="Confirm/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(155.805, 0)
+layout_mode = 2
+theme = ExtResource("2_eo2dl")
+text = "No"
+
+[node name="Control" type="Control" parent="Confirm/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(74.755, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Confirm/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(155.805, 0)
+layout_mode = 2
+theme = ExtResource("2_eo2dl")
+text = "Yes"
+
+[node name="SwapScene" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
+layout_mode = 1
+button = NodePath("../Panel/HBoxContainer/Button")
+
+[node name="SwapScene2" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
+layout_mode = 1
+button = NodePath("../Panel/HBoxContainer/Button2")

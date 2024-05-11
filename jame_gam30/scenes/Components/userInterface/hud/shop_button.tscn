@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://da8nnethmust3"]
+
+[ext_resource type="Script" path="res://scenes/Components/userInterface/hud/shop_button.gd" id="1_alofr"]
+[ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="1_je5oi"]
+[ext_resource type="FontFile" uid="uid://crr3howgvsqxv" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="2_a04t7"]
+[ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_yfcea"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="5_8gkjc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc2p7"]
+bg_color = Color(0.46618, 0.466181, 0.466181, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.205117, 0.205117, 0.205117, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.52549)
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpuf2"]
+bg_color = Color(0.842927, 0.752069, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.485856, 0.43154, 2.88785e-07, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0.52549)
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xa3t6"]
+bg_color = Color(0.525191, 0.466483, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.409502, 0.362387, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0.52549)
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_grl5m"]
+Button/styles/disabled = SubResource("StyleBoxFlat_lc2p7")
+Button/styles/hover = SubResource("StyleBoxFlat_mpuf2")
+Button/styles/normal = SubResource("StyleBoxFlat_mpuf2")
+Button/styles/pressed = SubResource("StyleBoxFlat_xa3t6")
+
+[sub_resource type="Theme" id="Theme_r34ep"]
+
+[node name="ShopButton" type="Button"]
+custom_minimum_size = Vector2(100, 80)
+size_flags_horizontal = 6
+focus_mode = 0
+theme = SubResource("Theme_grl5m")
+icon_alignment = 1
+script = ExtResource("1_alofr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -23.0
+offset_right = 35.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="cost" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = SubResource("Theme_r34ep")
+theme_override_colors/default_color = Color(0, 0.470588, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_a04t7")
+theme_override_font_sizes/normal_font_size = 17
+bbcode_enabled = true
+text = "100"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+text_direction = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("1_je5oi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -31.0
+offset_right = 25.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yfcea")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="keybind" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_a04t7")
+theme_override_font_sizes/normal_font_size = 21
+text = "1"
+
+[node name="Buttonhover" parent="." instance=ExtResource("5_8gkjc")]
+layout_mode = 1

@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqyyrrnwkml13"]
+[gd_scene load_steps=10 format=3 uid="uid://cqyyrrnwkml13"]
 
-[ext_resource type="Theme" uid="uid://duy45gx2wijm5" path="res://resources/Themes/button.tres" id="1_8t331"]
-[ext_resource type="Texture2D" uid="uid://cd03l4dathmun" path="res://assets/userInterface/icons/icons8-home-50(2).png" id="2_uqnjx"]
-[ext_resource type="Script" path="res://scenes/Components/userInterface/pause_button.gd" id="3_bckya"]
-[ext_resource type="PackedScene" uid="uid://of3kv2msfshv" path="res://scenes/Components/userInterface/resources.tscn" id="3_l31m7"]
-[ext_resource type="PackedScene" uid="uid://du4i6ixtx4so4" path="res://scenes/Components/userInterface/shop.tscn" id="5_bxjol"]
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_djvqa"]
+[ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_p5bbm"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_c6u8m"]
+[ext_resource type="PackedScene" uid="uid://of3kv2msfshv" path="res://scenes/Components/userInterface/hud/resources.tscn" id="3_l31m7"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="4_xwroe"]
+[ext_resource type="PackedScene" uid="uid://du4i6ixtx4so4" path="res://scenes/Components/userInterface/hud/shop.tscn" id="5_bxjol"]
+[ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="6_xbh6y"]
+[ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="8_du0xl"]
+[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="8_k35xj"]
 
 [node name="hud" type="Control"]
 layout_mode = 3
@@ -22,26 +26,226 @@ layout_mode = 1
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 66.0
-offset_bottom = 66.0
+offset_right = 152.0
+offset_bottom = 130.0
 
 [node name="pauseButton" type="Button" parent="Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -61.0
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
-theme = ExtResource("1_8t331")
+theme = ExtResource("1_djvqa")
 theme_override_constants/icon_max_width = 30
-icon = ExtResource("2_uqnjx")
+icon = ExtResource("2_p5bbm")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("3_bckya")
+
+[node name="Buttonhover" parent="Menu/pauseButton" instance=ExtResource("3_c6u8m")]
+layout_mode = 1
+
+[node name="SwapContainer" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("4_xwroe")]
+layout_mode = 1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+targetContainer = NodePath("../../PauseMenu")
+button = NodePath("../pauseButton")
 
 [node name="Resources" parent="." instance=ExtResource("3_l31m7")]
 layout_mode = 1
+offset_left = -177.0
+offset_top = 0.0
+offset_right = 178.0
+offset_bottom = 97.0
 
 [node name="Shop" parent="." instance=ExtResource("5_bxjol")]
+layout_mode = 1
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" parent="PauseMenu" instance=ExtResource("6_xbh6y")]
+layout_mode = 1
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 485.0
+offset_top = 165.0
+offset_right = -485.0
+offset_bottom = -261.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_djvqa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_djvqa")
+text = "Resume"
+
+[node name="Buttonhover" parent="PauseMenu/Panel/VBoxContainer/resume" instance=ExtResource("3_c6u8m")]
+layout_mode = 1
+
+[node name="Spacer" type="Control" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_djvqa")
+text = "Settings"
+
+[node name="Buttonhover" parent="PauseMenu/Panel/VBoxContainer/Settings" instance=ExtResource("3_c6u8m")]
+layout_mode = 1
+
+[node name="Spacer2" type="Control" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 17.475)
+layout_mode = 2
+
+[node name="Main Menu" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("1_djvqa")
+text = "Main Menu"
+
+[node name="Buttonhover" parent="PauseMenu/Panel/VBoxContainer/Main Menu" instance=ExtResource("3_c6u8m")]
+layout_mode = 1
+
+[node name="none" parent="PauseMenu" instance=ExtResource("4_xwroe")]
+layout_mode = 1
+
+[node name="SwapContainer" parent="PauseMenu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("4_xwroe")]
+layout_mode = 1
+targetContainer = NodePath("../../Menu")
+button = NodePath("../Panel/VBoxContainer/resume")
+
+[node name="SwapContainer2" parent="PauseMenu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("4_xwroe")]
+layout_mode = 1
+targetContainer = NodePath("../../Settings")
+button = NodePath("../Panel/VBoxContainer/Settings")
+
+[node name="SwapContainer3" parent="PauseMenu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("4_xwroe")]
+layout_mode = 1
+targetContainer = NodePath("../../Confirm")
+button = NodePath("../Panel/VBoxContainer/Main Menu")
+
+[node name="Confirm" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" parent="Confirm" instance=ExtResource("6_xbh6y")]
+layout_mode = 1
+
+[node name="Panel" type="Panel" parent="Confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -97.0
+offset_right = 285.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_djvqa")
+
+[node name="text" type="RichTextLabel" parent="Confirm/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -78.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Are you sure you want to go to the main menu?[/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Confirm/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -82.0
+offset_right = -26.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button2" type="Button" parent="Confirm/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(155.805, 0)
+layout_mode = 2
+theme = ExtResource("1_djvqa")
+text = "No"
+
+[node name="Control" type="Control" parent="Confirm/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(74.755, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Confirm/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(155.805, 0)
+layout_mode = 2
+theme = ExtResource("1_djvqa")
+text = "Yes"
+
+[node name="SwapContainer2" parent="Confirm" instance=ExtResource("4_xwroe")]
+layout_mode = 1
+
+[node name="SwapContainer" parent="Confirm" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("4_xwroe")]
+layout_mode = 1
+targetContainer = NodePath("../../PauseMenu")
+button = NodePath("../Panel/HBoxContainer/Button2")
+
+[node name="SwapScene" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("8_k35xj")]
+layout_mode = 1
+button = NodePath("../Panel/HBoxContainer/Button")
+
+[node name="Settings" parent="." instance=ExtResource("8_du0xl")]
+layout_mode = 1
+
+[node name="Vignette" parent="Settings" instance=ExtResource("6_xbh6y")]
 layout_mode = 1

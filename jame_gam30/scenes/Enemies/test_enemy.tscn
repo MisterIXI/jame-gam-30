@@ -1,27 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://0rjbyjvmfyc3"]
+[gd_scene load_steps=5 format=3 uid="uid://0rjbyjvmfyc3"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_tbji5"]
 [ext_resource type="Resource" uid="uid://bqctbawyj273e" path="res://resources/default_enemy.tres" id="2_dra64"]
+[ext_resource type="ArrayMesh" uid="uid://cenqg5ed4nac" path="res://assets/Models/Dog.tres" id="3_j6dvx"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_gsueh"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ov4jj"]
+radius = 0.715143
 
-[sub_resource type="SphereMesh" id="SphereMesh_jpu2a"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1i2ba"]
-
-[node name="Node3D" type="PathFollow3D"]
+[node name="Node3D" type="PathFollow3D" groups=["Enemy"]]
 script = ExtResource("1_tbji5")
 settings = ExtResource("2_dra64")
 
-[node name="AnimatableBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Area3D" type="Area3D" parent="." groups=["Enemy"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 16
+collision_mask = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
-mesh = SubResource("CapsuleMesh_gsueh")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D"]
+mesh = ExtResource("3_j6dvx")
 
-[node name="nose" type="MeshInstance3D" parent="AnimatableBody3D"]
-transform = Transform3D(0.592571, 0, 0, 0, 0.592571, 0, 0, 0, 0.592571, 0, 0.323927, -0.395221)
-mesh = SubResource("SphereMesh_jpu2a")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
-shape = SubResource("CapsuleShape3D_1i2ba")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5535, 0)
+shape = SubResource("SphereShape3D_ov4jj")
