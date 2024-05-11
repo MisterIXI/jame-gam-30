@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_scene.gd" id="1_kpogu"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="2_ue6dk"]
 [ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="3_s2dtn"]
-[ext_resource type="Script" path="res://scenes/Test_scenes/yannik_local/yannik_test.gd" id="3_uipiq"]
+[ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_test.gd" id="3_uipiq"]
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="5_waa5j"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wx5te"]
@@ -60,6 +60,8 @@ paths = [NodePath("../Path3D2"), NodePath("../Path3D3")]
 spawning_fair = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.376994, 0.731897, -0.567628, 0, 0.612847, 0.790202, 0.926216, -0.297902, 0.23104, -9.40136, 10.5102, 4.16433)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -2.08163, 10.5102, 10.1915)
+projection = 1
+size = 17.744
 
 [node name="hud" parent="." instance=ExtResource("5_waa5j")]
