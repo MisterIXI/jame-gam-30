@@ -17,18 +17,19 @@ func _input(event):
 	#new line  : if player is placing a tower
 	if event is InputEventMouseMotion && is_placeholding:
 		# IF PLACEHOLDING - > UPDATE MOUSE POSITION
-		ray_start(event.position)
+		await ray_start(event.position)
 		camera.emit_mouse_position(_mouse_position)
 	#end newline
 	if event is InputEventMouseButton:
 		var mouse_event = event as InputEventMouseButton
 		if mouse_event.pressed and mouse_event.button_index == MOUSE_BUTTON_LEFT:
 			# ON LEFT CLICK PLACE TOWER IF PLACEHOLDER IS ACTIVE
-			ray_start(event.position)
+			await ray_start(event.position)
+			
 			camera.emit_mouse_clicked_on(_mouse_position)
 		if mouse_event.pressed and mouse_event.button_index == MOUSE_BUTTON_RIGHT:
 			# ON RIGHT CLICK PLAYER MOVE TO POSITION
-			ray_start(event.position)
+			await ray_start(event.position)
 			camera.emit_mouse_clicked_right(_mouse_position)
 
 
