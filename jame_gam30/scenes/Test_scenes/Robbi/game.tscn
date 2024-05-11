@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cabkb0dq6mv3d"]
+[gd_scene load_steps=9 format=3 uid="uid://cabkb0dq6mv3d"]
 
 [ext_resource type="Material" uid="uid://dsx70oifxf32p" path="res://resources/Material/Prototype.tres" id="2_bvnb0"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="3_4xtgx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_38ybw"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_8v7jb"]
+[ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="5_ld0x3"]
 [ext_resource type="PackedScene" uid="uid://de108xb3lwj4j" path="res://scenes/GameObjects/Enemies/enemy_base.tscn" id="6_88ec0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
@@ -36,5 +37,9 @@ skeleton = NodePath("../..")
 
 [node name="Enemy_Base" parent="ForeGround" instance=ExtResource("6_88ec0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17708, 0.952207, 6.529)
+
+[node name="boi" parent="ForeGround" node_paths=PackedStringArray("camera") instance=ExtResource("5_ld0x3")]
+camera = NodePath("../../Camera3D")
+player_speed = 2.0
 
 [node name="Tower_Base" parent="." instance=ExtResource("4_8v7jb")]

@@ -16,18 +16,26 @@ func _ready():
 func _input(event):
 	#new line  : if player is placing a tower
 	if event is InputEventMouseMotion && is_placeholding:
-		var from = camera.project_ray_origin(event.position)
-		var to = from + camera.project_ray_normal(event.position) * RAY_LENGTH
-		shoot_raycast(from, to)
+		# IF PLACEHOLDING - > UPDATE MOUSE POSITION
+		ray_start(event.position)
 		camera.emit_mouse_position(_mouse_position)
 	#end newline
 	if event is InputEventMouseButton:
 		var mouse_event = event as InputEventMouseButton
 		if mouse_event.pressed and mouse_event.button_index == MOUSE_BUTTON_LEFT:
-			var from = camera.project_ray_origin(event.position)
-			var to = from + camera.project_ray_normal(event.position) * RAY_LENGTH
-			shoot_raycast(from, to)
+			# ON LEFT CLICK PLACE TOWER IF PLACEHOLDER IS ACTIVE
+			ray_start(event.position)
 			camera.emit_mouse_clicked_on(_mouse_position)
+		if mouse_event.pressed and mouse_event.button_index == MOUSE_BUTTON_RIGHT:
+			# ON RIGHT CLICK PLAYER MOVE TO POSITION
+			ray_start(event.position)
+			camera.emit_mouse_clicked_right(_mouse_position)
+
+
+func ray_start(pos :Vector2):
+	var from = camera.project_ray_origin(pos)
+	var to = from + camera.project_ray_normal(pos) * RAY_LENGTH
+	shoot_raycast(from, to)
 
 func shoot_raycast(from: Vector3, to: Vector3):
 	await get_tree().physics_frame
