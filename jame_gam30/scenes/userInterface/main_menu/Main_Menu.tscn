@@ -127,17 +127,22 @@ grow_horizontal = 2
 texture = ExtResource("3_ugwl8")
 stretch_mode = 5
 
+[node name="none" parent="Menu" instance=ExtResource("6_3fers")]
+layout_mode = 1
+
 [node name="startSwapContainer" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
 layout_mode = 1
 targetContainer = NodePath("../../Confirm")
 button = NodePath("../Panel/VBoxContainer/Start")
 
-[node name="SettingsSwapContainer" parent="Menu" node_paths=PackedStringArray("button") instance=ExtResource("6_3fers")]
+[node name="SettingsSwapContainer" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
 layout_mode = 1
+targetContainer = NodePath("../../Settings")
 button = NodePath("../Panel/VBoxContainer/Settings")
 
-[node name="CreditsSwapContainer2" parent="Menu" node_paths=PackedStringArray("button") instance=ExtResource("6_3fers")]
+[node name="CreditsSwapContainer2" parent="Menu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
 layout_mode = 1
+targetContainer = NodePath("../../Credits")
 button = NodePath("../Panel/VBoxContainer/Credits")
 
 [node name="Settings" parent="." instance=ExtResource("6_sf5sh")]
@@ -215,11 +220,10 @@ layout_mode = 2
 theme = ExtResource("2_eo2dl")
 text = "Yes"
 
-[node name="SwapContainer" parent="Confirm" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("6_3fers")]
-layout_mode = 1
-targetContainer = NodePath("../../Menu")
-button = NodePath("../Panel/HBoxContainer/Button2")
-
 [node name="SwapScene" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
 layout_mode = 1
 button = NodePath("../Panel/HBoxContainer/Button")
+
+[node name="SwapScene2" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
+layout_mode = 1
+button = NodePath("../Panel/HBoxContainer/Button2")

@@ -6,7 +6,7 @@ var startContainer : Control
 @export var button : Button
 
 func _ready() -> void:
-	startContainer = get_parent()
+	startContainer = get_parent() as Control
 	if button != null:
 		button.pressed.connect(on_button_pressed)
 

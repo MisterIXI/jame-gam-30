@@ -142,6 +142,9 @@ text = "Main Menu"
 [node name="Buttonhover" parent="PauseMenu/Panel/VBoxContainer/Main Menu" instance=ExtResource("3_c6u8m")]
 layout_mode = 1
 
+[node name="none" parent="PauseMenu" instance=ExtResource("4_xwroe")]
+layout_mode = 1
+
 [node name="SwapContainer" parent="PauseMenu" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("4_xwroe")]
 layout_mode = 1
 targetContainer = NodePath("../../Menu")
@@ -242,4 +245,7 @@ layout_mode = 1
 button = NodePath("../Panel/HBoxContainer/Button")
 
 [node name="Settings" parent="." instance=ExtResource("8_du0xl")]
+layout_mode = 1
+
+[node name="Vignette" parent="Settings" instance=ExtResource("6_xbh6y")]
 layout_mode = 1
