@@ -48,8 +48,8 @@ func build_wave():
 		WaveInfo.new([
 			SpawnInfo.new(1, 1, 5, test_enemy),
 			SpawnInfo.new(2.5, 0.25, 5, test_enemy),
-			SpawnInfo.new(5, 0.03, 50, test_enemy),
-			SpawnInfo.new(5, 0.01, 5000, test_enemy),
+			SpawnInfo.new(5, 0.1, 50, test_enemy),
+			SpawnInfo.new(5, 0.1, 5000, test_enemy),
 		]),
 	]
 

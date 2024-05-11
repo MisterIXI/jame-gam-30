@@ -3,6 +3,7 @@ class_name Enemy
 
 @export var settings : EnemySetting
 var parent_path : Path3D
+var health: float = 3
 
 func _ready():
 	global_position = Vector3(500, 500, 500)
@@ -15,6 +16,10 @@ func follow_path(new_parent: Path3D) -> void:
 	# position = parent_path.curve.get_point_position(0)
 	# rotation = parent_path.curve.get_point_position(1) - position
 
+func get_shot(damage: float) -> void:
+	health -= damage
+	if health <= 0:
+		queue_free()
 
 func _physics_process(delta):
 	var old_ratio = progress_ratio
