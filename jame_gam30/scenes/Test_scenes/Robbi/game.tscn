@@ -24,7 +24,7 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 script = ExtResource("1_fypjg")
 
 [node name="Camera3D" parent="." instance=ExtResource("3_4xtgx")]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 6.455, 6.206, 6.469)
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 26.26, 20.39, 29.014)
 size = 11.703
 
 [node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("camera", "foreground") instance=ExtResource("3_38ybw")]
