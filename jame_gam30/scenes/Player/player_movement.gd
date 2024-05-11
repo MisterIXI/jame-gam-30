@@ -23,6 +23,7 @@ var player_angle :float
 const ACCELERATION_SMOOTHING =25
 
 func _ready():
+	print(camera)
 	camera.mouse_clicked_right.connect(on_mouse_right_cllicked)
 	camera.mouse_clicked_on.connect(on_mouse_left_clicked)
 	state_machine = anim["parameters/playback"]

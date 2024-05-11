@@ -1,7 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://7cnjuv8xx0fj"]
+[gd_scene load_steps=5 format=3 uid="uid://7cnjuv8xx0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
+[ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
+[ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_rnm01"]
+[ext_resource type="PackedScene" uid="uid://47icuen4mh12" path="res://scenes/Components/Tower_Base/fore_ground.tscn" id="4_isjpw"]
 
 [node name="Game" type="Node"]
 
 [node name="hud" parent="." instance=ExtResource("1_h8xip")]
+
+[node name="Camera3D" parent="." instance=ExtResource("2_7y48r")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.26, 20.39, 29.014)
+
+[node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("camera", "foreground") instance=ExtResource("3_rnm01")]
+camera = NodePath("../Camera3D")
+foreground = NodePath("../ForeGround")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737755, 1.19407, 0.88916)
+light_energy = 2.173
+
+[node name="ForeGround" parent="." instance=ExtResource("4_isjpw")]
+
+[node name="boi" parent="ForeGround" index="3" node_paths=PackedStringArray("camera", "visual_rotation")]
+camera = NodePath("../../Camera3D")
+visual_rotation = NodePath("Armature")
+
+[editable path="ForeGround"]
