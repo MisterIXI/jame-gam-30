@@ -32,7 +32,6 @@ func _input(event):
 			await ray_start(event.position)
 			camera.emit_mouse_clicked_right(_mouse_position)
 
-
 func ray_start(pos :Vector2):
 	var from = camera.project_ray_origin(pos)
 	var to = from + camera.project_ray_normal(pos) * RAY_LENGTH
