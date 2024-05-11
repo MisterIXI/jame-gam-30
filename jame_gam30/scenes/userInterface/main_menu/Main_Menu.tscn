@@ -18,6 +18,7 @@ grow_vertical = 2
 layout_mode = 1
 
 [node name="Menu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,18 +106,116 @@ text = "Quit"
 [node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Quit" instance=ExtResource("3_j686n")]
 layout_mode = 1
 
-[node name="Logo" type="TextureRect" parent="."]
+[node name="Logo" type="TextureRect" parent="Menu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -413.0
-offset_top = 3.0
+offset_top = -57.0
 offset_right = 413.0
-offset_bottom = 164.0
+offset_bottom = 143.0
 grow_horizontal = 2
 texture = ExtResource("3_ugwl8")
 stretch_mode = 5
 
 [node name="Vignette" parent="." instance=ExtResource("5_s2tn3")]
 layout_mode = 1
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 429.0
+offset_top = 113.0
+offset_right = -429.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eo2dl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 35.0
+offset_right = -48.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 84.575)
+layout_mode = 2
+
+[node name="MasterVolume" type="RichTextLabel" parent="Settings/Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 9.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme = ExtResource("2_eo2dl")
+bbcode_enabled = true
+text = "[center]Master Volume[/center]"
+fit_content = true
+
+[node name="masterslider" type="HSlider" parent="Settings/Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 71.0
+offset_top = 10.7125
+offset_right = -82.0
+offset_bottom = 14.7125
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_eo2dl")
+value = 111.0
+allow_greater = true
+allow_lesser = true
+
+[node name="Spacer" type="Control" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Music Volume" type="RichTextLabel" parent="Settings/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_eo2dl")
+bbcode_enabled = true
+text = "[center]Music Volume[/center]"
+fit_content = true
+
+[node name="musicslider" type="HSlider" parent="Settings/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_eo2dl")
+
+[node name="Spacer2" type="Control" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="SFX Volume" type="RichTextLabel" parent="Settings/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_eo2dl")
+bbcode_enabled = true
+text = "[center]SFX Volume[/center]"
+fit_content = true
+
+[node name="sfxslider" type="HSlider" parent="Settings/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_eo2dl")

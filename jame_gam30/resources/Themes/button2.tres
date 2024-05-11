@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cgnq60kbsgot1"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cgnq60kbsgot1"]
 
 [ext_resource type="FontFile" uid="uid://crr3howgvsqxv" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="1_p4vnb"]
 
@@ -53,6 +53,43 @@ shadow_size = 2
 shadow_offset = Vector2(4, 4)
 anti_aliasing = false
 
+[sub_resource type="Gradient" id="Gradient_s8ye4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d8aoa"]
+gradient = SubResource("Gradient_s8ye4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rklys"]
+bg_color = Color(3.85046e-07, 0.847939, 0.278668, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(4.11518e-06, 0.551306, 0.169051, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfsbw"]
+bg_color = Color(2.575e-06, 0.442194, 0.128731, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(7.52043e-07, 0.280216, 0.0688743, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lir6g"]
 bg_color = Color(0.0995742, 0.661041, 0.914309, 1)
 border_width_left = 5
@@ -76,4 +113,13 @@ Button/styles/disabled = SubResource("StyleBoxFlat_qef12")
 Button/styles/hover = SubResource("StyleBoxFlat_3r3fd")
 Button/styles/normal = SubResource("StyleBoxFlat_3r3fd")
 Button/styles/pressed = SubResource("StyleBoxFlat_wei5w")
+HSlider/icons/grabber = SubResource("GradientTexture1D_d8aoa")
+HSlider/icons/grabber_disabled = SubResource("GradientTexture1D_d8aoa")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture1D_d8aoa")
+HSlider/icons/tick = SubResource("GradientTexture1D_d8aoa")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_rklys")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_rklys")
+HSlider/styles/slider = SubResource("StyleBoxFlat_jfsbw")
 Panel/styles/panel = SubResource("StyleBoxFlat_lir6g")
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("1_p4vnb")
