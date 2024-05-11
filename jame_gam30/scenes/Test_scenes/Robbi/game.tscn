@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cabkb0dq6mv3d"]
+[gd_scene load_steps=11 format=3 uid="uid://cabkb0dq6mv3d"]
 
 [ext_resource type="Material" uid="uid://dsx70oifxf32p" path="res://resources/Material/Prototype.tres" id="2_bvnb0"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="3_4xtgx"]
@@ -6,11 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_8v7jb"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="5_ld0x3"]
 [ext_resource type="PackedScene" uid="uid://de108xb3lwj4j" path="res://scenes/GameObjects/Enemies/enemy_base.tscn" id="6_88ec0"]
+[ext_resource type="Shader" path="res://resources/Shader/Vignette.gdshader" id="7_vu736"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kv72f"]
 size = Vector2(40, 40)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fl0gi"]
+shader = ExtResource("7_vu736")
+shader_parameter/vignette_intensity = 0.905
+shader_parameter/vignette_opacity = 0.128
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node"]
 
@@ -38,8 +45,26 @@ skeleton = NodePath("../..")
 [node name="Enemy_Base" parent="ForeGround" instance=ExtResource("6_88ec0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17708, 0.952207, 6.529)
 
-[node name="boi" parent="ForeGround" node_paths=PackedStringArray("camera") instance=ExtResource("5_ld0x3")]
+[node name="boi" parent="ForeGround" node_paths=PackedStringArray("camera", "visual_rotation") instance=ExtResource("5_ld0x3")]
 camera = NodePath("../../Camera3D")
+visual_rotation = NodePath("Armature")
 player_speed = 2.0
 
 [node name="Tower_Base" parent="." instance=ExtResource("4_8v7jb")]
+
+[node name="testMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="testMenu"]
+material = SubResource("ShaderMaterial_fl0gi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
