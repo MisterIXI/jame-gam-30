@@ -27,7 +27,8 @@ func _ready():
 func _process(delta):
 	if target_position == Vector3.ZERO:
 		return
-	if global_position.distance_to(target_position) < 0:
+	if global_position.distance_to(target_position) <= 0.05:
+		global_position = target_position
 		target_position =Vector3.ZERO
 		return
 	next_direction = (target_position - global_position).normalized()
@@ -36,6 +37,7 @@ func _process(delta):
 
 func handle_velocity(_delta : float):
 	velocity =  next_direction * player_speed
+	
 	#velocity = velocity.lerp(target_velocity, 1- exp(-_delta * ACCELERATION_SMOOTHING))
 
 func on_mouse_right_cllicked(pos : Vector3):
