@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://da8nnethmust3"]
+[gd_scene load_steps=11 format=3 uid="uid://da8nnethmust3"]
 
 [ext_resource type="Script" path="res://scenes/Components/userInterface/hud/shop_button.gd" id="1_alofr"]
 [ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="1_je5oi"]
 [ext_resource type="FontFile" uid="uid://crr3howgvsqxv" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="2_a04t7"]
 [ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_yfcea"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="5_8gkjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc2p7"]
 bg_color = Color(0.46618, 0.466181, 0.466181, 1)
@@ -126,3 +127,18 @@ grow_vertical = 2
 texture = ExtResource("2_yfcea")
 expand_mode = 4
 stretch_mode = 5
+
+[node name="keybind" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_a04t7")
+theme_override_font_sizes/normal_font_size = 21
+text = "1"
+
+[node name="Buttonhover" parent="." instance=ExtResource("5_8gkjc")]
+layout_mode = 1

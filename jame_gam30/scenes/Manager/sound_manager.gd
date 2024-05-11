@@ -13,6 +13,7 @@ enum soundType{
 	signal_empty,
 	win,
 	lose,
+	hover,
 	menu_music,
 	game_music
 }
@@ -35,11 +36,10 @@ enum soundType{
 @onready var lose_sound :AudioStreamPlayer=$s_lose
 @onready var menu_music_sound :AudioStreamPlayer=$s_menu_music
 @onready var game_music_sound :AudioStreamPlayer=$s_game_music
+@onready var hover_sound :AudioStreamPlayer=$s_hover
 
 
 func play_global(_sound: AudioStreamPlayer):
-	if _sound.playing:
-		return
 	_sound.play()
 
 func play_on_pos(_sound: AudioStreamPlayer3D, pos : Vector3):
@@ -82,3 +82,5 @@ func Play_Sound(_soundtype: soundType, _pos :Vector3):
 			play_global(menu_music_sound)
 		soundType.game_music:
 			play_global(game_music_sound)
+		soundType.hover:
+			play_global(hover_sound)

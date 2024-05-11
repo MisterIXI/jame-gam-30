@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bndrwtvqnx4su"]
+[gd_scene load_steps=33 format=3 uid="uid://dcynrohlw7vrw"]
 
 [ext_resource type="Script" path="res://scenes/Manager/sound_manager.gd" id="1_h0jjp"]
 [ext_resource type="AudioStream" uid="uid://bvgnvnmrk40sm" path="res://assets/Sounds/Balloon_hit_05_best.mp3" id="2_bmpvy"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dgpwu0awjya7v" path="res://assets/Sounds/Balloon_stretch_02.mp3" id="17_c2j5i"]
 [ext_resource type="AudioStream" uid="uid://cra1swm42014p" path="res://assets/Sounds/Balloon_stretch_03.mp3" id="18_4oeul"]
 [ext_resource type="AudioStream" uid="uid://d3a5cobgevucq" path="res://assets/Sounds/Balloon_stretch_04.mp3" id="19_6ylu4"]
+[ext_resource type="AudioStream" uid="uid://y53qf7bv4l0x" path="res://assets/Sounds/Button_hover.wav" id="25_nn3fb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oe5ir"]
 streams_count = 6
@@ -77,70 +78,90 @@ script = ExtResource("1_h0jjp")
 
 [node name="s_menu_click" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_oe5ir")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_menu_error" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_orjfk")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_66jrv")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_lose" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_orjfk")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
+
+[node name="s_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_nn3fb")
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_menu_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_6jr37")
+max_polyphony = 20
 bus = &"Music"
 
 [node name="s_game_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_laggi")
 volume_db = -22.0
+max_polyphony = 20
 bus = &"Music"
 
 [node name="s_player_moving" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_rprmi")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_player_stop" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_mx15l")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_enemy_hit" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_ousuh")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_enemy_die" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_halgg")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_enemy_walk" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_ld614")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_tower_attack" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = ExtResource("6_tx78u")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_tower_lookat" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = ExtResource("16_b82r5")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_signal_charge" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_axiq4")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"
 
 [node name="s_signal_empty" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = ExtResource("8_orjfk")
-bus = &"Sound"
+max_polyphony = 20
+bus = &"SFX"

@@ -25,7 +25,7 @@ func _ready():
 	imga2 = get_node("TextureRecta2")
 	imga3 = get_node("TextureRecta3")
 
-func _process(delta):
+func _process(_delta):
 	if img1.position.x < -1920:
 		img1.position.x = 1920
 		imgy1.position.x = 1920
