@@ -20,6 +20,8 @@ extends CharacterBody3D
 @export var _map : map
 @export var hud : Control
 
+var isMoving : bool = false
+
 var state_machine : AnimationNodeStateMachinePlayback
 var next_direction : Vector3
 var target_velocity : Vector3
@@ -36,12 +38,15 @@ func _ready():
 
 func _process(delta):
 	if target_position == Vector3.ZERO:
+		isMoving = false
 		return
 	if global_position.distance_to(target_position) <= 0.05:
 		state_machine.travel("Idle")
 		global_position = target_position
 		target_position =Vector3.ZERO
+		isMoving = false
 		return
+	isMoving = true
 	next_direction = (target_position - global_position).normalized()
 	handle_velocity(delta)
 	move_and_slide()

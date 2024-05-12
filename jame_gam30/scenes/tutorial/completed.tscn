@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://byvoyw1i32xiy"]
+
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_eitqj"]
+[ext_resource type="StyleBox" uid="uid://kn72xqrp3msq" path="res://resources/Themes/PanelRed.tres" id="2_mii7w"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_t86xr"]
+[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="4_6kot1"]
+
+[node name="Completed" type="Control"]
+custom_minimum_size = Vector2(29.475, 28.38)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(2.105, 9.835)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = -338.0
+offset_right = -33.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_eitqj")
+theme_override_styles/panel = ExtResource("2_mii7w")
+
+[node name="CompletedText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = -327.0
+offset_right = 586.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eitqj")
+bbcode_enabled = true
+text = "[center]Turret Characteristic
+
+1: Cheap
+2: Explosion
+3: Lazer
+4: Slow
+5: Signal boost[/center]"
+fit_content = true
+
+[node name="CompletedButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 2.0
+offset_right = -61.0
+offset_bottom = 76.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("1_eitqj")
+text = "Start Game"
+
+[node name="Buttonhover" parent="CompletedButton" instance=ExtResource("3_t86xr")]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="SwapScene" parent="." node_paths=PackedStringArray("button") instance=ExtResource("4_6kot1")]
+layout_mode = 1
+button = NodePath("../CompletedButton")
