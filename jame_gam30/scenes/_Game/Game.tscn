@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_rnm01"]
-[ext_resource type="Environment" path="res://resources/game_environment.tres" id="3_x3xrp"]
+[ext_resource type="Environment" uid="uid://c2n1oukxt46pd" path="res://resources/game_environment.tres" id="3_x3xrp"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_tep6n"]
 [ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="5_e1juu"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="6_8cp7c"]
@@ -60,13 +60,15 @@ pathFollow1 = NodePath("../Path3D2/PathFollow3D")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
 light_energy = 0.385
 
-[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation") instance=ExtResource("6_sqh3a")]
+[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation", "_map", "hud") instance=ExtResource("6_sqh3a")]
 visible = false
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
 player_speed = 2.0
+_map = NodePath("..")
+hud = NodePath("../../hud")
 
 [node name="tile" parent="Map" instance=ExtResource("14_qqbmp")]
 visible = false
