@@ -8,11 +8,17 @@ var health: int
 @export var start_money: int = 50
 var money: int
 
-@export var tower_cost_1: int = 10
-@export var tower_cost_2: int = 20
-@export var tower_cost_3: int = 30
-@export var tower_cost_4: int = 40
-@export var tower_cost_5: int = 50
+@export var start_tower_cost_1: int = 10
+@export var start_tower_cost_2: int = 20
+@export var start_tower_cost_3: int = 30
+@export var start_tower_cost_4: int = 40
+@export var start_tower_cost_5: int = 50
+
+var tower_cost1: int
+var tower_cost2: int
+var tower_cost3: int
+var tower_cost4: int
+var tower_cost5: int
 
 @export_group("Waves")
 @export var waveCount: int = 6
@@ -24,9 +30,16 @@ var end_screen : endScreen
 signal health_changed
 signal money_changed
 signal wave_changed
+signal tower_cost_changed
 
 func _ready() -> void:
 	globGameManager.on_scene_changed.connect(_on_scene_changed)
+	tower_cost1 = start_tower_cost_1
+	tower_cost2 = start_tower_cost_2
+	tower_cost3 = start_tower_cost_3
+	tower_cost4 = start_tower_cost_4
+	tower_cost5 = start_tower_cost_5
+	tower_cost_changed.emit()
 
 func _on_scene_changed():
 	if globGameManager.state != globGameManager.GameState.MENU:
@@ -39,6 +52,13 @@ func _on_scene_changed():
 		_change_wave(0)
 		_change_health(start_health)
 		_change_money(start_money)
+
+	tower_cost1 = start_tower_cost_1
+	tower_cost2 = start_tower_cost_2
+	tower_cost3 = start_tower_cost_3
+	tower_cost4 = start_tower_cost_4
+	tower_cost5 = start_tower_cost_5
+	tower_cost_changed.emit()
 
 
 func _change_health(amount: int) -> void:
@@ -75,17 +95,35 @@ func _get_wave_count() -> int:
 func _get_tower_cost(tower_id: int) -> int:
 	match tower_id:
 		1:
-			return tower_cost_1
+			return tower_cost1
 		2:
-			return tower_cost_2
+			return tower_cost2
 		3:
-			return tower_cost_3
+			return tower_cost3
 		4:
-			return tower_cost_4
+			return tower_cost4
 		5:
-			return tower_cost_5
+			return tower_cost5
 		_:
 			return -1
 
 func _on_final_enemy_killed():
 	end_screen._win_game()
+
+
+func _change_tower_cost(tower_id: int, amount: int) -> void:
+	match tower_id:
+		1:
+			tower_cost1 = amount
+		2:
+			tower_cost2 = amount
+		3:
+			tower_cost3 = amount
+		4:
+			tower_cost4 = amount
+		5:
+			tower_cost5 = amount
+		_:
+			pass
+	
+	tower_cost_changed.emit()

@@ -11,11 +11,11 @@ func _ready() -> void:
 	_button.pressed.connect(_on_start_objective)
 
 
-	ResourceManager.tower_cost_1 = 0
-	ResourceManager.tower_cost_2 = 0
-	ResourceManager.tower_cost_3 = 0
-	ResourceManager.tower_cost_4 = 0
-	ResourceManager.tower_cost_5 = 0
+	ResourceManager._change_tower_cost(1, 0)
+	ResourceManager._change_tower_cost(2, 0)
+	ResourceManager._change_tower_cost(3, 0)
+	ResourceManager._change_tower_cost(4, 0)
+	ResourceManager._change_tower_cost(5, 0)
 
 	for item in fg.get_children():
 		if item is BluntShooter or item is RelayTower:

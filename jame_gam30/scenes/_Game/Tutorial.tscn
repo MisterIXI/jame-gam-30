@@ -56,7 +56,7 @@ foreground = NodePath("../ForeGround")
 [node name="Camera3D" parent="." instance=ExtResource("11_eajef")]
 transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.9219, 21.3262, 27.5877)
 environment = ExtResource("12_qdq5k")
-size = 14.8
+size = 31.9
 
 [node name="ForeGround" type="StaticBody3D" parent="."]
 

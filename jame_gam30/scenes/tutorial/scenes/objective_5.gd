@@ -16,7 +16,7 @@ func _ready() -> void:
 	fg = get_tree().get_root().get_child(-1).get_node("ForeGround")
 	player = get_tree().get_root().get_child(-1).get_node("Map/boi")
 
-	ResourceManager.tower_cost_5 = 0
+	ResourceManager._change_tower_cost(5, 0)
 
 	for item in fg.get_children():
 		if item is BluntShooter:

@@ -13,6 +13,7 @@ var tower_placer : Tower_Placement_Component
 func _ready() -> void:
 	_resource_manager = get_node("/root/ResourceManager")
 	_resource_manager.money_changed.connect(_on_money_changed)
+	_resource_manager.tower_cost_changed.connect(_on_tower_cost_changed)
 	cost = _resource_manager._get_tower_cost(index)
 
 	costText = get_node("HBoxContainer/cost")
@@ -38,3 +39,8 @@ func _on_money_changed() -> void:
 
 func _on_pressed() -> void:
 	tower_placer.on_placeholder_change(index-1)
+
+
+func _on_tower_cost_changed() -> void:
+	cost = _resource_manager._get_tower_cost(index)
+	costText.text = str(cost)
