@@ -47,6 +47,8 @@ func _on_cd_timer_timeout():
 		new_bullet.shoot_at(shot_direction, bullet_speed, 0)
 		get_parent().add_child(new_bullet)
 		new_bullet.global_position = muzzle.global_position
+		new_bullet.look_at(shot_direction)
+		$Node3D/Base2/Turntable1/Cannon/AnimationPlayer.play("bb_shoot")
 	else:
 		shot_cd_timer.stop()
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_rnm01"]
-[ext_resource type="Environment" uid="uid://c2n1oukxt46pd" path="res://resources/game_environment.tres" id="3_x3xrp"]
+[ext_resource type="Environment" uid="uid://cf6c2vks0v1si" path="res://resources/game_environment.tres" id="3_x3xrp"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="6_8cp7c"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="6_sqh3a"]
 [ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="8_n5jxw"]
@@ -51,7 +51,9 @@ grid_size = 40
 placeAmount = 8
 soundAmount = 8
 colorSeed = 69
-pathColor = Color(0.162066, 0.162066, 0.162066, 1)
+minColor = Color(0.45088, 0.6907, 0.301901, 1)
+maxColor = Color(0.51382, 0.731393, 0.096331, 1)
+pathColor = Color(0.74, 0.42513, 0.2294, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]

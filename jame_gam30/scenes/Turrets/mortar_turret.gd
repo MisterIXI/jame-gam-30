@@ -52,6 +52,7 @@ func _on_cd_timer_timeout():
 		var target_position = enemy.parent_path.curve.sample_baked(new_progress) + enemy.parent_path.global_position
 		target_position += Vector3(randf()*3,0,randf()*3)
 		shoot_bomb(target_position, 2, 1)
+		$moerser/Base3/AnimationPlayer.play("mortar_fire")
 
 	else:
 		shot_cd_timer.stop()
