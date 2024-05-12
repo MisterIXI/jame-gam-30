@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu/menu_background.tscn" id="1_an7dg"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_eo2dl"]
-[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
 [ext_resource type="Texture2D" uid="uid://dtm0a4h5sfqua" path="res://assets/userInterface/Games-designstyle-games-m.png" id="3_ugwl8"]
-[ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
+[ext_resource type="PackedScene" uid="uid://dg7l6lj6ymv7r" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
 [ext_resource type="Script" path="res://scenes/Components/userInterface/menu/quit.gd" id="5_sfqs2"]
-[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
 [ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="6_sf5sh"]
 [ext_resource type="PackedScene" uid="uid://b2gstoaqud0ge" path="res://scenes/Components/userInterface/menu/credits.tscn" id="8_5otex"]
-[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -204,9 +204,10 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Button2" type="Button" parent="Confirm/Panel/HBoxContainer"]
+[node name="TutorialSkipButton" type="Button" parent="Confirm/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(155.805, 0)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("2_eo2dl")
 text = "No"
 
@@ -214,16 +215,18 @@ text = "No"
 custom_minimum_size = Vector2(74.755, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Confirm/Panel/HBoxContainer"]
+[node name="TutorialButton" type="Button" parent="Confirm/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(155.805, 0)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("2_eo2dl")
 text = "Yes"
 
 [node name="SwapScene" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
 layout_mode = 1
-button = NodePath("../Panel/HBoxContainer/Button")
+target = 1
+button = NodePath("../Panel/HBoxContainer/TutorialButton")
 
 [node name="SwapScene2" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
 layout_mode = 1
-button = NodePath("../Panel/HBoxContainer/Button2")
+button = NodePath("../Panel/HBoxContainer/TutorialSkipButton")

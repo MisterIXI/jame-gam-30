@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ResourceManager="*res://global/resource_manager.tscn"
 SoundManager="*res://scenes/Manager/sound_manager.tscn"
+globGameManager="*res://global/game_manager.tscn"
 
 [debug]
 

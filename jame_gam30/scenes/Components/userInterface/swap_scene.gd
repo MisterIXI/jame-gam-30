@@ -1,6 +1,6 @@
 extends Control
 
-@export var target : Node
+@export var target : GameManager.GameState
 @export var button : Button
 
 
@@ -9,4 +9,4 @@ func _ready() -> void:
 
 
 func on_button_pressed() -> void:
-	print("swap scene here in the future")
+	globGameManager.switch_state(target)
