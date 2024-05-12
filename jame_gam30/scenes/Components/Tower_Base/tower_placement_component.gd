@@ -34,10 +34,11 @@ func _input(event):
 		on_placeholder_change(3)
 	if event.is_action_pressed("tower_button_05"):
 		on_placeholder_change(4)
+	if event.is_action_pressed("cancel"):
+		cancel_placing()
 
 func canPurchase(tower_id : int)	-> bool:
-	if ResourceManager._get_money() >= ResourceManager._get_tower_cost(tower_id+1) and not _map.animation:
-		ResourceManager._change_money(-ResourceManager._get_tower_cost(tower_id+1))
+	if ResourceManager._get_money() >= ResourceManager._get_tower_cost(tower_id+1) and not _map.animation and not _map.isPathing:
 		return true
 	else:
 		return false
@@ -45,9 +46,8 @@ func canPurchase(tower_id : int)	-> bool:
 ## TIPP: CHANGE PLACEHOLDER TYPE :  TYPE IS ARRAY INDEX OF TOWERS, AT FIRST IT WILL SPAWN A PLACEHOLDER
 func on_placeholder_change(type :int):
 	if canPurchase(type):
-		if new_placeHolder != null && not _map.animation:
-			new_placeHolder.queue_free()
-			new_placeHolder = null
+		if new_placeHolder != null && not _map.animation and not _map.isPathing:
+			cancel_placing()
 		current_placeholder_type = type
 		camera.emit_mouse_placeholding(true)
 		# Spawning placeholder
@@ -59,6 +59,15 @@ func on_placeholder_change(type :int):
 	else:
 		print ("Error cant build that expensive tower")
 		#Sound menu_error
+
+
+func cancel_placing():
+	if new_placeHolder != null:
+		new_placeHolder.queue_free()
+		new_placeHolder = null
+		camera.emit_mouse_placeholding(false)
+		is_placeholding = false
+		timer.stop()
 
 
 ## clear Placeholder and Spawn Tower
@@ -75,6 +84,7 @@ func on_mouse_clicked_pos(pos : Vector3):
 					timer.stop()
 					var new_tower = towers[current_placeholder_type].instantiate() as StaticBody3D
 					foreground.add_child(new_tower)
+					ResourceManager._change_money(-ResourceManager._get_tower_cost(current_placeholder_type+1))
 					new_tower.global_position = Vector3(round(pos.x), 0, round(pos.z)) #? global_position ?
 					_map.append_tower(new_tower.global_position)
 					print("Placeholder: Tower_Position: ",new_tower.global_position)
@@ -87,8 +97,10 @@ func on_mouse_clicked_pos(pos : Vector3):
 			print("Placement_Controller: Error - No Placeholder selected")
 	else:
 		print ("mouse interacts with UI")
+
+
 func on_mouse_position(pos : Vector3):
-	if !hud._is_interacting_with_ui():
+	if !hud._is_interacting_with_ui() and is_placeholding:
 		current_placeholder_pos = Vector3(round(pos.x), 0.5, round(pos.z))
 		validPosition(Vector3(current_placeholder_pos.x,0,current_placeholder_pos.z))
 

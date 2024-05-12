@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqyyrrnwkml13"]
+[gd_scene load_steps=12 format=3 uid="uid://cqyyrrnwkml13"]
 
 [ext_resource type="Script" path="res://scenes/userInterface/hud/hud.gd" id="1_1xqkc"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_djvqa"]
 [ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_p5bbm"]
-[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_c6u8m"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_c6u8m"]
 [ext_resource type="PackedScene" uid="uid://of3kv2msfshv" path="res://scenes/Components/userInterface/hud/resources.tscn" id="3_l31m7"]
-[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_container.tscn" id="4_xwroe"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="4_xwroe"]
 [ext_resource type="PackedScene" uid="uid://du4i6ixtx4so4" path="res://scenes/Components/userInterface/hud/shop.tscn" id="5_bxjol"]
 [ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="6_xbh6y"]
 [ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="8_du0xl"]
-[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_scene.tscn" id="8_k35xj"]
+[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="8_k35xj"]
+[ext_resource type="PackedScene" uid="uid://chy6t750qk74s" path="res://scenes/Components/userInterface/pause_on_visible.tscn" id="9_xjysa"]
 
 [node name="hud" type="Control"]
 layout_mode = 3
@@ -70,6 +71,7 @@ offset_bottom = 97.0
 layout_mode = 1
 
 [node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -162,7 +164,11 @@ layout_mode = 1
 targetContainer = NodePath("../../Confirm")
 button = NodePath("../Panel/VBoxContainer/Main Menu")
 
+[node name="PauseOnVisible" parent="PauseMenu" instance=ExtResource("9_xjysa")]
+layout_mode = 1
+
 [node name="Confirm" type="Control" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -246,8 +252,15 @@ button = NodePath("../Panel/HBoxContainer/Button2")
 layout_mode = 1
 button = NodePath("../Panel/HBoxContainer/Button")
 
+[node name="PauseOnVisible" parent="Confirm" instance=ExtResource("9_xjysa")]
+layout_mode = 1
+
 [node name="Settings" parent="." instance=ExtResource("8_du0xl")]
+process_mode = 3
 layout_mode = 1
 
 [node name="Vignette" parent="Settings" instance=ExtResource("6_xbh6y")]
+layout_mode = 1
+
+[node name="PauseOnVisible" parent="Settings" instance=ExtResource("9_xjysa")]
 layout_mode = 1

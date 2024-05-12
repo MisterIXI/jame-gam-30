@@ -37,4 +37,4 @@ func _on_money_changed() -> void:
 
 
 func _on_pressed() -> void:
-	tower_placer._place_tower(index)
+	tower_placer.on_placeholder_change(index-1)

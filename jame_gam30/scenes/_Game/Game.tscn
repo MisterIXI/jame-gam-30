@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_rnm01"]
-[ext_resource type="Environment" uid="uid://c2n1oukxt46pd" path="res://resources/game_environment.tres" id="3_x3xrp"]
+[ext_resource type="Environment" path="res://resources/game_environment.tres" id="3_x3xrp"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_tep6n"]
 [ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="5_e1juu"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="6_8cp7c"]
@@ -28,19 +28,19 @@ point_count = 7
 
 [node name="Game" type="Node"]
 
-[node name="hud" parent="." instance=ExtResource("1_h8xip")]
-
-[node name="Camera3D" parent="." instance=ExtResource("2_7y48r")]
-transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.9219, 21.3262, 27.5877)
-environment = ExtResource("3_x3xrp")
-size = 14.8
-
 [node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("hud", "camera", "foreground") instance=ExtResource("3_rnm01")]
 hud = NodePath("../hud")
 camera = NodePath("../Camera3D")
 towers = Array[PackedScene]([ExtResource("4_tep6n"), ExtResource("5_e1juu"), ExtResource("6_xj7uk"), ExtResource("7_ti55p"), ExtResource("7_ti55p")])
 tower_placement_holders = Array[PackedScene]([ExtResource("8_n5jxw"), ExtResource("9_6s53o"), ExtResource("10_1ybim"), ExtResource("11_eh0w8"), ExtResource("11_eh0w8")])
 foreground = NodePath("../ForeGround")
+
+[node name="hud" parent="." instance=ExtResource("1_h8xip")]
+
+[node name="Camera3D" parent="." instance=ExtResource("2_7y48r")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.9219, 21.3262, 27.5877)
+environment = ExtResource("3_x3xrp")
+size = 14.8
 
 [node name="ForeGround" type="StaticBody3D" parent="."]
 

@@ -17,6 +17,10 @@ var isInteractingPanel = false
 var isInteractingButton = false
 var panel : Panel
 
+var buttonCancel : Button
+var scrollContainer : ScrollContainer
+var tower_placer : Tower_Placement_Component
+
 func _ready() -> void:
 	img_up = ResourceLoader.load("res://assets/userInterface/icons/chevron-up-solid.svg")
 	img_down = ResourceLoader.load("res://assets/userInterface/icons/chevron-down-solid.svg")
@@ -24,6 +28,12 @@ func _ready() -> void:
 	button = get_node("button")
 	container = get_node("container")
 	panel = get_node("container/Panel")
+	
+	var shopContainer = get_node("container/ScrollContainer/HBoxContainer")
+	for item in shopContainer.get_children():
+		if item is Button:
+			item.mouse_entered.connect(_on_entered_button)
+			item.mouse_exited.connect(_on_exited_button)
 
 	button.pressed.connect(_on_button_pressed)
 
@@ -31,6 +41,15 @@ func _ready() -> void:
 	button.mouse_exited.connect(_on_exited_button)
 	panel.mouse_entered.connect(_on_entered_panel)
 	panel.mouse_exited.connect(_on_exited_panel)
+
+
+	buttonCancel = get_node("container/cancel")
+	scrollContainer = get_node("container/ScrollContainer")
+	tower_placer = get_tree().get_root().get_node("Game/Tower_Placement_Component")
+
+	buttonCancel.pressed.connect(_on_cancel_pressed_cancel)
+	buttonCancel.mouse_entered.connect(_on_entered_button)
+	buttonCancel.mouse_exited.connect(_on_exited_button)
 
 
 
@@ -65,6 +84,12 @@ func _process(delta: float) -> void:
 			move_down = false
 			move_up = false
 
+	if not tower_placer.is_placeholding:
+		buttonCancel.visible = false
+		scrollContainer.visible = true
+	else:
+		buttonCancel.visible = true
+		scrollContainer.visible = false
 
 func _on_entered_button() -> void:
 	isInteractingButton = true
@@ -84,3 +109,7 @@ func _is_interacting_with_shop() -> bool:
 		return true
 
 	return false
+
+
+func _on_cancel_pressed_cancel() -> void:
+	tower_placer.cancel_placing()

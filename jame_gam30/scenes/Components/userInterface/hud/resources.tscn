@@ -35,6 +35,7 @@ offset_right = 161.0
 offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2_nehn4")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel"]
@@ -47,6 +48,7 @@ offset_top = -18.0
 offset_right = 121.0
 offset_bottom = 18.0
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer2"]
@@ -54,6 +56,7 @@ custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.5
+mouse_filter = 2
 texture = ExtResource("2_0jsr6")
 expand_mode = 1
 stretch_mode = 5
@@ -63,6 +66,7 @@ custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+mouse_filter = 2
 theme = SubResource("Theme_r34ep")
 theme_override_colors/default_color = Color(0.643149, 0, 0.0856907, 1)
 theme_override_fonts/normal_font = ExtResource("4_6bhqd")
@@ -87,6 +91,7 @@ offset_right = -7.0
 offset_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="moneytext" type="RichTextLabel" parent="Panel/HBoxContainer"]
@@ -94,6 +99,7 @@ custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+mouse_filter = 2
 theme = SubResource("Theme_r34ep")
 theme_override_colors/default_color = Color(0, 0.471945, 8.66354e-07, 1)
 theme_override_fonts/normal_font = ExtResource("4_6bhqd")
@@ -110,6 +116,7 @@ custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.5
+mouse_filter = 2
 texture = ExtResource("3_rdou1")
 expand_mode = 1
 stretch_mode = 5
@@ -127,6 +134,7 @@ offset_right = 46.0
 offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/Control"]
 layout_mode = 1
@@ -134,6 +142,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_6bhqd")
 theme_override_font_sizes/normal_font_size = 16
@@ -150,6 +159,7 @@ anchor_bottom = 1.0
 offset_top = -28.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_6bhqd")
 theme_override_font_sizes/normal_font_size = 20
