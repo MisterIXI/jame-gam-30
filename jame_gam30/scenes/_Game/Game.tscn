@@ -50,7 +50,7 @@ shape = SubResource("WorldBoundaryShape3D_2cxim")
 [node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
 script = ExtResource("6_8cp7c")
 grid_size = 19
-animtionTime = 0.5
+placeAmount = 4
 colorSeed = 69
 pathColor = Color(0.162066, 0.162066, 0.162066, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
