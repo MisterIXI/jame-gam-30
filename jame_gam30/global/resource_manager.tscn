@@ -4,4 +4,8 @@
 
 [node name="ResourceManager" type="Node"]
 script = ExtResource("1_iy4rl")
-start_money = 100
+start_health = 25
+start_money = 70
+start_tower_cost_2 = 50
+start_tower_cost_4 = 30
+start_tower_cost_5 = 100

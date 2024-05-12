@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=24 format=4 uid="uid://c8ldnghlk8r5c"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/blunt_shooter.gd" id="1_e3k04"]
 [ext_resource type="PackedScene" uid="uid://bbnn6theu8v4x" path="res://scenes/Projectiles/bullet.tscn" id="2_vdym3"]
-[ext_resource type="Material" uid="uid://crkdsoy87mg1h" path="res://resources/Material/M_cannonmortar.tres" id="3_p5rus"]
+[ext_resource type="Material" path="res://resources/Material/M_cannonmortar.tres" id="3_p5rus"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_e5sjo"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="5_ib0cy"]
-[ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_uawx5"]
+[ext_resource type="PackedScene" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_uawx5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e645f"]
 resource_name = "cannon"
@@ -203,7 +203,7 @@ targeting = NodePath("TowerTargeting")
 tower_base = NodePath("Node3D/Base2/Turntable1")
 shot_cd_timer = NodePath("Shot_Timeout")
 bullet = ExtResource("2_vdym3")
-bullet_speed = 50.0
+bullet_speed = 25.0
 cannon = NodePath("Node3D/Base2/Turntable1/Cannon")
 muzzle = NodePath("Node3D/Base2/Turntable1/Cannon/Muzzle")
 muzzle_center = NodePath("Node3D/Base2/Turntable1/Cannon/MuzzleCenter")
