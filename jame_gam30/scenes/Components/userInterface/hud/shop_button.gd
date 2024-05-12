@@ -26,7 +26,7 @@ func _ready() -> void:
 	if _icon != null:
 		get_node("icon").texture = _icon
 
-	tower_placer = get_tree().get_root().get_node("Game/Tower_Placement_Component")
+	tower_placer = get_tree().get_root().get_child(-1).get_node("Tower_Placement_Component")
 
 
 func _on_money_changed() -> void:

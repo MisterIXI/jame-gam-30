@@ -45,7 +45,7 @@ func _ready() -> void:
 
 	buttonCancel = get_node("container/cancel")
 	scrollContainer = get_node("container/ScrollContainer")
-	tower_placer = get_tree().get_root().get_node("Game/Tower_Placement_Component")
+	tower_placer = get_tree().get_root().get_child(-1).get_node("Tower_Placement_Component")
 
 	buttonCancel.pressed.connect(_on_cancel_pressed_cancel)
 	buttonCancel.mouse_entered.connect(_on_entered_button)
