@@ -1,4 +1,5 @@
 extends Node2D
+signal objective_complete
 
 var fg
 var _map
@@ -26,3 +27,9 @@ func _ready() -> void:
 
 func _on_start_objective() -> void:
 	get_parent().get_node("Objective").hide()
+	_map.wave_manager.build_tutorial_wave()
+	_map.wave_manager.start_spawning()
+	get_parent().get_node("Completed").show()
+	
+func emit_shit():
+	objective_complete.emit()

@@ -1,15 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://dnvfsvkwpwvsl"]
+[gd_scene load_steps=27 format=3 uid="uid://dnvfsvkwpwvsl"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
-[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="3_wennd"]
-[ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="4_75tmk"]
-[ext_resource type="PackedScene" uid="uid://c2kohnu2yx86s" path="res://scenes/Components/Tower_Base/Tower_Base_03.tscn" id="5_7svs7"]
-[ext_resource type="PackedScene" uid="uid://ca1762gdd7o1u" path="res://scenes/Components/Tower_Base/Tower_Base_04.tscn" id="6_bcka1"]
-[ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="7_c43aq"]
-[ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="8_05snf"]
-[ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="9_oipnx"]
-[ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="10_0h5ox"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="11_eajef"]
 [ext_resource type="Environment" path="res://resources/game_environment.tres" id="12_qdq5k"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="13_b22rh"]
@@ -19,18 +11,19 @@
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_manager.gd" id="17_j0cln"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="17_k3pam"]
 [ext_resource type="PackedScene" uid="uid://w4fibthhrrkl" path="res://scenes/tutorial/scenes/objective0.tscn" id="18_b5mv6"]
-[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="18_q4jm6"]
-[ext_resource type="PackedScene" uid="uid://64vtd56a48td" path="res://scenes/tutorial/scenes/objective1.tscn" id="19_0fkrm"]
-[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="19_l4fpw"]
-[ext_resource type="PackedScene" uid="uid://ci2p5kkk6lacp" path="res://scenes/tutorial/scenes/objective2.tscn" id="20_1wvpb"]
-[ext_resource type="PackedScene" uid="uid://chy6t750qk74s" path="res://scenes/Components/userInterface/pause_on_visible.tscn" id="20_p2gbf"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/buttonhover.tscn" id="18_q4jm6"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/scenes/objective1.tscn" id="19_0fkrm"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_container.tscn" id="19_l4fpw"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/scenes/objective2.tscn" id="20_1wvpb"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/pause_on_visible.tscn" id="20_p2gbf"]
 [ext_resource type="StyleBox" uid="uid://kn72xqrp3msq" path="res://resources/Themes/PanelRed.tres" id="20_u0afv"]
-[ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="21_2sxf1"]
-[ext_resource type="PackedScene" uid="uid://c0jhdvlc3lmxr" path="res://scenes/tutorial/scenes/objective3.tscn" id="21_tw0kk"]
-[ext_resource type="PackedScene" uid="uid://bysc4gdd27d7q" path="res://scenes/tutorial/scenes/objective4.tscn" id="22_wrwhq"]
-[ext_resource type="PackedScene" uid="uid://c7ggcb2yjlx6p" path="res://scenes/tutorial/scenes/objective5.tscn" id="23_m0lax"]
-[ext_resource type="PackedScene" uid="uid://bwg7qok48ufr5" path="res://scenes/tutorial/scenes/objective6.tscn" id="24_se4w8"]
-[ext_resource type="PackedScene" uid="uid://byvoyw1i32xiy" path="res://scenes/tutorial/completed.tscn" id="31_tnlfb"]
+[ext_resource type="PackedScene" uid="uid://dg7l6lj6ymv7r" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="21_2sxf1"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/scenes/objective3.tscn" id="21_tw0kk"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/scenes/objective4.tscn" id="22_wrwhq"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/scenes/objective5.tscn" id="23_m0lax"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/scenes/objective6.tscn" id="24_se4w8"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/completed.tscn" id="31_tnlfb"]
+[ext_resource type="PackedScene" uid="uid://c66w4evwnc0oo" path="res://scenes/Components/WaveManager/wave_manager.tscn" id="32_3g0sr"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r078r"]
 
@@ -47,8 +40,6 @@ point_count = 4
 [node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("hud", "camera", "foreground") instance=ExtResource("2_kt0qy")]
 hud = NodePath("../hud")
 camera = NodePath("../Camera3D")
-towers = Array[PackedScene]([ExtResource("3_wennd"), ExtResource("4_75tmk"), ExtResource("5_7svs7"), ExtResource("6_bcka1"), ExtResource("6_bcka1")])
-tower_placement_holders = Array[PackedScene]([ExtResource("7_c43aq"), ExtResource("8_05snf"), ExtResource("9_oipnx"), ExtResource("10_0h5ox"), ExtResource("10_0h5ox")])
 foreground = NodePath("../ForeGround")
 
 [node name="hud" parent="." instance=ExtResource("1_0aatx")]
@@ -63,14 +54,16 @@ size = 14.8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ForeGround"]
 shape = SubResource("WorldBoundaryShape3D_r078r")
 
-[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
+[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "pathFollow1")]
 script = ExtResource("13_b22rh")
+wave_manager = NodePath("../WaveManager")
 grid_size = 40
 placeAmount = 8
 soundAmount = 8
 colorSeed = 69
 pathColor = Color(0.162066, 0.162066, 0.162066, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
+is_in_tutorial = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
@@ -238,3 +231,6 @@ fit_content = true
 [node name="Completed" parent="tutorial_manager" instance=ExtResource("31_tnlfb")]
 visible = false
 layout_mode = 1
+
+[node name="WaveManager" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("32_3g0sr")]
+paths = [NodePath("../Path3D2")]
