@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=23 format=4 uid="uid://c8ldnghlk8r5c"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/blunt_shooter.gd" id="1_e3k04"]
 [ext_resource type="PackedScene" uid="uid://bbnn6theu8v4x" path="res://scenes/Projectiles/bullet.tscn" id="2_vdym3"]
-[ext_resource type="Material" path="res://resources/Material/M_cannonmortar.tres" id="3_p5rus"]
+[ext_resource type="Material" uid="uid://crkdsoy87mg1h" path="res://resources/Material/M_cannonmortar.tres" id="3_p5rus"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_e5sjo"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="5_ib0cy"]
+[ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_uawx5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e645f"]
 resource_name = "cannon"
@@ -117,6 +118,75 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yq1df")
 
+[sub_resource type="Animation" id="Animation_ybwj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MuzzleEffect:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4onx5"]
+resource_name = "bb_shoot"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.1, 0.7), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MuzzleEffect:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cpoq"]
+_data = {
+"RESET": SubResource("Animation_ybwj6"),
+"bb_shoot": SubResource("Animation_4onx5")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv12h"]
+albedo_color = Color(1, 1, 0.509804, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.509804, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dfrsd"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_davcb"]
@@ -166,6 +236,32 @@ transform = Transform3D(0.184034, 0, 0, 0, 0.0710196, 0, 0, 0, 0.199241, 0, 0.59
 [node name="MuzzleCenter" type="Node3D" parent="Node3D/Base2/Turntable1/Cannon"]
 transform = Transform3D(0.184034, 0, 0, 0, 0.0710196, 0, 0, 0, 0.199241, 0, 0.599, 0)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/Base2/Turntable1/Cannon"]
+libraries = {
+"": SubResource("AnimationLibrary_3cpoq")
+}
+
+[node name="MuzzleEffect" type="CPUParticles3D" parent="Node3D/Base2/Turntable1/Cannon"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.78814e-07, 0, 1.78814e-07, 1, 0, 0.57941, 0.82467)
+material_override = SubResource("StandardMaterial3D_hv12h")
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 0.5
+lifetime_randomness = 1.0
+mesh = SubResource("SphereMesh_dfrsd")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_5jkfw")
@@ -194,6 +290,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_kfexp")
+
+[node name="Signal_Visual_Component" parent="." instance=ExtResource("6_uawx5")]
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 1.6, 0)
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]

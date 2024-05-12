@@ -6,6 +6,7 @@ var current_wave: int = 0
 var spawning_active: bool = false
 @export var start_at_wave: int = 0
 @export var dog: PackedScene
+@export var tutorial_dog: PackedScene
 @export var dackel: PackedScene
 @export var giraphe: PackedScene
 @export var elephant: PackedScene
@@ -58,6 +59,14 @@ func count_enemies(wave_arr):
 		for spawn_info in wave.spawn_infos:
 			count += spawn_info.unit_count
 	return count
+
+func build_tutorial_wave():
+	waves = [
+		WaveInfo.new([
+			SpawnInfo.new(0,5,9223372036854775807, tutorial_dog),
+		]),
+	]
+	total_enemy_count = count_enemies(waves)
 
 func build_wave():
 	waves = [

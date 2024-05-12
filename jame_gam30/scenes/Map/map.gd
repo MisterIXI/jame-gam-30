@@ -23,6 +23,7 @@ var timer = 0
 @export var pathFollow1 : PathFollow3D
 @export var pathFollow2 : PathFollow3D
 @export var pathSteps = 0.2
+@export var is_in_tutorial: bool = false
 
 var isPathing : bool = false
 var pathPoints : Array = []
@@ -69,7 +70,8 @@ func _process(delta: float) -> void:
 
 		if _pathsFound():
 			isPathing = false
-			wave_manager.start_spawning()
+			if not is_in_tutorial:
+				wave_manager.start_spawning()
 			map_ready.emit()
 			if pathFollow1 != null:
 				pathFollow1.progress_ratio = 0

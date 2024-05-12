@@ -6,6 +6,7 @@ var active = false
 var signal_tweener: Tween = null
 var has_power: bool = false
 var power_provider: int = 0
+@export var distance_trigger: DistanceTrigger
 
 func _ready():
 	body.material_overlay = body.material_overlay.duplicate()

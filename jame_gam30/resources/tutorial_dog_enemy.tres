@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemySetting" load_steps=2 format=3 uid="uid://c8nvqp72pn7ui"]
+
+[ext_resource type="Script" path="res://resources/enemy_setting.gd" id="1_vtffn"]
+
+[resource]
+script = ExtResource("1_vtffn")
+start_health = 100
+regeneration = 0.0
+normal_resistance = 0.0
+explosion_resistance = 0.0
+laser_resistance = 0.0
+speed = 1.0
+damage = 0
+bounty = 10

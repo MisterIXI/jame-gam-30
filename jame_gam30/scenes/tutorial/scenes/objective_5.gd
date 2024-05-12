@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	if not isActive:
 		for item in fg.get_children():
 			if item is RelayTower:
-				if item.active_bodies >= 1:
+				if item.distance_trigger.active_bodies.size() >= 1:
 					isActive = true
 					return
 	else:

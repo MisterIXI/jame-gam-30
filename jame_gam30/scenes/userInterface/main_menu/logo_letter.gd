@@ -10,6 +10,6 @@ func on_animation_finished():
 	$AnimationPlayer.play("idle")
 
 func _on_mouse_entered():
-	if randf_range(0,20) > 9:
+	if randf_range(0,200) < 2:
 		pass
 		SoundManager.Play_Sound(SoundManager.soundType.hmenu_scretch, Vector3.ZERO)

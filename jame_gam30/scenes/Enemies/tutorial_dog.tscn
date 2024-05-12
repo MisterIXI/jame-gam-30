@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://c3835xkyecafi"]
+[gd_scene load_steps=10 format=4 uid="uid://b6r5wrpoqee1k"]
 
-[ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_3qdvl"]
-[ext_resource type="Resource" path="res://resources/dog_enemy.tres" id="2_1n3gl"]
+[ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_ueq85"]
+[ext_resource type="Resource" uid="uid://c8nvqp72pn7ui" path="res://resources/tutorial_dog_enemy.tres" id="2_l2m0b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnmb5"]
 albedo_color = Color(1, 0, 0, 1)
@@ -245,8 +245,8 @@ radius = 0.103303
 height = 0.582941
 
 [node name="Enemy" type="PathFollow3D" node_paths=PackedStringArray("center_of_mass")]
-script = ExtResource("1_3qdvl")
-settings = ExtResource("2_1n3gl")
+script = ExtResource("1_ueq85")
+settings = ExtResource("2_l2m0b")
 center_of_mass = NodePath("CenterOfMass")
 
 [node name="doggo" type="Node3D" parent="."]

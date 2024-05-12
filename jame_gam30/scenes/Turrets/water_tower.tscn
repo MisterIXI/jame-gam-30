@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://c4ekqylc3yo3n"]
+[gd_scene load_steps=23 format=4 uid="uid://em3epmltrcgk"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/water_tower.gd" id="1_6ffhy"]
-[ext_resource type="Material" uid="uid://c3tc1gbc2uhun" path="res://resources/Material/M_waterlaser.tres" id="1_phjh6"]
-[ext_resource type="PackedScene" uid="uid://cwlcbnpqkoas2" path="res://scenes/Projectiles/water_balloon.tscn" id="2_c4a5o"]
+[ext_resource type="Material" uid="uid://dmv12lwoiswat" path="res://resources/Material/M_waterlaser.tres" id="1_phjh6"]
+[ext_resource type="PackedScene" uid="uid://c5bivbifmv6mk" path="res://scenes/Projectiles/water_balloon.tscn" id="2_c4a5o"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="3_1c7l4"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="4_lgk0w"]
+[ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_7xg1l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8m6pi"]
 
@@ -119,6 +120,74 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d573e")
 
+[sub_resource type="Animation" id="Animation_uchea"]
+resource_name = "water_shoot"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.2, 0.8), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k7wr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cu4a1"]
+_data = {
+"RESET": SubResource("Animation_k7wr4"),
+"water_shoot": SubResource("Animation_uchea")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_np4wu"]
+albedo_color = Color(0.294682, 0.711585, 1, 1)
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hl1eh"]
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sl43p"]
 height = 3.97007
 radius = 8.26857
@@ -165,6 +234,29 @@ surface_material_override/0 = ExtResource("1_phjh6")
 [node name="Muzzle" type="Node3D" parent="Base4/Turntable4/Watergun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.37213)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Base4/Turntable4/Watergun"]
+libraries = {
+"": SubResource("AnimationLibrary_cu4a1")
+}
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Base4/Turntable4/Watergun"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 1.19209e-07, 1, 0, 0.0179624, 1.24585)
+material_override = SubResource("StandardMaterial3D_np4wu")
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+mesh = SubResource("SphereMesh_hl1eh")
+direction = Vector3(0, 0, 1)
+spread = 30.0
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
 [node name="DistanceTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 0
@@ -189,6 +281,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_k2i7q")
+
+[node name="Signal_Visual_Component" parent="." instance=ExtResource("6_7xg1l")]
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 1.95, 0)
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]
