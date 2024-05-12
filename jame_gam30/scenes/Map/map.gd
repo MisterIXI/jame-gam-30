@@ -1,6 +1,6 @@
 class_name map
 extends Node3D
-
+@export_group("Grid Placing")
 @export var grid_size: int = 20
 var _tile : Node3D
 var grid : Array = []
@@ -10,6 +10,7 @@ var grid : Array = []
 @export var soundAmount : int = 2
 var animationStep : float = 0
 
+@export_group("Grid Color")
 @export var colorSeed :int = 1234
 @export var minColor : Color = Color(0.7, 0.6, 0.4, 1.0)
 @export var maxColor : Color = Color(0.8, 0.6, 0.5, 1.0)
@@ -17,6 +18,7 @@ var animationStep : float = 0
 var animation = false
 var timer = 0
 
+@export_group("Pathing")
 @export var pathFollow1 : PathFollow3D
 @export var pathFollow2 : PathFollow3D
 @export var pathSteps = 0.2

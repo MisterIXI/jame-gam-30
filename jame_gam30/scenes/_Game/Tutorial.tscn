@@ -21,10 +21,10 @@
 [sub_resource type="Curve3D" id="Curve3D_mn7g1"]
 bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, -8, 0, 0, 0, 0, 0, 0, 6, -1, -6, 0, 0, 0, 0, 0, 0, 2.5861, 0.133314, -1.81412, 0, 0, 0, 0, 0, 0, -3.8248, 0, 0.66216, 0, 0, 0, 0, 0, 0, -6.5067, 0, -3.75113, 0, 0, 0, 0, 0, 0, -8.4984, -1.90735e-06, -7.2047, 0, 0, 0, 0, 0, 0, -2.2383, -3.8147e-06, -8.0714),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.925, 0, 11.165, 0, 0, 0, 0, 0, 0, -1.275, 0, 0, 0, 0, 0, 0, 0, 0, 4.875, 0, -0.115, 0, 0, 0, 0, 0, 0, 4.78, 0, -10.51),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 7
+point_count = 4
 
 [node name="Tutorial" type="Node"]
 
@@ -50,7 +50,8 @@ shape = SubResource("WorldBoundaryShape3D_r078r")
 [node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
 script = ExtResource("13_b22rh")
 grid_size = 19
-animtionTime = 0.5
+placeAmount = 4
+soundAmount = 4
 colorSeed = 69
 pathColor = Color(0.162066, 0.162066, 0.162066, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
@@ -59,13 +60,15 @@ pathFollow1 = NodePath("../Path3D2/PathFollow3D")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
 light_energy = 0.385
 
-[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation") instance=ExtResource("14_ketq8")]
+[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation", "_map", "hud") instance=ExtResource("14_ketq8")]
 visible = false
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
 player_speed = 2.0
+_map = NodePath("..")
+hud = NodePath("../../hud")
 
 [node name="tile" parent="Map" instance=ExtResource("15_diq7n")]
 visible = false
@@ -78,5 +81,5 @@ visible = false
 curve = SubResource("Curve3D_mn7g1")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.894419, 0.182569, -0.408246, 0, 0.912846, 0.408246, 0.447209, 0.365138, -0.816492, 5, 0, -8)
+transform = Transform3D(0.999497, 0, 0.0313323, 0, 0.999972, 0, -0.0313322, 0, 0.9995, -0.925, 0, 11.165)
 loop = false
