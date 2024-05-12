@@ -98,7 +98,7 @@ bus = &"SFX"
 
 [node name="s_hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_nn3fb")
-max_polyphony = 20
+max_polyphony = 1000
 bus = &"SFX"
 
 [node name="s_menu_music" type="AudioStreamPlayer" parent="."]

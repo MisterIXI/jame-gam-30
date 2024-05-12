@@ -8,6 +8,8 @@ class_name Tower_Placement_Component
 @onready var timer :Timer =$Timer
 signal place_tower()
 
+var _map : map
+
 var current_placeholder_type = 0
 var current_placeholder_pos : Vector3
 var new_placeHolder
@@ -16,16 +18,24 @@ func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	camera.mouse_clicked_on.connect(on_mouse_clicked_pos)
 	camera.mouse_position.connect(on_mouse_position)
+	_map = get_node("../Map")
 ################# -TODO- - HAVE TO CHANGE TO UI BUTTONS!°
 func _input(event):
 	if event.is_action_pressed("tower_button_01"):
-		on_placeholder_change(0)
+		_place_tower(1)
 	if event.is_action_pressed("tower_button_02"):
-		on_placeholder_change(1)
+		_place_tower(2)
 	if event.is_action_pressed("tower_button_03"):
-		on_placeholder_change(2)
+		_place_tower(3)
 	if event.is_action_pressed("tower_button_04"):
-		on_placeholder_change(3)
+		_place_tower(4)
+	if event.is_action_pressed("tower_button_05"):
+		_place_tower(5)
+
+func _place_tower(index : int):
+	if ResourceManager._get_money() >= ResourceManager._get_tower_cost(index) and not is_placeholding and not _map.animation:
+		ResourceManager._change_money(-ResourceManager._get_tower_cost(index))
+		on_placeholder_change(index -1)
 
 ## TIPP: CHANGE PLACEHOLDER TYPE :  TYPE IS ARRAY INDEX OF TOWERS, AT FIRST IT WILL SPAWN A PLACEHOLDER
 func on_placeholder_change(type :int):
@@ -53,12 +63,12 @@ func on_mouse_clicked_pos(pos : Vector3):
 		timer.stop()
 		var new_tower = towers[current_placeholder_type].instantiate() as StaticBody3D
 		foreground.add_child(new_tower)
-		new_tower.global_position = Vector3i(pos)
+		new_tower.position = Vector3(round(pos.x), 0, round(pos.z))
 		print("Placeholder: Tower_Position: ", pos)
 		place_tower.emit()
 
 func on_mouse_position(pos : Vector3):
-		current_placeholder_pos = Vector3i(pos)
+		current_placeholder_pos = Vector3(round(pos.x), 0.5, round(pos.z))
 
 ## TIMER BECAUSE IF NO TIMER, IT LOOKS REALLY BAD
 func on_timer_timeout():

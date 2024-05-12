@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://tru5o87o7mnn"]
+
+[ext_resource type="Material" uid="uid://dsx70oifxf32p" path="res://resources/Material/Prototype.tres" id="1_22ocy"]
+[ext_resource type="PackedScene" uid="uid://de108xb3lwj4j" path="res://scenes/GameObjects/Enemies/enemy_base.tscn" id="2_6vu44"]
+[ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="3_ooffl"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kv72f"]
+size = Vector2(40, 40)
+
+[node name="ForeGround" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_2cxim")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_22ocy")
+mesh = SubResource("PlaneMesh_kv72f")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Base" parent="." instance=ExtResource("2_6vu44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17708, 0.952207, 6.529)
+
+[node name="boi" parent="." node_paths=PackedStringArray("visual_rotation") instance=ExtResource("3_ooffl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+visual_rotation = NodePath("Armature")
+player_speed = 2.0
