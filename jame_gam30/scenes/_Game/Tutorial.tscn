@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dnvfsvkwpwvsl"]
+[gd_scene load_steps=34 format=3 uid="uid://dnvfsvkwpwvsl"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
@@ -20,17 +20,24 @@
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="17_k3pam"]
 [ext_resource type="PackedScene" uid="uid://w4fibthhrrkl" path="res://scenes/tutorial/scenes/objective0.tscn" id="18_b5mv6"]
 [ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="18_q4jm6"]
+[ext_resource type="PackedScene" uid="uid://64vtd56a48td" path="res://scenes/tutorial/scenes/objective1.tscn" id="19_0fkrm"]
 [ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="19_l4fpw"]
+[ext_resource type="PackedScene" uid="uid://ci2p5kkk6lacp" path="res://scenes/tutorial/scenes/objective2.tscn" id="20_1wvpb"]
 [ext_resource type="PackedScene" uid="uid://chy6t750qk74s" path="res://scenes/Components/userInterface/pause_on_visible.tscn" id="20_p2gbf"]
 [ext_resource type="StyleBox" uid="uid://kn72xqrp3msq" path="res://resources/Themes/PanelRed.tres" id="20_u0afv"]
 [ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="21_2sxf1"]
+[ext_resource type="PackedScene" uid="uid://c0jhdvlc3lmxr" path="res://scenes/tutorial/scenes/objective3.tscn" id="21_tw0kk"]
+[ext_resource type="PackedScene" uid="uid://bysc4gdd27d7q" path="res://scenes/tutorial/scenes/objective4.tscn" id="22_wrwhq"]
+[ext_resource type="PackedScene" uid="uid://c7ggcb2yjlx6p" path="res://scenes/tutorial/scenes/objective5.tscn" id="23_m0lax"]
+[ext_resource type="PackedScene" uid="uid://bwg7qok48ufr5" path="res://scenes/tutorial/scenes/objective6.tscn" id="24_se4w8"]
+[ext_resource type="PackedScene" uid="uid://byvoyw1i32xiy" path="res://scenes/tutorial/completed.tscn" id="31_tnlfb"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r078r"]
 
 [sub_resource type="Curve3D" id="Curve3D_mn7g1"]
 bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.925, 0, 11.165, 0, 0, 0, 0, 0, 0, -1.275, 0, 0, 0, 0, 0, 0, 0, 0, 4.875, 0, -0.115, 0, 0, 0, 0, 0, 0, 4.78, 0, -10.51),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.925, 0, 20, 0, 0, 0, 0, 0, 0, -1.275, 0, 0, 0, 0, 0, 0, 0, 0, 4.875, 0, -0.115, 0, 0, 0, 0, 0, 0, 4.78, 0, -20),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -58,9 +65,9 @@ shape = SubResource("WorldBoundaryShape3D_r078r")
 
 [node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
 script = ExtResource("13_b22rh")
-grid_size = 19
-placeAmount = 4
-soundAmount = 4
+grid_size = 40
+placeAmount = 8
+soundAmount = 8
 colorSeed = 69
 pathColor = Color(0.162066, 0.162066, 0.162066, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
@@ -83,7 +90,7 @@ hud = NodePath("../../hud")
 visible = false
 
 [node name="tile for scale" parent="Map" instance=ExtResource("15_diq7n")]
-transform = Transform3D(20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(40, 0, 0, 0, 0.5, 0, 0, 0, 40, 0, 0, 0)
 visible = false
 
 [node name="OOB" parent="Map" instance=ExtResource("16_7yceh")]
@@ -92,7 +99,7 @@ visible = false
 curve = SubResource("Curve3D_mn7g1")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(0.999497, 0, 0.0313323, 0, 0.999972, 0, -0.0313322, 0, 0.9995, -0.925, 0, 11.165)
+transform = Transform3D(0.999834, 0, 0.0174971, 0, 0.999972, 0, -0.0174971, 0, 0.999837, -0.925, 0, 20)
 loop = false
 
 [node name="tutorial_manager" type="Control" parent="."]
@@ -104,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("17_j0cln")
-objectiveScene = Array[PackedScene]([ExtResource("18_b5mv6"), ExtResource("18_b5mv6")])
+objectiveScene = Array[PackedScene]([ExtResource("18_b5mv6"), ExtResource("19_0fkrm"), ExtResource("20_1wvpb"), ExtResource("21_tw0kk"), ExtResource("22_wrwhq"), ExtResource("23_m0lax"), ExtResource("24_se4w8")])
 
 [node name="Popup" type="Control" parent="tutorial_manager"]
 visible = false
@@ -116,6 +123,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ColorRect" parent="tutorial_manager/Popup" instance=ExtResource("21_2sxf1")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Panel" type="Panel" parent="tutorial_manager/Popup"]
 custom_minimum_size = Vector2(2.105, 9.835)
@@ -141,15 +156,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -270.0
-offset_top = -182.0
+offset_top = -106.0
 offset_right = 273.0
-offset_bottom = -26.0
+offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("17_k3pam")
 bbcode_enabled = true
-text = "[center]Welcome back Jimmy,
-todays bootcamp will teach you how to defeat those pesky balloon animals![/center]"
 fit_content = true
 
 [node name="PopupButton" type="Button" parent="tutorial_manager/Popup"]
@@ -183,14 +196,6 @@ button = NodePath("../PopupButton")
 [node name="PauseOnVisible" parent="tutorial_manager/Popup" instance=ExtResource("20_p2gbf")]
 layout_mode = 1
 
-[node name="ColorRect" parent="tutorial_manager/Popup" instance=ExtResource("21_2sxf1")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="Objective" type="Control" parent="tutorial_manager"]
 visible = false
 custom_minimum_size = Vector2(29.475, 28.38)
@@ -222,11 +227,14 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -19.5
-offset_bottom = 19.5
+offset_top = -1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("17_k3pam")
 bbcode_enabled = true
-text = "[center]Move Jimmy around by using your rightclick[/center]"
 fit_content = true
+
+[node name="Completed" parent="tutorial_manager" instance=ExtResource("31_tnlfb")]
+visible = false
+layout_mode = 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwg7qok48ufr5"]
+
+[ext_resource type="Script" path="res://scenes/tutorial/scenes/objective_6.gd" id="1_uj8m6"]
+
+[node name="Objective" type="Node2D"]
+script = ExtResource("1_uj8m6")
