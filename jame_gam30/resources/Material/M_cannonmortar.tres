@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://crkdsoy87mg1h"]
+
+[ext_resource type="Texture2D" uid="uid://bkcw5nh6s3j2w" path="res://assets/Models/cannonmortar.png" id="1_avagr"]
+
+[resource]
+albedo_texture = ExtResource("1_avagr")
