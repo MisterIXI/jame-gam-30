@@ -24,12 +24,11 @@ func _physics_process(_delta):
 		if shot_cd_timer.is_stopped():
 			_on_cd_timer_timeout()
 			shot_cd_timer.start()
-		var dir = muzzle_center.global_position - targeting.calculate_lead_aim(muzzle_center.global_position, bullet_speed, 1)
-		# get x an y rotation angles
-		var xz_angle = rad_to_deg(atan2(dir.x, dir.z))
-		# set the rotation
-		tower_base.rotation_degrees = Vector3(0, xz_angle, 0)
-		# cannon.look_at(dir, tower_base.global_transform.basis.y)
+		var pos = targeting.calculate_lead_aim(muzzle_center.global_position, bullet_speed, 1)
+		tower_base.look_at(pos, Vector3.UP, true)
+		muzzle_center.look_at(pos + Vector3.UP * targeting.target.vertical_offset, Vector3.UP, true)
+		cannon.global_rotation = muzzle_center.global_rotation
+		muzzle_center.rotation = Vector3.ZERO
 
 func _on_active_changed(is_active: bool):
 	active = is_active
@@ -41,7 +40,7 @@ func _on_active_changed(is_active: bool):
 func _on_cd_timer_timeout():
 	if has_power and targeting.target:
 		var new_bullet = bullet.instantiate() as Bullet
-		var shot_direction = targeting.calculate_lead_aim(muzzle.global_position, bullet_speed, 4) - muzzle.global_position
+		var shot_direction = targeting.calculate_lead_aim(muzzle.global_position, bullet_speed, 4) + Vector3.UP * targeting.target.vertical_offset - muzzle.global_position
 		new_bullet.shoot_at(shot_direction, bullet_speed, 0)
 		get_parent().add_child(new_bullet)
 		new_bullet.global_position = muzzle.global_position
@@ -55,16 +54,16 @@ func set_power(has_power_: bool):
 	if has_power:
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
-		signal_tweener.tween_property(cannon, "rotation_degrees:x",0,0.3)
-		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(1,1,1,1), 0.5)
-		signal_tweener.tween_property(cannon.material_overlay, "albedo_color", Color(1,1,1,1), 0.5)
+		signal_tweener.tween_property(cannon, "rotation_degrees:x", 0, 0.3)
+		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(0, 0, 0, 0), 0.5)
+		signal_tweener.tween_property(cannon.material_overlay, "albedo_color", Color(0, 0, 0, 0), 0.5)
 		signal_tweener.play()
 	else:
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
-		signal_tweener.tween_property(cannon, "rotation_degrees:x",50,0.5)
-		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(0.5,0.5,0.5,1), 0.3)
-		signal_tweener.tween_property(cannon.material_overlay, "albedo_color", Color(0.5,0.5,0.5,1), 0.3)
+		signal_tweener.tween_property(cannon, "rotation_degrees:x", 50, 0.5)
+		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(0, 0, 0, 0.5), 0.3)
+		signal_tweener.tween_property(cannon.material_overlay, "albedo_color", Color(0, 0, 0, 0.5), 0.3)
 		signal_tweener.play()
 
 func on_distance_trigger_entered():

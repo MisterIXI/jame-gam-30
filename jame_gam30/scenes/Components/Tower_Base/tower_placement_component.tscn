@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://co3o1ga7qbrcu"]
+[gd_scene load_steps=11 format=3 uid="uid://co3o1ga7qbrcu"]
 
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_placement_component.gd" id="1_qcpm4"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="2_g53sw"]
-[ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="3_n0114"]
+[ext_resource type="PackedScene" uid="uid://bqhmeb0t0nxj0" path="res://scenes/Turrets/mortar.tscn" id="3_lkhfe"]
 [ext_resource type="PackedScene" uid="uid://c2kohnu2yx86s" path="res://scenes/Components/Tower_Base/Tower_Base_03.tscn" id="4_aj181"]
+[ext_resource type="PackedScene" uid="uid://bsitwwx57rnls" path="res://scenes/Turrets/laser_tower.tscn" id="4_gp2ra"]
 [ext_resource type="PackedScene" uid="uid://ca1762gdd7o1u" path="res://scenes/Components/Tower_Base/Tower_Base_04.tscn" id="5_yallq"]
 [ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="6_isfrm"]
 [ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="7_gecq4"]
@@ -12,7 +13,7 @@
 
 [node name="Tower_Placement_Component" type="Node"]
 script = ExtResource("1_qcpm4")
-towers = Array[PackedScene]([ExtResource("2_g53sw"), ExtResource("3_n0114"), ExtResource("4_aj181"), ExtResource("5_yallq")])
+towers = Array[PackedScene]([ExtResource("2_g53sw"), ExtResource("3_lkhfe"), ExtResource("4_gp2ra"), ExtResource("4_aj181"), ExtResource("5_yallq")])
 tower_placement_holders = Array[PackedScene]([ExtResource("6_isfrm"), ExtResource("7_gecq4"), ExtResource("8_blpfd"), ExtResource("9_qm28u")])
 
 [node name="Timer" type="Timer" parent="."]

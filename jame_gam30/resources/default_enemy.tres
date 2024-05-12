@@ -9,5 +9,5 @@ regeneration = 0.0
 normal_resistance = 0.0
 explosion_resistance = 0.0
 laser_resistance = 0.0
-speed = 10.0
+speed = 2.0
 damage = 1
