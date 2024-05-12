@@ -12,7 +12,7 @@ class_name LaserTower
 var active 
 var has_power: bool
 var signal_tweener: Tween
-
+var power_provider: int = 0
 func _ready():
 	pass
 	tower_base.material_overlay = tower_base.material_overlay.duplicate()
@@ -76,7 +76,11 @@ func set_power(has_power_: bool):
 		signal_tweener.play()
 
 func on_distance_trigger_entered():
-	set_power(true)
+	power_provider += 1
+	if power_provider == 1:
+		set_power(true)
 
 func on_distance_trigger_exited():
-	set_power(false)
+	power_provider -= 1
+	if power_provider == 0:
+		set_power(false)

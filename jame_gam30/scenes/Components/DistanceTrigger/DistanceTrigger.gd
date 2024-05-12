@@ -1,6 +1,6 @@
 extends Area3D
 class_name DistanceTrigger
-enum TriggerType{ENEMY, PLAYER, TOWER}
+enum TriggerType {ENEMY, PLAYER, TOWER}
 var is_active: bool = false
 var active_count: int = 0
 var active_bodies: Array = []
@@ -8,14 +8,18 @@ var active_bodies: Array = []
 @export var type: TriggerType = TriggerType.ENEMY
 signal on_active_changed(active: bool)
 signal on_active_bodies_changed()
+@export var power_relays: bool = false
 
 func _ready():
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 
-
 func _on_area_entered(area: Area3D) -> void:
+	if not power_relays and area.is_in_group("RelayTower"):
+		return
 	var body = get_body(area)
+	if body == null:
+		return
 	active_bodies.append(body)
 	if notify_bodies and body.has_method("on_distance_trigger_entered"):
 		body.on_distance_trigger_entered()
@@ -25,6 +29,8 @@ func _on_area_entered(area: Area3D) -> void:
 	on_active_bodies_changed.emit()
 
 func _on_area_exited(area: Area3D) -> void:
+	if not power_relays and area.is_in_group("RelayTower"):
+		return
 	var body = get_body(area)
 	if body == null:
 		return
