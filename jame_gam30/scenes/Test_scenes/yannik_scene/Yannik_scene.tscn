@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://clyaj0i4seejo"]
+[gd_scene load_steps=14 format=3 uid="uid://clyaj0i4seejo"]
 
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_scene.gd" id="1_kpogu"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="2_ue6dk"]
 [ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="3_s2dtn"]
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_test.gd" id="3_uipiq"]
-[ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="5_waa5j"]
-[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="6_soxc1"]
+[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="6_soxc1"]
 [ext_resource type="PackedScene" uid="uid://bqhmeb0t0nxj0" path="res://scenes/Turrets/mortar.tscn" id="7_784np"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wx5te"]
@@ -62,18 +61,17 @@ paths = [NodePath("../Path3D2")]
 spawning_fair = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.783717, -0.513688, 0.34916, 0, 0.562147, 0.827037, -0.621118, -0.648163, 0.440564, 10.507, 20.8998, 14.5969)
+transform = Transform3D(0.815152, -0.413472, 0.405669, 0, 0.700339, 0.713811, -0.579247, -0.581864, 0.570883, 13.2127, 14.6829, 17.5949)
 size = 17.744
 
-[node name="hud" parent="." instance=ExtResource("5_waa5j")]
-metadata/_edit_use_anchors_ = true
-
-[node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.7094, -9.53674e-07, 72.0363)
+[node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon", "muzzle", "muzzle_center") instance=ExtResource("6_soxc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4523, 0, 2.0691)
 targeting = NodePath("TowerTargeting")
-tower_base = NodePath("TowerHead")
+tower_base = NodePath("Base1/Turntable1")
 shot_cd_timer = NodePath("Shot_Timeout")
-bullet_speed = 40.0
+cannon = NodePath("Base1/Turntable1/Cannon")
+muzzle = NodePath("Base1/Turntable1/Cannon/Muzzle")
+muzzle_center = NodePath("Base1/Turntable1/Cannon/MuzzleCenter")
 
 [node name="OOB" type="Area3D" parent="."]
 collision_mask = 0
@@ -112,6 +110,7 @@ shape = SubResource("SphereShape3D_bindg")
 mesh = SubResource("SphereMesh_cjhbv")
 
 [node name="Mortar_Turret" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "test_target", "cannon_node") instance=ExtResource("7_784np")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3659, 0, 89.4079)
 targeting = NodePath("TowerTargeting")
 tower_base = NodePath("moerser/Base2/Shooter")
 shot_cd_timer = NodePath("Timer")

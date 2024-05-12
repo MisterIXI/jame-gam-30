@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="3_4xtgx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_38ybw"]
 [ext_resource type="Sky" uid="uid://egs4qvg72uny" path="res://resources/Material/new_sky.tres" id="3_tels8"]
-[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_8v7jb"]
+[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="4_8v7jb"]
 [ext_resource type="Shader" path="res://resources/Shader/Vignette.gdshader" id="7_vu736"]
 
 [sub_resource type="Environment" id="Environment_buj1l"]

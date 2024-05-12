@@ -6,6 +6,9 @@ class_name BluntShooter
 @export var shot_cd_timer: Timer
 @export var bullet: PackedScene
 @export var bullet_speed: float
+@export var cannon: Node3D
+@export var muzzle: Node3D
+@export var muzzle_center: Node3D
 var active 
 
 func _physics_process(_delta):
@@ -13,12 +16,13 @@ func _physics_process(_delta):
 		if shot_cd_timer.is_stopped():
 			_on_cd_timer_timeout()
 			shot_cd_timer.start()
-		var target_position = targeting.target.global_position
-		var direction = target_position - global_position
-		direction.y = 0
-		# rotate tower_base towards target, only the y axis
+		var dir = targeting.calculate_lead_aim(muzzle_center.global_position, bullet_speed,1) - muzzle_center.global_position
+		# get x an y rotation angles
+		var xz_angle = rad_to_deg(atan2(dir.x, dir.z))
+		# set the rotation
+		tower_base.rotation_degrees = Vector3(0, xz_angle, 0)
+		# cannon.look_at(dir, tower_base.global_transform.basis.y)
 		
-		tower_base.look_at(tower_base.global_position + direction, Vector3.UP)
 
 	
 
@@ -32,9 +36,9 @@ func _on_active_changed(is_active: bool):
 func _on_cd_timer_timeout():
 	if targeting.target:
 		var new_bullet = bullet.instantiate() as Bullet
-		var shot_direction = targeting.calculate_lead_aim(global_position, bullet_speed, 4) - global_position
+		var shot_direction = targeting.calculate_lead_aim(muzzle.global_position, bullet_speed, 4) - muzzle.global_position
 		new_bullet.shoot_at(shot_direction, bullet_speed, 0)
 		get_parent().add_child(new_bullet)
-		new_bullet.global_position = tower_base.global_position
+		new_bullet.global_position = muzzle.global_position
 	else:
 		shot_cd_timer.stop()

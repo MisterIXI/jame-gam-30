@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
-[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="3_wennd"]
+[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="3_wennd"]
 [ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="4_75tmk"]
 [ext_resource type="PackedScene" uid="uid://c2kohnu2yx86s" path="res://scenes/Components/Tower_Base/Tower_Base_03.tscn" id="5_7svs7"]
 [ext_resource type="PackedScene" uid="uid://ca1762gdd7o1u" path="res://scenes/Components/Tower_Base/Tower_Base_04.tscn" id="6_bcka1"]

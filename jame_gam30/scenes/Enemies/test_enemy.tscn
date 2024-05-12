@@ -7,12 +7,13 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ov4jj"]
 radius = 0.715143
 
-[node name="Node3D" type="PathFollow3D" groups=["Enemy"]]
+[node name="Node3D" type="PathFollow3D" node_paths=PackedStringArray("center_of_mass") groups=["Enemy"]]
 script = ExtResource("1_tbji5")
 settings = ExtResource("2_dra64")
+center_of_mass = NodePath("CenterOfMass")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Enemy"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 0, 0, 0)
 collision_layer = 16
 collision_mask = 0
 
@@ -22,3 +23,6 @@ mesh = ExtResource("3_j6dvx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5535, 0)
 shape = SubResource("SphereShape3D_ov4jj")
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56805, 0)

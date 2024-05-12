@@ -4,9 +4,12 @@ class_name Enemy
 @export var settings : EnemySetting
 var parent_path : Path3D
 var health: float = 3
+@export var center_of_mass: Node3D
+var vertical_offset: float = 0
 
 func _ready():
 	global_position = Vector3(500, 500, 500)
+	vertical_offset = center_of_mass.position.y
 
 func follow_path(new_parent: Path3D) -> void:
 	

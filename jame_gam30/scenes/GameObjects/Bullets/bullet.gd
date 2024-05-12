@@ -13,7 +13,7 @@ func shoot_at(shoot_direction: Vector3, _velocity: float, _damage: float):
 
 func _physics_process(delta):
 	if target_locked:
-		translate(target * velocity * delta)
+		global_position += target * velocity * delta
 
 func _on_area_entered(area: Area3D):
 	if area.is_in_group("Enemy"):
