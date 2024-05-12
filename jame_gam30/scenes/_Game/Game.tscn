@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://7cnjuv8xx0fj"]
+[gd_scene load_steps=21 format=3 uid="uid://7cnjuv8xx0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="10_1ybim"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="11_eh0w8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="14_qqbmp"]
+[ext_resource type="PackedScene" uid="uid://daugp24xlwj5d" path="res://scenes/Components/map/oob.tscn" id="16_004uy"]
 [ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="16_ekp82"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="17_b40he"]
 
@@ -79,6 +80,8 @@ visible = false
 [node name="tile for scale" parent="Map" instance=ExtResource("14_qqbmp")]
 transform = Transform3D(20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, 0, 0)
 visible = false
+
+[node name="OOB" parent="Map" instance=ExtResource("16_004uy")]
 
 [node name="Path3D2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_ygko2")

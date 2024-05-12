@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnvfsvkwpwvsl"]
+[gd_scene load_steps=19 format=3 uid="uid://dnvfsvkwpwvsl"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="13_b22rh"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="14_ketq8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="15_diq7n"]
+[ext_resource type="PackedScene" uid="uid://daugp24xlwj5d" path="res://scenes/Components/map/oob.tscn" id="16_7yceh"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r078r"]
 
@@ -76,6 +77,8 @@ visible = false
 [node name="tile for scale" parent="Map" instance=ExtResource("15_diq7n")]
 transform = Transform3D(20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, 0, 0)
 visible = false
+
+[node name="OOB" parent="Map" instance=ExtResource("16_7yceh")]
 
 [node name="Path3D2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_mn7g1")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://daugp24xlwj5d"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_apv2g"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nudet"]
+
+[node name="OOB" type="Area3D"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 50, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_apv2g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -50, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_apv2g")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 50)
+shape = SubResource("WorldBoundaryShape3D_apv2g")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50)
+shape = SubResource("WorldBoundaryShape3D_apv2g")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_nudet")
