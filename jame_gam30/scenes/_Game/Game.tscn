@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7cnjuv8xx0fj"]
+[gd_scene load_steps=20 format=3 uid="uid://7cnjuv8xx0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="10_1ybim"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="11_eh0w8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="14_qqbmp"]
+[ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="16_ekp82"]
+[ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="17_b40he"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
 
@@ -47,8 +49,9 @@ size = 14.8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ForeGround"]
 shape = SubResource("WorldBoundaryShape3D_2cxim")
 
-[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
+[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "pathFollow1")]
 script = ExtResource("6_8cp7c")
+wave_manager = NodePath("../WaveManager")
 grid_size = 19
 placeAmount = 4
 soundAmount = 4
@@ -83,3 +86,8 @@ curve = SubResource("Curve3D_ygko2")
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
 transform = Transform3D(-0.894419, 0.182569, -0.408246, 0, 0.912846, 0.408246, 0.447209, 0.365138, -0.816492, 5, 0, -8)
 loop = false
+
+[node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("paths")]
+script = ExtResource("16_ekp82")
+test_enemy = ExtResource("17_b40he")
+paths = [NodePath("../Path3D2")]

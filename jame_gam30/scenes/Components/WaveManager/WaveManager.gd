@@ -38,10 +38,11 @@ class SpawnInfo:
 
 func _init():
 	pass
+
 func _ready():
 	build_wave()
 	current_wave = start_at_wave
-	call_deferred("start_spawning")
+	# call_deferred("start_spawning")
 
 func build_wave():
 	waves = [

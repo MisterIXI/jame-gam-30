@@ -1,5 +1,6 @@
 class_name map
 extends Node3D
+@export var wave_manager : WaveManager
 @export_group("Grid Placing")
 @export var grid_size: int = 20
 var _tile : Node3D
@@ -66,6 +67,7 @@ func _process(delta: float) -> void:
 
 		if _pathsFound():
 			isPathing = false
+			wave_manager.start_spawning()
 			if pathFollow1 != null:
 				pathFollow1.progress_ratio = 0
 			if pathFollow2 != null:
