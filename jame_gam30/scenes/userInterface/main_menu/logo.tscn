@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://53reqbpg72wj"]
 
-[ext_resource type="PackedScene" path="res://scenes/userInterface/main_menu/Logo_letter.tscn" id="1_p0kmq"]
+[ext_resource type="PackedScene" uid="uid://bcj817d6hk3gv" path="res://scenes/userInterface/main_menu/Logo_letter.tscn" id="1_p0kmq"]
 [ext_resource type="Texture2D" uid="uid://lsoalosayncg" path="res://assets/Textures/Letter_A.png" id="2_cwahr"]
 [ext_resource type="Texture2D" uid="uid://wg1p7yxgt3nu" path="res://assets/Textures/Letter_L.png" id="3_e4p73"]
 [ext_resource type="Texture2D" uid="uid://pwgwbeocakfe" path="res://assets/Textures/Letter_O.png" id="4_2ooo1"]
@@ -128,6 +128,11 @@ offset_right = 96.0
 offset_bottom = 96.0
 texture_normal = ExtResource("7_wdn1r")
 texture_pressed = ExtResource("7_wdn1r")
+
+[node name="Sprite2D" parent="Panel/Jimmy/B" index="1"]
+position = Vector2(64, 62)
+scale = Vector2(1, 1.2)
+texture = ExtResource("7_wdn1r")
 
 [editable path="Panel/A"]
 [editable path="Panel/L"]

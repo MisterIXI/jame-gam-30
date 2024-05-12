@@ -154,8 +154,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="B"]
-z_index = -1
-position = Vector2(35, 35)
+modulate = Color(0.821789, 0.821789, 0.821789, 1)
+show_behind_parent = true
+position = Vector2(32, 32)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_hbn27")
 script = ExtResource("3_yn8kg")
 
 [connection signal="mouse_entered" from="B" to="B" method="_on_mouse_entered"]
