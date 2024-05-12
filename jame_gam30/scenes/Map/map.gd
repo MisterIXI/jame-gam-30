@@ -42,11 +42,11 @@ func _process(delta: float) -> void:
 
 			if grid.size() >= grid_size * grid_size:
 				animation = false
-				isPathing = true
 				if pathFollow1 != null:
 					pathFollow1.progress_ratio = 0
 				if pathFollow2 != null:
 					pathFollow1.progress_ratio = 0
+				isPathing = true
 				_placeCharacter()
 
 	if isPathing:
@@ -55,6 +55,10 @@ func _process(delta: float) -> void:
 
 		if _pathsFound():
 			isPathing = false
+			if pathFollow1 != null:
+				pathFollow1.progress_ratio = 0
+			if pathFollow2 != null:
+				pathFollow1.progress_ratio = 0
 
 
 func _findPath(path : PathFollow3D) -> void:

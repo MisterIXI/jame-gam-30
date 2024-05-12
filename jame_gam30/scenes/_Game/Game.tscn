@@ -71,6 +71,5 @@ visible = false
 curve = SubResource("Curve3D_ygko2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(0.136294, -0.0151988, -0.990546, 0.110831, 0.993812, 3.10381e-07, 0.98444, -0.109782, 0.137139, -2.2383, -3.8147e-06, -8.0714)
-progress = 30.3132
+transform = Transform3D(-0.894419, 0.182569, -0.408246, 0, 0.912846, 0.408246, 0.447209, 0.365138, -0.816492, 5, 0, -8)
 loop = false
