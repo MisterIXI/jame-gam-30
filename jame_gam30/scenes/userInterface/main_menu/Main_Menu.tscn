@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu/menu_background.tscn" id="1_an7dg"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_eo2dl"]
 [ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
-[ext_resource type="Texture2D" uid="uid://dtm0a4h5sfqua" path="res://assets/userInterface/Games-designstyle-games-m.png" id="3_ugwl8"]
 [ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
 [ext_resource type="Script" path="res://scenes/Components/userInterface/menu/quit.gd" id="5_sfqs2"]
 [ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
+[ext_resource type="PackedScene" uid="uid://53reqbpg72wj" path="res://scenes/userInterface/main_menu/logo.tscn" id="6_mn0n8"]
 [ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="6_sf5sh"]
 [ext_resource type="PackedScene" uid="uid://b2gstoaqud0ge" path="res://scenes/Components/userInterface/menu/credits.tscn" id="8_5otex"]
 [ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
@@ -38,6 +38,14 @@ offset_right = 150.0
 offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Logo2" parent="Menu" instance=ExtResource("6_mn0n8")]
+layout_mode = 1
+offset_left = -656.0
+offset_top = -35.0
+offset_right = 324.0
+offset_bottom = 76.0
+scale = Vector2(1.485, 1.485)
 
 [node name="Panel" type="Panel" parent="Menu"]
 layout_mode = 1
@@ -113,19 +121,6 @@ script = ExtResource("5_sfqs2")
 
 [node name="Buttonhover" parent="Menu/Panel/VBoxContainer/Quit" instance=ExtResource("3_j686n")]
 layout_mode = 1
-
-[node name="Logo" type="TextureRect" parent="Menu"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -413.0
-offset_top = -57.0
-offset_right = 413.0
-offset_bottom = 143.0
-grow_horizontal = 2
-texture = ExtResource("3_ugwl8")
-stretch_mode = 5
 
 [node name="none" parent="Menu" instance=ExtResource("6_3fers")]
 layout_mode = 1
