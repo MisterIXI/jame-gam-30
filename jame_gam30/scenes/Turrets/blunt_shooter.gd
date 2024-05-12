@@ -16,7 +16,7 @@ func _physics_process(_delta):
 		if shot_cd_timer.is_stopped():
 			_on_cd_timer_timeout()
 			shot_cd_timer.start()
-		var dir = targeting.calculate_lead_aim(muzzle_center.global_position, bullet_speed,1) - muzzle_center.global_position
+		var dir = muzzle_center.global_position - targeting.calculate_lead_aim(muzzle_center.global_position, bullet_speed,1)
 		# get x an y rotation angles
 		var xz_angle = rad_to_deg(atan2(dir.x, dir.z))
 		# set the rotation
