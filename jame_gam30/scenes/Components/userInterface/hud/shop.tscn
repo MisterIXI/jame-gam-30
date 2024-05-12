@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://du4i6ixtx4so4"]
+[gd_scene load_steps=12 format=3 uid="uid://du4i6ixtx4so4"]
 
 [ext_resource type="Script" path="res://scenes/Components/userInterface/hud/shop.gd" id="1_x3wxm"]
 [ext_resource type="PackedScene" uid="uid://da8nnethmust3" path="res://scenes/Components/userInterface/hud/shop_button.tscn" id="2_bhjue"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_fabo1"]
-[ext_resource type="Texture2D" uid="uid://cxqn5r31w82hd" path="res://assets/userInterface/icons/xmark-solid.svg" id="3_0epln"]
 [ext_resource type="Texture2D" uid="uid://cui5amfvxymw7" path="res://assets/userInterface/icons/chevron-down-solid.svg" id="5_5fqgi"]
-[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="6_r6vft"]
+[ext_resource type="Texture2D" uid="uid://54uov7rotglw" path="res://assets/Textures/Turret_01_icon.png" id="5_mk41a"]
+[ext_resource type="Texture2D" uid="uid://c64wr0cscmlt5" path="res://assets/Textures/Turret_02_icon.png" id="6_pfdb4"]
+[ext_resource type="PackedScene" uid="uid://bbtlqfrwnbbky" path="res://scenes/Components/userInterface/buttonhover.tscn" id="6_r6vft"]
+[ext_resource type="Texture2D" uid="uid://dy0aehf45mt2q" path="res://assets/Textures/Turret_03_icon.png" id="7_ab1j8"]
+[ext_resource type="Texture2D" uid="uid://cq8vovhq3rwuh" path="res://assets/Textures/Turret_05_icon.png" id="8_ghyi3"]
+[ext_resource type="Texture2D" uid="uid://bjre5mha04di8" path="res://assets/Textures/Turret_04_icon.png" id="8_mfur4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6v1o"]
 bg_color = Color(0.0995742, 0.661041, 0.914309, 1)
@@ -108,7 +112,7 @@ alignment = 1
 [node name="ShopButton" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
 index = 1
-_icon = ExtResource("3_0epln")
+_icon = ExtResource("5_mk41a")
 
 [node name="Spacer" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -119,6 +123,7 @@ mouse_filter = 2
 [node name="ShopButton2" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
 index = 2
+_icon = ExtResource("6_pfdb4")
 
 [node name="Spacer2" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -129,6 +134,7 @@ mouse_filter = 2
 [node name="ShopButton3" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
 index = 3
+_icon = ExtResource("7_ab1j8")
 
 [node name="Spacer3" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -139,6 +145,7 @@ mouse_filter = 2
 [node name="ShopButton4" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
 index = 4
+_icon = ExtResource("8_ghyi3")
 
 [node name="Spacer4" type="Panel" parent="container/ScrollContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -149,7 +156,7 @@ mouse_filter = 2
 [node name="ShopButton5" parent="container/ScrollContainer/HBoxContainer" instance=ExtResource("2_bhjue")]
 layout_mode = 2
 index = 5
-_icon = ExtResource("3_0epln")
+_icon = ExtResource("8_mfur4")
 
 [node name="button" type="Button" parent="."]
 layout_mode = 1
