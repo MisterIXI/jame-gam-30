@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=20 format=4 uid="uid://driqxb5gd7o4l"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/blunt_shooter.gd" id="1_e3k04"]
 [ext_resource type="PackedScene" uid="uid://bbnn6theu8v4x" path="res://scenes/Projectiles/bullet.tscn" id="2_vdym3"]

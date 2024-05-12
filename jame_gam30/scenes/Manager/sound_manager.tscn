@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://bgih77p3y4dfd" path="res://assets/Sounds/Balloon_hit_04.mp3" id="7_lligk"]
 [ext_resource type="AudioStream" uid="uid://b68svovqabo78" path="res://assets/Sounds/Balloon_scream.mp3" id="8_orjfk"]
 [ext_resource type="AudioStream" uid="uid://gprwbhc1wx5" path="res://assets/Sounds/Balloon_filled_01.mp3" id="9_66jrv"]
-[ext_resource type="AudioStream" uid="uid://2ed0kcmbbt8e" path="res://assets/Sounds/menu_music.wav" id="10_6jr37"]
 [ext_resource type="AudioStream" uid="uid://b0p1hbk3d3ya4" path="res://assets/Sounds/game_music.mp3" id="11_laggi"]
 [ext_resource type="AudioStream" uid="uid://citifioiolf1u" path="res://assets/Sounds/Balloon_filled_02.mp3" id="11_xd8ep"]
 [ext_resource type="AudioStream" uid="uid://dx2jp1pnpdegw" path="res://assets/Sounds/Balloon_hit_03.mp3" id="12_kc218"]
@@ -23,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://vismw4h4uk1d" path="res://assets/Sounds/Balloon_die_04.mp3" id="16_wqa88"]
 [ext_resource type="AudioStream" uid="uid://dgpwu0awjya7v" path="res://assets/Sounds/Balloon_stretch_02.mp3" id="17_c2j5i"]
 [ext_resource type="AudioStream" uid="uid://cra1swm42014p" path="res://assets/Sounds/Balloon_stretch_03.mp3" id="18_4oeul"]
+[ext_resource type="AudioStream" uid="uid://dcy6cjml6uwb1" path="res://assets/Sounds/menu_music.mp3" id="19_0qb63"]
 [ext_resource type="AudioStream" uid="uid://d3a5cobgevucq" path="res://assets/Sounds/Balloon_stretch_04.mp3" id="19_6ylu4"]
 [ext_resource type="AudioStream" uid="uid://d3rqb6ln68412" path="res://assets/Sounds/Balloon_loose_air_04.mp3" id="22_uvu3u"]
 [ext_resource type="AudioStream" uid="uid://y53qf7bv4l0x" path="res://assets/Sounds/Button_hover.wav" id="25_nn3fb"]
@@ -126,7 +126,7 @@ max_polyphony = 8
 bus = &"SFX"
 
 [node name="s_menu_music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_6jr37")
+stream = ExtResource("19_0qb63")
 max_polyphony = 20
 bus = &"Music"
 
