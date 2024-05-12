@@ -26,14 +26,19 @@ signal money_changed
 signal wave_changed
 
 func _ready() -> void:
-	# end_screen = get_tree().get_root().get_child(-1).get_node("hud/EndScreen")
-	# wave_manager = get_tree().get_root().get_child(-1).get_node("WaveManager")
-	# wave_manager.wave_started.connect(_change_wave)
+	globGameManager.on_scene_changed.connect(_on_scene_changed)
 
-	# _change_wave(0)
-	_change_health(start_health)
-	_change_money(start_money)
-
+func _on_scene_changed():
+	if globGameManager.state != globGameManager.GameState.MENU:
+		await get_tree().tree_changed
+		end_screen = get_tree().get_root().get_child(-1).get_node("hud/EndScreen")
+		wave_manager = get_tree().get_root().get_child(-1).get_node("WaveManager")
+		wave_manager.wave_started.connect(_change_wave)
+		wave_manager.all_enemies_killed.connect(_on_final_enemy_killed)
+		wave_manager.enemy_killed.connect(_change_money)
+		_change_wave(0)
+		_change_health(start_health)
+		_change_money(start_money)
 
 
 func _change_health(amount: int) -> void:
@@ -60,9 +65,6 @@ func _change_wave(amount: int) -> void:
 	currentWave = amount
 	wave_changed.emit()
 
-	if currentWave >= waveCount:
-		end_screen._win_game()
-
 func _get_wave() -> int:
 	return currentWave
 
@@ -84,3 +86,6 @@ func _get_tower_cost(tower_id: int) -> int:
 			return tower_cost_5
 		_:
 			return -1
+
+func _on_final_enemy_killed():
+	end_screen._win_game()

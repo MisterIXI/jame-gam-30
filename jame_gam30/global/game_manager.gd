@@ -13,24 +13,29 @@ enum GameState {
 
 var state: GameState = GameState.MENU
 signal on_state_changed(oldstate: GameState, new_state:GameState)
+signal on_scene_changed()
 
 func switch_state(new_state: GameState) -> void:
 	var old_state = state
 	state = new_state
 	on_state_changed.emit(old_state, new_state)
 
+
 func _on_state_changed(old_state: GameState, new_state:GameState) -> void:
 	match new_state:
 		GameState.PLAYING:
 			if old_state != GameState.PAUSED:
 				get_tree().change_scene_to_packed(game_scene)
+				on_scene_changed.emit()
 			get_tree().paused = false
 		GameState.PAUSED:
 			get_tree().paused = true
 		GameState.MENU:
 			get_tree().change_scene_to_packed(menu_scene)
+			on_scene_changed.emit()
 			get_tree().paused = false
 		GameState.TUTORIAL:
 			if old_state != GameState.PAUSED:
 				get_tree().change_scene_to_packed(tutorial_scene)
+				on_scene_changed.emit()
 			get_tree().paused = false
