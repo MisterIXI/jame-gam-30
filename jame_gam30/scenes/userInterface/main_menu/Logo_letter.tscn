@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcj817d6hk3gv"]
+
+[ext_resource type="Texture2D" uid="uid://dcr02eje4dmrs" path="res://assets/Textures/Letter_B.png" id="1_hbn27"]
+[ext_resource type="Script" path="res://scenes/userInterface/main_menu/logo_letter.gd" id="2_fu5ib"]
+[ext_resource type="Script" path="res://scenes/userInterface/main_menu/Letter_BG.gd" id="3_yn8kg"]
+
+[sub_resource type="Animation" id="Animation_hmbww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-32, -32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7skwe"]
+resource_name = "hit"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0999, 0.1998, 0.2997, 0.4329, 0.5661, 0.7326, 0.8991, 1.0656, 1.2321, 8.5581, 9.99),
+"transitions": PackedFloat32Array(1, 3.13834, 1, 0.535887, 0.233258, 2.37841, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-32, -32), Vector2(-44, -127), Vector2(-60, -129), Vector2(-107, -205), Vector2(-133, -329), Vector2(-48, -354), Vector2(312, -458), Vector2(390, -372), Vector2(422, -12), Vector2(443, 701), Vector2(-37, 1174), Vector2(-32, -32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2331, 0.333, 0.4662, 0.5661, 0.6993, 0.8991, 1.0989, 1.2654, 8.5581, 9.324, 9.6903, 9.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.557004, 5.17748, 6.73103, 1.28969, 2.16808, 3.03802, 3.03802, 3.03802, -6.28319, 6.12785, -4.7438, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2664, 0.333, 0.4662, 0.5661, 0.666, 0.932399, 1.0656, 1.2654, 1.3986, 8.5581, 9.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.851377, 1), Vector2(0.602414, 0.800105), Vector2(0.602414, 0.677675), Vector2(0.602414, 0.677675), Vector2(0.602414, 0.677675), Vector2(0.403486, 0.677675), Vector2(0.403486, 0.677675), Vector2(0.403486, 0.677675), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_is7kc"]
+resource_name = "idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0323, 5.0949, 5.8275, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.342085, 5.97601, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4662, 5.0949, 10.0233),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-32, -32), Vector2(-32.0926, -33.8343), Vector2(-32.88, -34.441), Vector2(-32, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvvvb"]
+_data = {
+"RESET": SubResource("Animation_hmbww"),
+"hit": SubResource("Animation_7skwe"),
+"idle": SubResource("Animation_is7kc")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="B" type="TextureButton" parent="."]
+modulate = Color(1, 0.564706, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0001
+offset_bottom = 32.001
+button_mask = 7
+texture_normal = ExtResource("1_hbn27")
+texture_pressed = ExtResource("1_hbn27")
+script = ExtResource("2_fu5ib")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="B"]
+libraries = {
+"": SubResource("AnimationLibrary_yvvvb")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="B"]
+modulate = Color(0.821789, 0.821789, 0.821789, 1)
+show_behind_parent = true
+position = Vector2(32, 32)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_hbn27")
+script = ExtResource("3_yn8kg")
+
+[connection signal="mouse_entered" from="B" to="B" method="_on_mouse_entered"]
+[connection signal="pressed" from="B" to="B" method="on_button_pressed"]

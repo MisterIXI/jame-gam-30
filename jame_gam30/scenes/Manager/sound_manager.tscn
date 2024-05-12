@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dcynrohlw7vrw"]
+[gd_scene load_steps=36 format=3 uid="uid://dcynrohlw7vrw"]
 
 [ext_resource type="Script" path="res://scenes/Manager/sound_manager.gd" id="1_h0jjp"]
 [ext_resource type="AudioStream" uid="uid://bvgnvnmrk40sm" path="res://assets/Sounds/Balloon_hit_05_best.mp3" id="2_bmpvy"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dgpwu0awjya7v" path="res://assets/Sounds/Balloon_stretch_02.mp3" id="17_c2j5i"]
 [ext_resource type="AudioStream" uid="uid://cra1swm42014p" path="res://assets/Sounds/Balloon_stretch_03.mp3" id="18_4oeul"]
 [ext_resource type="AudioStream" uid="uid://d3a5cobgevucq" path="res://assets/Sounds/Balloon_stretch_04.mp3" id="19_6ylu4"]
+[ext_resource type="AudioStream" uid="uid://d3rqb6ln68412" path="res://assets/Sounds/Balloon_loose_air_04.mp3" id="22_uvu3u"]
 [ext_resource type="AudioStream" uid="uid://y53qf7bv4l0x" path="res://assets/Sounds/Button_hover.wav" id="25_nn3fb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oe5ir"]
@@ -34,6 +35,20 @@ stream_2/stream = ExtResource("4_1uf6c")
 stream_3/stream = ExtResource("5_oyobt")
 stream_4/stream = ExtResource("6_tx78u")
 stream_5/stream = ExtResource("7_lligk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tu2lk"]
+streams_count = 4
+stream_0/stream = ExtResource("13_5s3e7")
+stream_1/stream = ExtResource("14_cmio5")
+stream_2/stream = ExtResource("15_7wu0p")
+stream_3/stream = ExtResource("16_wqa88")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s2sof"]
+streams_count = 4
+stream_0/stream = ExtResource("16_b82r5")
+stream_1/stream = ExtResource("17_c2j5i")
+stream_2/stream = ExtResource("18_4oeul")
+stream_3/stream = ExtResource("19_6ylu4")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rprmi"]
 streams_count = 1
@@ -61,10 +76,11 @@ stream_2/stream = ExtResource("15_7wu0p")
 stream_3/stream = ExtResource("16_wqa88")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ld614"]
-streams_count = 3
+streams_count = 4
 stream_0/stream = ExtResource("13_c3vaq")
 stream_1/stream = ExtResource("14_gw37r")
 stream_2/stream = ExtResource("15_tdocd")
+stream_3/stream = ExtResource("22_uvu3u")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_axiq4"]
 streams_count = 4
@@ -101,6 +117,14 @@ stream = ExtResource("25_nn3fb")
 max_polyphony = 1000
 bus = &"SFX"
 
+[node name="s_hmenu_sound_pop" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_tu2lk")
+
+[node name="s_hmenu_sound_stretch" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_s2sof")
+max_polyphony = 8
+bus = &"SFX"
+
 [node name="s_menu_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_6jr37")
 max_polyphony = 20
@@ -133,6 +157,7 @@ bus = &"SFX"
 [node name="s_enemy_die" type="AudioStreamPlayer3D" parent="."]
 top_level = true
 stream = SubResource("AudioStreamRandomizer_halgg")
+max_distance = 1680.41
 max_polyphony = 20
 bus = &"SFX"
 
