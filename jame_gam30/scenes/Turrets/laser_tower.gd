@@ -33,7 +33,6 @@ func _physics_process(_delta):
 				laser_mesh.scale = Vector3(1,1,point.distance_to(ray.global_position))
 				laser_mesh.look_at(point, Vector3(0,0,1), true)
 				var area = ray.get_collider()
-				print(area)
 				if not area == null and area.is_in_group("Enemy"):
 					area.get_parent().take_damage(dmg_per_sec * _delta)
 		else:

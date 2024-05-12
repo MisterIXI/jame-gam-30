@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwlcbnpqkoas2"]
+
+[ext_resource type="Script" path="res://scenes/GameObjects/Bullets/bullet.gd" id="1_xtei4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wcg3"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bbrg7"]
+material = SubResource("StandardMaterial3D_1wcg3")
+
+[sub_resource type="Curve" id="Curve_7t3ga"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.981061, 0), -1.59432, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gn81"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_d1pqp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_y823k"]
+
+[sub_resource type="Curve" id="Curve_x5lim"]
+_data = [Vector2(0.0107143, 1), 0.0, 0.0, 0, 0, Vector2(0.996429, 0), -2.38095, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ckirr"]
+offsets = PackedFloat32Array(0, 0.662698, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.890196, 1, 1, 1, 0)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s1cnf"]
+radius = 0.294619
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q6r4j"]
+radius = 6.25
+
+[node name="Bullet" type="Node3D" node_paths=PackedStringArray("particles", "explosion_area")]
+script = ExtResource("1_xtei4")
+particles = NodePath("ExplosionParticles")
+explosion_area = NodePath("ExplosionArea")
+
+[node name="ExplosionParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_bbrg7")
+gravity = Vector3(0, -20, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_7t3ga")
+color = Color(0, 0, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.57, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7gn81")
+mesh = SubResource("SphereMesh_d1pqp")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="MeshInstance3D"]
+visible = false
+emitting = false
+mesh = SubResource("SphereMesh_y823k")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_x5lim")
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("Gradient_ckirr")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_s1cnf")
+
+[node name="ExplosionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
+shape = SubResource("SphereShape3D_q6r4j")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]

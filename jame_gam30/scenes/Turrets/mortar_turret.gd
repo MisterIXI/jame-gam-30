@@ -48,7 +48,7 @@ func _on_cd_timer_timeout():
 	if has_power and targeting.target:
 		# calc target in 2 seconds on path
 		var enemy = targeting.target as Enemy
-		var new_progress = enemy.progress + enemy.settings.speed * 2
+		var new_progress = enemy.progress + enemy.settings.speed * 2 * enemy.speed_mult
 		var target_position = enemy.parent_path.curve.sample_baked(new_progress) + enemy.parent_path.global_position
 		target_position += Vector3(randf()*3,0,randf()*3)
 		shoot_bomb(target_position, 2, 1)

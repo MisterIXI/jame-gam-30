@@ -29,6 +29,7 @@ func _on_area_entered(area: Area3D) -> void:
 	on_active_bodies_changed.emit()
 
 func _on_area_exited(area: Area3D) -> void:
+	print("exited", area)
 	if not power_relays and area.is_in_group("RelayTower"):
 		return
 	var body = get_body(area)
