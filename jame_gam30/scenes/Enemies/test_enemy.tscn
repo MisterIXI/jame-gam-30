@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_tbji5"]
 [ext_resource type="Resource" uid="uid://bqctbawyj273e" path="res://resources/default_enemy.tres" id="2_dra64"]
-[ext_resource type="ArrayMesh" uid="uid://cenqg5ed4nac" path="res://assets/Models/Dog.tres" id="3_j6dvx"]
+[ext_resource type="ArrayMesh" uid="uid://cry2h7358to7m" path="res://assets/Models/Dog.tres" id="3_j6dvx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47005"]
 radius = 0.358102

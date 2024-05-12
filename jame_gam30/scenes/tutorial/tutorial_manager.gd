@@ -18,10 +18,7 @@ var index : int = 0
     "[center]Move Jimmy around by using your right click[/center]",
 ]
 
-@export var objectiveScene: Array[PackedScene] = [
-    ResourceLoader.load("res://scenes/tutorial/scenes/objective0.tscn"),
-    ResourceLoader.load("res://scenes/tutorial/scenes/objective1.tscn"),
-]
+@export var objectiveScene: Array[PackedScene]
 
 var currentScene : Node
 

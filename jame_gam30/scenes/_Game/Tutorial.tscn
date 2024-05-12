@@ -104,7 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("17_j0cln")
-objectiveScene = Array[PackedScene]([ExtResource("18_b5mv6")])
+objectiveScene = Array[PackedScene]([ExtResource("18_b5mv6"), ExtResource("18_b5mv6")])
 
 [node name="Popup" type="Control" parent="tutorial_manager"]
 visible = false
@@ -186,6 +186,10 @@ layout_mode = 1
 [node name="ColorRect" parent="tutorial_manager/Popup" instance=ExtResource("21_2sxf1")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Objective" type="Control" parent="tutorial_manager"]
 visible = false
