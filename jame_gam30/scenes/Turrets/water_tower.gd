@@ -9,7 +9,7 @@ class_name WaterTower
 @export var cannon: Node3D
 @export var muzzle: Node3D
 @export var muzzle_center: Node3D
-@onready var signal_sprite : Node2D =$Signal_Visual_Component
+@onready var signal_sprite : Node3D =$Signal_Visual_Component
 var active
 var has_power: bool = false
 var signal_tweener: Tween = null

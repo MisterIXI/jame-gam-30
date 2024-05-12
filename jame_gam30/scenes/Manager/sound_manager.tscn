@@ -118,7 +118,7 @@ bus = &"SFX"
 
 [node name="s_hmenu_sound_pop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_tu2lk")
-volume_db = -5.333
+volume_db = -11.333
 bus = &"SFX"
 
 [node name="s_hmenu_sound_stretch" type="AudioStreamPlayer" parent="."]

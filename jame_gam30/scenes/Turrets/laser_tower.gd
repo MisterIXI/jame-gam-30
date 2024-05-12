@@ -8,7 +8,7 @@ class_name LaserTower
 @export var ray: RayCast3D
 @export var dmg_per_sec: float
 @export var laser_mesh: Node3D
-@onready var signal_sprite : Node2D =$Signal_Visual_Component
+@onready var signal_sprite : Node3D =$Signal_Visual_Component
 var active 
 var has_power: bool
 var signal_tweener: Tween

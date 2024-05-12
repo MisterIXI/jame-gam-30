@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node3D
 
 @onready var anim : AnimationPlayer =$AnimationPlayer
 @onready var sprite : Sprite3D = $Sprite3D

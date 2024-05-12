@@ -9,7 +9,7 @@ class_name MortarTurret
 @export var cannon_node: Node3D
 @export var tower_base: Node3D
 @export var trigger_node: Node3D
-@onready var signal_sprite : Node2D =$Signal_Visual_Component
+@onready var signal_sprite : Node3D =$Signal_Visual_Component
 var active 
 var has_power: bool
 var signal_tweener: Tween
