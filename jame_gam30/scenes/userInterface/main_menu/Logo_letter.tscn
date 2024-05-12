@@ -3,6 +3,45 @@
 [ext_resource type="Texture2D" uid="uid://dcr02eje4dmrs" path="res://assets/Textures/Letter_B.png" id="1_hbn27"]
 [ext_resource type="Script" path="res://scenes/userInterface/main_menu/logo_letter.gd" id="2_fu5ib"]
 
+[sub_resource type="Animation" id="Animation_hmbww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-32, -32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_7skwe"]
 resource_name = "hit"
 length = 10.0
@@ -57,45 +96,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_hmbww"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-32, -32)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 3
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_is7kc"]
 resource_name = "idle"
 length = 10.0
@@ -132,7 +132,9 @@ _data = {
 "idle": SubResource("Animation_is7kc")
 }
 
-[node name="B" type="TextureButton"]
+[node name="Node2D" type="Node2D"]
+
+[node name="B" type="TextureButton" parent="."]
 modulate = Color(1, 0.564706, 1, 1)
 custom_minimum_size = Vector2(64, 64)
 offset_left = -32.0
@@ -144,13 +146,11 @@ texture_normal = ExtResource("1_hbn27")
 texture_pressed = ExtResource("1_hbn27")
 script = ExtResource("2_fu5ib")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="B"]
 libraries = {
 "": SubResource("AnimationLibrary_yvvvb")
 }
 autoplay = "idle"
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="pressed" from="." to="." method="on_button_pressed"]
+[connection signal="mouse_entered" from="B" to="B" method="_on_mouse_entered"]
+[connection signal="pressed" from="B" to="B" method="on_button_pressed"]
