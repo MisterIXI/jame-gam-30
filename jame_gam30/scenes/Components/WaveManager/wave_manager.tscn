@@ -1,0 +1,15 @@
+[gd_scene load_steps=6 format=3 uid="uid://c66w4evwnc0oo"]
+
+[ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="1_s0ar8"]
+[ext_resource type="PackedScene" uid="uid://xti3qh48k8ow" path="res://scenes/Enemies/dog.tscn" id="2_shoia"]
+[ext_resource type="PackedScene" uid="uid://b5btbgtexdte6" path="res://scenes/Enemies/dackel.tscn" id="3_kdykb"]
+[ext_resource type="PackedScene" uid="uid://c1s54hx6dcpoh" path="res://scenes/Enemies/giraphe.tscn" id="4_ei4w4"]
+[ext_resource type="PackedScene" uid="uid://bvegchbiemxi0" path="res://scenes/Enemies/elephant.tscn" id="5_h11yc"]
+
+[node name="WaveManager" type="Node" node_paths=PackedStringArray("paths")]
+script = ExtResource("1_s0ar8")
+dog = ExtResource("2_shoia")
+dackel = ExtResource("3_kdykb")
+giraphe = ExtResource("4_ei4w4")
+elephant = ExtResource("5_h11yc")
+paths = [null]

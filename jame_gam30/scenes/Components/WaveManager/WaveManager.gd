@@ -5,7 +5,10 @@ var wave_start_time: float = 0
 var current_wave: int = 0
 var spawning_active: bool = false
 @export var start_at_wave: int = 0
-@export var test_enemy: PackedScene
+@export var dog: PackedScene
+@export var dackel: PackedScene
+@export var giraphe: PackedScene
+@export var elephant: PackedScene
 @export var paths: Array[Path3D]
 @export var spawning_fair: bool = false
 var next_spawn_id: int = 0
@@ -47,7 +50,10 @@ func _ready():
 func build_wave():
 	waves = [
 		WaveInfo.new([
-			SpawnInfo.new(1, 7, 50, test_enemy),
+			SpawnInfo.new(1, 7, 50, dog),
+			SpawnInfo.new(3, 5.5, 50, dackel),
+			SpawnInfo.new(4, 9.3, 50, giraphe),
+			SpawnInfo.new(6, 5.3, 50, elephant),
 			# SpawnInfo.new(2.5, 0.25, 5, test_enemy),
 			# SpawnInfo.new(5, 0.1, 50, test_enemy),
 			# SpawnInfo.new(5, 0.1, 5000, test_enemy),
