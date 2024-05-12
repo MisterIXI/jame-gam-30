@@ -21,6 +21,9 @@ var pathPoints : Array = []
 var path1found = false
 var path2found = false
 
+# Tower points
+var towerPoints : Array[Vector3]
+
 var character : CharacterBody3D = null
 func _ready() -> void:
 	character = get_node("boi")
@@ -116,3 +119,17 @@ func generate_random_green() -> Color:
 	var b = rng.randf_range(0.4, 0.5)
 	colorSeed += 1
 	return Color(r, g, b, 1.0)
+
+#ADD tower to array
+func append_tower(pos :Vector3):
+	towerPoints.append(pos)
+func validate_spawn_position(pos : Vector3):
+	if pos in pathPoints:
+		return false
+	if pos in towerPoints:
+		return false
+	if pos.x <= (-grid_size/2)-1 || pos.x >= (grid_size/2)+1:
+		return false
+	if pos.z <= (-grid_size/2)-1 ||pos.z >= (grid_size/2)+1:
+		return false
+	return true
