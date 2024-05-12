@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
 [ext_resource type="PackedScene" uid="uid://bqhmeb0t0nxj0" path="res://scenes/Turrets/mortar.tscn" id="3_808gb"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="3_rnm01"]
-[ext_resource type="Environment" path="res://resources/game_environment.tres" id="3_x3xrp"]
-[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="4_tep6n"]
+[ext_resource type="Environment" uid="uid://c2n1oukxt46pd" path="res://resources/game_environment.tres" id="3_x3xrp"]
+[ext_resource type="PackedScene" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="4_tep6n"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="6_8cp7c"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="6_sqh3a"]
 [ext_resource type="PackedScene" uid="uid://c2kohnu2yx86s" path="res://scenes/Components/Tower_Base/Tower_Base_03.tscn" id="6_xj7uk"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="10_1ybim"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="11_eh0w8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="14_qqbmp"]
-[ext_resource type="PackedScene" uid="uid://daugp24xlwj5d" path="res://scenes/Components/map/oob.tscn" id="16_004uy"]
+[ext_resource type="PackedScene" path="res://scenes/Components/map/oob.tscn" id="16_004uy"]
 [ext_resource type="Script" path="res://scenes/Components/WaveManager/WaveManager.gd" id="16_ekp82"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="17_b40he"]
 
@@ -50,9 +50,8 @@ size = 31.9
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ForeGround"]
 shape = SubResource("WorldBoundaryShape3D_2cxim")
 
-[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "pathFollow1")]
+[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
 script = ExtResource("6_8cp7c")
-wave_manager = NodePath("../WaveManager")
 grid_size = 40
 placeAmount = 8
 soundAmount = 8
