@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dcynrohlw7vrw"]
+[gd_scene load_steps=34 format=3 uid="uid://dcynrohlw7vrw"]
 
 [ext_resource type="Script" path="res://scenes/Manager/sound_manager.gd" id="1_h0jjp"]
 [ext_resource type="AudioStream" uid="uid://bvgnvnmrk40sm" path="res://assets/Sounds/Balloon_hit_05_best.mp3" id="2_bmpvy"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://b68svovqabo78" path="res://assets/Sounds/Balloon_scream.mp3" id="8_orjfk"]
 [ext_resource type="AudioStream" uid="uid://gprwbhc1wx5" path="res://assets/Sounds/Balloon_filled_01.mp3" id="9_66jrv"]
 [ext_resource type="AudioStream" uid="uid://b0p1hbk3d3ya4" path="res://assets/Sounds/game_music.mp3" id="11_laggi"]
-[ext_resource type="AudioStream" uid="uid://citifioiolf1u" path="res://assets/Sounds/Balloon_filled_02.mp3" id="11_xd8ep"]
 [ext_resource type="AudioStream" uid="uid://dx2jp1pnpdegw" path="res://assets/Sounds/Balloon_hit_03.mp3" id="12_kc218"]
 [ext_resource type="AudioStream" uid="uid://djh2r02k38u6u" path="res://assets/Sounds/Balloon_die_01.mp3" id="13_5s3e7"]
 [ext_resource type="AudioStream" uid="uid://ln17ukkaapf0" path="res://assets/Sounds/Balloon_loose_air_01.mp3" id="13_c3vaq"]
@@ -52,10 +51,6 @@ stream_3/stream = ExtResource("19_6ylu4")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rprmi"]
 streams_count = 1
 stream_0/stream = ExtResource("9_66jrv")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mx15l"]
-streams_count = 1
-stream_0/stream = ExtResource("11_xd8ep")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ousuh"]
 streams_count = 7
@@ -147,7 +142,9 @@ bus = &"SFX"
 
 [node name="s_player_stop" type="AudioStreamPlayer3D" parent="."]
 top_level = true
-stream = SubResource("AudioStreamRandomizer_mx15l")
+stream = ExtResource("25_nn3fb")
+attenuation_model = 1
+pitch_scale = 5.31
 max_polyphony = 20
 bus = &"SFX"
 

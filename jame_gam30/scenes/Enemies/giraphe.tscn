@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://c1s54hx6dcpoh"]
+[gd_scene load_steps=13 format=4 uid="uid://dhl62rls0qa08"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_0c0u0"]
-[ext_resource type="Resource" uid="uid://dwod6h11ec1cy" path="res://resources/giraphe_enemy.tres" id="2_le0ex"]
+[ext_resource type="Resource" path="res://resources/giraphe_enemy.tres" id="2_le0ex"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p2h3"]
 albedo_color = Color(0, 0, 1, 1)

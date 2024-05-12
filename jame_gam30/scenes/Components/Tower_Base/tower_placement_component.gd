@@ -56,6 +56,7 @@ func on_placeholder_change(type :int):
 		is_placeholding = true
 		timer.start()
 		print("Placeholder: Tower : Type -", type)
+		SoundManager.Play_Sound(SoundManager.soundType.hover,Vector3.ZERO)
 	else:
 		print ("Error cant build that expensive tower")
 		#Sound menu_error
@@ -88,6 +89,7 @@ func on_mouse_clicked_pos(pos : Vector3):
 					new_tower.global_position = Vector3(round(pos.x), 0, round(pos.z)) #? global_position ?
 					_map.append_tower(new_tower.global_position)
 					print("Placeholder: Tower_Position: ",new_tower.global_position)
+					SoundManager.Play_Sound(SoundManager.soundType.hover,Vector3.ZERO)
 					place_tower.emit()
 				else: 
 					print("Placement_Controller: Error- Not enough Money")

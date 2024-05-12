@@ -42,6 +42,7 @@ func _process(delta):
 		return
 	if global_position.distance_to(target_position) <= 0.05:
 		state_machine.travel("Idle")
+		SoundManager.Play_Sound(SoundManager.soundType.player_stop,global_position)
 		global_position = target_position
 		target_position =Vector3.ZERO
 		isMoving = false
@@ -67,6 +68,7 @@ func on_mouse_right_cllicked(pos : Vector3):
 		mouse_marker.visible = true
 		mouse_marker.global_position = target_position
 		state_machine.travel("Walking")
+		SoundManager.Play_Sound(SoundManager.soundType.hover,Vector3.ZERO)
 		#ANIMATE PLAYER WALKING
 		handle_rotation(target_position)
 	else:
