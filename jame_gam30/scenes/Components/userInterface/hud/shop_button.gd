@@ -44,3 +44,4 @@ func _on_pressed() -> void:
 func _on_tower_cost_changed() -> void:
 	cost = _resource_manager._get_tower_cost(index)
 	costText.text = str(cost)
+	_on_money_changed()
