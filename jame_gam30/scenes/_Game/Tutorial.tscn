@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnvfsvkwpwvsl"]
+[gd_scene load_steps=27 format=3 uid="uid://dnvfsvkwpwvsl"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
@@ -16,6 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="14_ketq8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="15_diq7n"]
 [ext_resource type="PackedScene" uid="uid://daugp24xlwj5d" path="res://scenes/Components/map/oob.tscn" id="16_7yceh"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial_manager.gd" id="17_j0cln"]
+[ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="17_k3pam"]
+[ext_resource type="PackedScene" uid="uid://w4fibthhrrkl" path="res://scenes/tutorial/scenes/objective0.tscn" id="18_b5mv6"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="18_q4jm6"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="19_l4fpw"]
+[ext_resource type="PackedScene" uid="uid://chy6t750qk74s" path="res://scenes/Components/userInterface/pause_on_visible.tscn" id="20_p2gbf"]
+[ext_resource type="StyleBox" uid="uid://kn72xqrp3msq" path="res://resources/Themes/PanelRed.tres" id="20_u0afv"]
+[ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="21_2sxf1"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r078r"]
 
@@ -86,3 +94,135 @@ curve = SubResource("Curve3D_mn7g1")
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
 transform = Transform3D(0.999497, 0, 0.0313323, 0, 0.999972, 0, -0.0313322, 0, 0.9995, -0.925, 0, 11.165)
 loop = false
+
+[node name="tutorial_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("17_j0cln")
+objectiveScene = Array[PackedScene]([ExtResource("18_b5mv6")])
+
+[node name="Popup" type="Control" parent="tutorial_manager"]
+visible = false
+custom_minimum_size = Vector2(29.475, 28.38)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="tutorial_manager/Popup"]
+custom_minimum_size = Vector2(2.105, 9.835)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -202.0
+offset_right = 294.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_k3pam")
+
+[node name="PopupText" type="RichTextLabel" parent="tutorial_manager/Popup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -182.0
+offset_right = 273.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_k3pam")
+bbcode_enabled = true
+text = "[center]Welcome back Jimmy,
+todays bootcamp will teach you how to defeat those pesky balloon animals![/center]"
+fit_content = true
+
+[node name="PopupButton" type="Button" parent="tutorial_manager/Popup"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = 1.5
+offset_right = 172.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("17_k3pam")
+text = "Understood"
+
+[node name="Buttonhover" parent="tutorial_manager/Popup/PopupButton" instance=ExtResource("18_q4jm6")]
+layout_mode = 1
+
+[node name="SwapContainer" parent="tutorial_manager/Popup" node_paths=PackedStringArray("targetContainer", "button") instance=ExtResource("19_l4fpw")]
+layout_mode = 1
+offset_top = -23.0
+offset_bottom = -23.0
+targetContainer = NodePath("../../Objective")
+button = NodePath("../PopupButton")
+
+[node name="PauseOnVisible" parent="tutorial_manager/Popup" instance=ExtResource("20_p2gbf")]
+layout_mode = 1
+
+[node name="ColorRect" parent="tutorial_manager/Popup" instance=ExtResource("21_2sxf1")]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="Objective" type="Control" parent="tutorial_manager"]
+visible = false
+custom_minimum_size = Vector2(29.475, 28.38)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -451.0
+offset_top = 22.0
+offset_right = -15.0
+offset_bottom = 130.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="tutorial_manager/Objective"]
+custom_minimum_size = Vector2(2.105, 9.835)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_k3pam")
+theme_override_styles/panel = ExtResource("20_u0afv")
+
+[node name="ObjectiveText" type="RichTextLabel" parent="tutorial_manager/Objective"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -19.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_k3pam")
+bbcode_enabled = true
+text = "[center]Move Jimmy around by using your rightclick[/center]"
+fit_content = true

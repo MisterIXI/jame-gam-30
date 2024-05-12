@@ -3,21 +3,7 @@
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_5asf0"]
 [ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="2_ff5jx"]
 [ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="3_1iguq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b5xe"]
-bg_color = Color(0.951388, 0.401872, 0.336173, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.546299, 0.12535, 0.0944519, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.147672, 0.147672, 0.147672, 0.6)
-shadow_size = 3
-shadow_offset = Vector2(3, 3)
+[ext_resource type="StyleBox" uid="uid://kn72xqrp3msq" path="res://resources/Themes/PanelRed.tres" id="3_eawkv"]
 
 [node name="Credits" type="Control"]
 visible = false
@@ -71,7 +57,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 74.99)
 layout_mode = 2
 theme = ExtResource("1_5asf0")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+theme_override_styles/panel = ExtResource("3_eawkv")
 
 [node name="philipp" type="RichTextLabel" parent="Panel/VBoxContainer/phil"]
 layout_mode = 1
@@ -113,7 +99,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 74.99)
 layout_mode = 2
 theme = ExtResource("1_5asf0")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+theme_override_styles/panel = ExtResource("3_eawkv")
 
 [node name="robert" type="RichTextLabel" parent="Panel/VBoxContainer/robi"]
 layout_mode = 1
@@ -155,7 +141,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 74.99)
 layout_mode = 2
 theme = ExtResource("1_5asf0")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+theme_override_styles/panel = ExtResource("3_eawkv")
 
 [node name="yannik" type="RichTextLabel" parent="Panel/VBoxContainer/yani"]
 layout_mode = 1
@@ -197,7 +183,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 74.99)
 layout_mode = 2
 theme = ExtResource("1_5asf0")
-theme_override_styles/panel = SubResource("StyleBoxFlat_1b5xe")
+theme_override_styles/panel = ExtResource("3_eawkv")
 
 [node name="oliver" type="RichTextLabel" parent="Panel/VBoxContainer/oli"]
 layout_mode = 1
