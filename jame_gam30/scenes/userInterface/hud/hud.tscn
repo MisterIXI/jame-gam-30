@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqyyrrnwkml13"]
+[gd_scene load_steps=11 format=3 uid="uid://cqyyrrnwkml13"]
 
+[ext_resource type="Script" path="res://scenes/userInterface/hud/hud.gd" id="1_1xqkc"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="1_djvqa"]
 [ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_p5bbm"]
 [ext_resource type="PackedScene" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_c6u8m"]
@@ -19,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_1xqkc")
 
 [node name="Menu" type="Control" parent="."]
 clip_contents = true

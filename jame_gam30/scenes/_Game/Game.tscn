@@ -35,7 +35,8 @@ transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0
 environment = ExtResource("3_x3xrp")
 size = 14.8
 
-[node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("camera", "foreground") instance=ExtResource("3_rnm01")]
+[node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("hud", "camera", "foreground") instance=ExtResource("3_rnm01")]
+hud = NodePath("../hud")
 camera = NodePath("../Camera3D")
 towers = Array[PackedScene]([ExtResource("4_tep6n"), ExtResource("5_e1juu"), ExtResource("6_xj7uk"), ExtResource("7_ti55p"), ExtResource("7_ti55p")])
 tower_placement_holders = Array[PackedScene]([ExtResource("8_n5jxw"), ExtResource("9_6s53o"), ExtResource("10_1ybim"), ExtResource("11_eh0w8"), ExtResource("11_eh0w8")])

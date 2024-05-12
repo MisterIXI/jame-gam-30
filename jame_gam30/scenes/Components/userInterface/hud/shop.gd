@@ -23,7 +23,7 @@ func _ready() -> void:
 
 	button = get_node("button")
 	container = get_node("container")
-	panel = get_node("container/panel")
+	panel = get_node("container/Panel")
 
 	button.pressed.connect(_on_button_pressed)
 

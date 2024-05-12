@@ -1,6 +1,7 @@
 extends Node
 class_name Tower_Placement_Component
-
+@export_group("Object for References")
+@export var hud : Control
 @export var camera : Camera3D
 @export var towers :Array[PackedScene]
 @export var tower_placement_holders : Array[PackedScene]
@@ -15,7 +16,7 @@ var current_placeholder_pos : Vector3
 var new_placeHolder
 var is_placeholding : bool  = false
 var isBuildable :bool = false
-var mouse_interacting_with_ui = false
+
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	camera.mouse_clicked_on.connect(on_mouse_clicked_pos)
@@ -62,7 +63,7 @@ func on_placeholder_change(type :int):
 
 ## clear Placeholder and Spawn Tower
 func on_mouse_clicked_pos(pos : Vector3):
-	if !mouse_interacting_with_ui:
+	if !hud._is_interacting_with_ui():
 	#if a current placeholder is set && buildable position
 		if new_placeHolder != null:
 			if isBuildable:
@@ -87,7 +88,7 @@ func on_mouse_clicked_pos(pos : Vector3):
 	else:
 		print ("mouse interacts with UI")
 func on_mouse_position(pos : Vector3):
-	if !mouse_interacting_with_ui:
+	if !hud._is_interacting_with_ui():
 		current_placeholder_pos = Vector3(round(pos.x), 0.5, round(pos.z))
 		validPosition(Vector3(current_placeholder_pos.x,0,current_placeholder_pos.z))
 
