@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://bsitwwx57rnls"]
+[gd_scene load_steps=20 format=4 uid="uid://c3atfmmpl6usa"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/laser_tower.gd" id="1_w7sxv"]
 [ext_resource type="Material" uid="uid://c3tc1gbc2uhun" path="res://resources/Material/M_waterlaser.tres" id="2_gue33"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="3_mgebc"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_4u6ph"]
+[ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="5_1p5k3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nuf4x"]
 
@@ -211,6 +212,9 @@ script = ExtResource("4_4u6ph")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DistanceTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CylinderShape3D_cswyt")
+
+[node name="Signal_Visual_Component" parent="." instance=ExtResource("5_1p5k3")]
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 1.6, 0)
 
 [connection signal="active_changed" from="TowerTargeting" to="." method="_on_active_changed"]
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
