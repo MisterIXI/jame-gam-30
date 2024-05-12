@@ -29,7 +29,7 @@ func shoot_raycast(pos, emittable: Callable):
 	var to = from + camera.project_ray_normal(pos) * RAY_LENGTH
 	await get_tree().physics_frame
 	var space_state := get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
+	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to, 1))
 	if result:
 		_mouse_position = result.position
 		emittable.call(result.position)
