@@ -63,7 +63,7 @@ light_energy = 0.385
 visible = false
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-camera = NodePath("")
+camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
 player_speed = 2.0
 
