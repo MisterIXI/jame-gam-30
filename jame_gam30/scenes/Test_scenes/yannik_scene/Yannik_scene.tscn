@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clyaj0i4seejo"]
+[gd_scene load_steps=15 format=3 uid="uid://clyaj0i4seejo"]
 
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_scene.gd" id="1_kpogu"]
 [ext_resource type="PackedScene" uid="uid://0rjbyjvmfyc3" path="res://scenes/Enemies/test_enemy.tscn" id="2_ue6dk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/yannik_test.gd" id="3_uipiq"]
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="5_waa5j"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="6_soxc1"]
+[ext_resource type="PackedScene" uid="uid://bqhmeb0t0nxj0" path="res://scenes/Turrets/mortar.tscn" id="7_784np"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wx5te"]
 
@@ -26,6 +27,10 @@ point_count = 7
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sjbn7"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_bindg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cjhbv"]
+
 [node name="YannikScene" type="Node3D"]
 script = ExtResource("1_kpogu")
 test_enemy = ExtResource("2_ue6dk")
@@ -34,6 +39,8 @@ test_enemy = ExtResource("2_ue6dk")
 transform = Transform3D(0.0360083, 0.790471, -0.611441, -0.443718, 0.560867, 0.698958, 0.895443, 0.246139, 0.370942, -7.38388, 5.2075, 1.01618)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_wx5te")
@@ -55,21 +62,21 @@ paths = [NodePath("../Path3D2")]
 spawning_fair = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.99945, -0.0289842, 0.0160965, 0, 0.485507, 0.874233, -0.0331539, -0.873752, 0.48524, 0.816711, 45.4173, 36.3238)
+transform = Transform3D(0.783717, -0.513688, 0.34916, 0, 0.562147, 0.827037, -0.621118, -0.648163, 0.440564, 10.507, 20.8998, 14.5969)
 size = 17.744
 
 [node name="hud" parent="." instance=ExtResource("5_waa5j")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer") instance=ExtResource("6_soxc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7204, -9.53674e-07, 14.1523)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.7094, -9.53674e-07, 72.0363)
 targeting = NodePath("TowerTargeting")
 tower_base = NodePath("TowerHead")
 shot_cd_timer = NodePath("Shot_Timeout")
 bullet_speed = 40.0
 
 [node name="OOB" type="Area3D" parent="."]
-collision_layer = 31
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OOB"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 50, 0, 0)
@@ -86,3 +93,27 @@ shape = SubResource("WorldBoundaryShape3D_sjbn7")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="OOB"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50)
 shape = SubResource("WorldBoundaryShape3D_sjbn7")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="OOB"]
+shape = SubResource("WorldBoundaryShape3D_wx5te")
+
+[node name="EnemyDummy1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9333, 0, 2.0453)
+visible = false
+
+[node name="Area3D" type="Area3D" parent="EnemyDummy1" groups=["Enemy"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDummy1/Area3D"]
+shape = SubResource("SphereShape3D_bindg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyDummy1"]
+mesh = SubResource("SphereMesh_cjhbv")
+
+[node name="Mortar_Turret" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "test_target", "cannon_node") instance=ExtResource("7_784np")]
+targeting = NodePath("TowerTargeting")
+tower_base = NodePath("moerser/Base2/Shooter")
+shot_cd_timer = NodePath("Timer")
+test_target = NodePath("Target_Point")
+cannon_node = NodePath("moerser/Base2/Shooter/ShotDirection")

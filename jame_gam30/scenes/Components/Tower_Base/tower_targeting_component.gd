@@ -12,8 +12,16 @@ func on_active_changed(new_active):
 	active_changed.emit(new_active)
 
 func on_active_bodies_changed():
-	target_furthest()
+	# target_furthest()
+	target_random()
 	print("Targetting: ", target)
+
+func target_random():
+	if distance_trigger.active_bodies.size() == 0:
+		target = null
+		return
+	var random_index = randi() % distance_trigger.active_bodies.size()
+	target = distance_trigger.active_bodies[random_index]
 
 func target_furthest():
 	var furthest_distance = 0.0
@@ -35,5 +43,10 @@ func calculate_lead_aim(from: Vector3, bullet_speed: float, iterations: int = 1)
 		if target_progress > target.parent_path.curve.get_baked_length():
 			target_progress = target.parent_path.curve.get_baked_length()
 		target_position = target.parent_path.curve.sample_baked(target_progress) + target.parent_path.global_position
-	t_cl.global_position = target_position
+	# t_cl.global_position = target_position
+	return target_position
+
+func calculate_parabola_aim(from: Vector3, upwards_angle: float, iterations: int = 1) -> Vector3:
+	var target_position = target.global_position
+	
 	return target_position

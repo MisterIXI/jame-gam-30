@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7dqtuhl043e5"]
+
+[ext_resource type="Script" path="res://scenes/Test_scenes/yannik_scene/Bomb.gd" id="1_h6k14"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_r7cwc"]
+
+[sub_resource type="Curve" id="Curve_xvpvg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.981061, 0), -1.59432, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_jsuyh"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ctevp"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_21i6s"]
+radius = 6.25
+
+[node name="Bomb" type="Node3D" node_paths=PackedStringArray("explosion_particles", "explosion_area")]
+script = ExtResource("1_h6k14")
+explosion_particles = NodePath("ExplosionParticles")
+explosion_area = NodePath("ExplosionArea")
+
+[node name="ExplosionParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_r7cwc")
+gravity = Vector3(0, -20, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_xvpvg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jsuyh")
+
+[node name="BombCollisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BombCollisionArea"]
+shape = SubResource("SphereShape3D_ctevp")
+
+[node name="ExplosionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
+shape = SubResource("SphereShape3D_21i6s")
+
+[connection signal="area_entered" from="BombCollisionArea" to="." method="_on_area_entered"]
