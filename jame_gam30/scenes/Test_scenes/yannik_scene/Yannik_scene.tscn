@@ -64,14 +64,10 @@ spawning_fair = true
 transform = Transform3D(0.815152, -0.413472, 0.405669, 0, 0.700339, 0.713811, -0.579247, -0.581864, 0.570883, 13.2127, 14.6829, 17.5949)
 size = 17.744
 
-[node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon", "muzzle", "muzzle_center") instance=ExtResource("6_soxc1")]
+[node name="Tower_Base" parent="." node_paths=PackedStringArray("targeting", "shot_cd_timer") instance=ExtResource("6_soxc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4523, 0, 2.0691)
 targeting = NodePath("TowerTargeting")
-tower_base = NodePath("Base1/Turntable1")
 shot_cd_timer = NodePath("Shot_Timeout")
-cannon = NodePath("Base1/Turntable1/Cannon")
-muzzle = NodePath("Base1/Turntable1/Cannon/Muzzle")
-muzzle_center = NodePath("Base1/Turntable1/Cannon/MuzzleCenter")
 
 [node name="OOB" type="Area3D" parent="."]
 collision_mask = 0
