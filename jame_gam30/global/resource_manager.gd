@@ -26,11 +26,11 @@ signal money_changed
 signal wave_changed
 
 func _ready() -> void:
-	end_screen = get_tree().get_root().get_child(-1).get_node("hud/EndScreen")
-	wave_manager = get_tree().get_root().get_child(-1).get_node("WaveManager")
-	wave_manager.wave_started.connect(_change_wave)
+	# end_screen = get_tree().get_root().get_child(-1).get_node("hud/EndScreen")
+	# wave_manager = get_tree().get_root().get_child(-1).get_node("WaveManager")
+	# wave_manager.wave_started.connect(_change_wave)
 
-	_change_wave(0)
+	# _change_wave(0)
 	_change_health(start_health)
 	_change_money(start_money)
 
