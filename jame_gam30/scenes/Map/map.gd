@@ -136,3 +136,9 @@ func validate_spawn_position(pos : Vector3):
 	if pos.z <= (-grid_size/2)-1 ||pos.z >= (grid_size/2)+1:
 		return false
 	return true
+func validate_player_map_bounds(pos : Vector3):
+	if pos.x <= (-grid_size/2)-1 || pos.x >= (grid_size/2)+1:
+		return false
+	if pos.z <= (-grid_size/2)-1 ||pos.z >= (grid_size/2)+1:
+		return false
+	return true
