@@ -24,10 +24,10 @@
 [sub_resource type="Curve3D" id="Curve3D_ygko2"]
 bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, -8, 0, 0, 0, 0, 0, 0, 6, -1, -6, 0, 0, 0, 0, 0, 0, 2.5861, 0.133314, -1.81412, 0, 0, 0, 0, 0, 0, -3.8248, 0, 0.66216, 0, 0, 0, 0, 0, 0, -6.5067, 0, -3.75113, 0, 0, 0, 0, 0, 0, -8.4984, -1.90735e-06, -7.2047, 0, 0, 0, 0, 0, 0, -2.2383, -3.8147e-06, -8.0714),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, -8, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, -5, 0, 5, 0, 0, 0, 0, 0, 0, -10, 0, 5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
-point_count = 7
+point_count = 6
 
 [node name="Game" type="Node"]
 
@@ -43,7 +43,7 @@ foreground = NodePath("../ForeGround")
 [node name="Camera3D" parent="." instance=ExtResource("2_7y48r")]
 transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.9219, 21.3262, 27.5877)
 environment = ExtResource("3_x3xrp")
-size = 14.8
+size = 31.9
 
 [node name="ForeGround" type="StaticBody3D" parent="."]
 
@@ -53,9 +53,9 @@ shape = SubResource("WorldBoundaryShape3D_2cxim")
 [node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "pathFollow1")]
 script = ExtResource("6_8cp7c")
 wave_manager = NodePath("../WaveManager")
-grid_size = 19
-placeAmount = 4
-soundAmount = 4
+grid_size = 40
+placeAmount = 8
+soundAmount = 8
 colorSeed = 69
 pathColor = Color(0.162066, 0.162066, 0.162066, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
@@ -87,7 +87,7 @@ visible = false
 curve = SubResource("Curve3D_ygko2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.894419, 0.182569, -0.408246, 0, 0.912846, 0.408246, 0.447209, 0.365138, -0.816492, 5, 0, -8)
+transform = Transform3D(-0.99999, 0, -8.74222e-08, 0, 0.999972, 0, 8.74219e-08, 0, -0.999993, 5, 0, -8)
 loop = false
 
 [node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("paths")]
