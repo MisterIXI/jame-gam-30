@@ -1,3 +1,4 @@
+class_name Shop
 extends Control
 
 var button_pos = [120, 15]
@@ -11,7 +12,10 @@ var move_down = false
 
 var img_up : CompressedTexture2D
 var img_down : CompressedTexture2D
- 
+
+var isInteractingPanel = false
+var isInteractingButton = false
+var panel : Panel
 
 func _ready() -> void:
 	img_up = ResourceLoader.load("res://assets/userInterface/icons/chevron-up-solid.svg")
@@ -19,8 +23,14 @@ func _ready() -> void:
 
 	button = get_node("button")
 	container = get_node("container")
+	panel = get_node("container/panel")
 
 	button.pressed.connect(_on_button_pressed)
+
+	button.mouse_entered.connect(_on_entered_button)
+	button.mouse_exited.connect(_on_exited_button)
+	panel.mouse_entered.connect(_on_entered_panel)
+	panel.mouse_exited.connect(_on_exited_panel)
 
 
 
@@ -54,4 +64,23 @@ func _process(delta: float) -> void:
 		else:
 			move_down = false
 			move_up = false
-			
+
+
+func _on_entered_button() -> void:
+	isInteractingButton = true
+
+
+func _on_exited_button() -> void:
+	isInteractingButton = false
+
+func _on_entered_panel() -> void:
+	isInteractingPanel = true
+
+func _on_exited_panel() -> void:
+	isInteractingPanel = false
+
+func _is_interacting_with_shop() -> bool:
+	if isInteractingPanel or isInteractingButton:
+		return true
+
+	return false
