@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bqhmeb0t0nxj0"]
+[gd_scene load_steps=19 format=4 uid="uid://bqhmeb0t0nxj0"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/mortar_turret.gd" id="1_bl1q3"]
 [ext_resource type="PackedScene" uid="uid://c7dqtuhl043e5" path="res://scenes/Projectiles/bomb.tscn" id="2_supt4"]
@@ -39,6 +39,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ucnum")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0xi2"]
+albedo_color = Color(0.498039, 0.498039, 0.498039, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v13h8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sejsb"]
@@ -70,6 +73,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sejsb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sgqp"]
+albedo_color = Color(0.498039, 0.498039, 0.498039, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gs2c"]
 
@@ -107,15 +113,18 @@ shadow_mesh = SubResource("ArrayMesh_0d8wk")
 height = 6.31889
 radius = 40.7299
 
-[node name="Mortar_Turret" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon_node")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_skye1"]
+
+[node name="Mortar_Turret" type="StaticBody3D" node_paths=PackedStringArray("targeting", "shot_cd_timer", "cannon_node", "tower_base", "trigger_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9051, 0, -23.7147)
 script = ExtResource("1_bl1q3")
 targeting = NodePath("TowerTargeting")
-tower_base = NodePath("moerser/Base2/Shooter")
 shot_cd_timer = NodePath("Timer")
 bullet = ExtResource("2_supt4")
 bullet_speed = 5.0
 cannon_node = NodePath("moerser/Base2/Shooter/ShotDirection")
+tower_base = NodePath("moerser/Base2/Shooter")
+trigger_node = NodePath("moerser/Base2/Shooter/Trigger")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.561633, 0)
@@ -131,6 +140,7 @@ skeleton = NodePath("")
 
 [node name="Shooter" type="MeshInstance3D" parent="moerser/Base2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219175, 0)
+material_overlay = SubResource("StandardMaterial3D_y0xi2")
 mesh = SubResource("ArrayMesh_xjjvb")
 skeleton = NodePath("")
 
@@ -139,6 +149,7 @@ transform = Transform3D(1, 0, 0, 0, 0.397484, 0.917609, 0, -0.917609, 0.397484, 
 
 [node name="Trigger" type="MeshInstance3D" parent="moerser/Base2/Shooter"]
 transform = Transform3D(0, -1.49012e-08, -1, -0.405928, 0.913905, -1.49012e-08, 0.913905, 0.405928, 0, 0, 1.87497, -0.312612)
+material_overlay = SubResource("StandardMaterial3D_7sgqp")
 mesh = SubResource("ArrayMesh_mh5bb")
 skeleton = NodePath("")
 
@@ -157,6 +168,14 @@ script = ExtResource("4_fib2l")
 distance_trigger = NodePath("../DistanceTrigger")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="ActivationArea" type="Area3D" parent="." groups=["Tower"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_skye1")
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]

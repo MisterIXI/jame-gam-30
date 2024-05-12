@@ -1,9 +1,13 @@
-[gd_scene load_steps=16 format=4 uid="uid://c8ldnghlk8r5c"]
+[gd_scene load_steps=20 format=4 uid="uid://c8ldnghlk8r5c"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/blunt_shooter.gd" id="1_e3k04"]
 [ext_resource type="PackedScene" uid="uid://bbnn6theu8v4x" path="res://scenes/Projectiles/bullet.tscn" id="2_vdym3"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_e5sjo"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="5_ib0cy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y788x"]
+blend_mode = 2
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lun4b"]
 
@@ -37,6 +41,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nua6d")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mp6cf"]
+albedo_color = Color(0.498039, 0.498039, 0.498039, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gaw72"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nwa37"]
@@ -68,6 +75,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nwa37")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn7wf"]
+albedo_color = Color(0.498039, 0.498039, 0.498039, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nn80r"]
 
@@ -105,7 +115,9 @@ shadow_mesh = SubResource("ArrayMesh_67jh7")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_davcb"]
 height = 3.97007
-radius = 44.4369
+radius = 8.26857
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kfexp"]
 
 [node name="Tower_Base" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon", "muzzle", "muzzle_center")]
 collision_layer = 0
@@ -125,15 +137,18 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="Base1" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1.16177, 0, 0, 0, 1, 0, 0, 0, 1.16177, 0, 0, 0)
+material_overlay = SubResource("StandardMaterial3D_y788x")
 mesh = SubResource("ArrayMesh_tyau6")
 skeleton = NodePath("")
 
 [node name="Turntable1" type="MeshInstance3D" parent="Node3D/Base1"]
+material_overlay = SubResource("StandardMaterial3D_mp6cf")
 mesh = SubResource("ArrayMesh_3yh03")
 skeleton = NodePath("")
 
 [node name="Cannon" type="MeshInstance3D" parent="Node3D/Base1/Turntable1"]
-transform = Transform3D(-0.158408, 0, -2.87509e-08, 0, 0.0634008, 0, 2.3919e-08, 0, -0.190408, 0, 2.01544, 0)
+transform = Transform3D(-0.158408, 4.73095e-09, 8.67273e-09, 0, 0.0330324, -0.162523, -1.38485e-08, -0.0541158, -0.0992044, 0, 2.01544, 0)
+material_overlay = SubResource("StandardMaterial3D_fn7wf")
 mesh = SubResource("ArrayMesh_sque3")
 skeleton = NodePath("")
 
@@ -163,6 +178,14 @@ distance_trigger = NodePath("../DistanceTrigger")
 
 [node name="Shot_Timeout" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="ActivationArea" type="Area3D" parent="." groups=["Tower"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_kfexp")
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]
