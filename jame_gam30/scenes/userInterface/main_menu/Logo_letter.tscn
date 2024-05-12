@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcj817d6hk3gv"]
+[gd_scene load_steps=8 format=3 uid="uid://bcj817d6hk3gv"]
 
 [ext_resource type="Texture2D" uid="uid://dcr02eje4dmrs" path="res://assets/Textures/Letter_B.png" id="1_hbn27"]
 [ext_resource type="Script" path="res://scenes/userInterface/main_menu/logo_letter.gd" id="2_fu5ib"]
+[ext_resource type="Script" path="res://scenes/userInterface/main_menu/Letter_BG.gd" id="3_yn8kg"]
 
 [sub_resource type="Animation" id="Animation_hmbww"]
 length = 0.001
@@ -151,6 +152,11 @@ libraries = {
 "": SubResource("AnimationLibrary_yvvvb")
 }
 autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="B"]
+z_index = -1
+position = Vector2(35, 35)
+script = ExtResource("3_yn8kg")
 
 [connection signal="mouse_entered" from="B" to="B" method="_on_mouse_entered"]
 [connection signal="pressed" from="B" to="B" method="on_button_pressed"]
