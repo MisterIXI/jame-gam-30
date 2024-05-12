@@ -22,10 +22,14 @@ func _ready():
 func _physics_process(_delta):
 	if not has_power:
 		laser_mesh.visible = false
+		$Base3/Turntable3/Lasercannon/AnimationPlayer.stop()
+		$Base3/Turntable3/Lasercannon/CPUParticles3D.emitting = false
 		return
 	if active and targeting.target:
 		if ray.is_colliding():
 			laser_mesh.visible = true
+			$Base3/Turntable3/Lasercannon/AnimationPlayer.play("laser_shoot")
+			$Base3/Turntable3/Lasercannon/CPUParticles3D.emitting = true
 			var point = ray.get_collision_point()
 			if point.distance_to(ray.global_position) > 0.1:
 				var mesh_pos = ray.global_position + (point - ray.global_position) / 2
@@ -37,6 +41,8 @@ func _physics_process(_delta):
 					area.get_parent().take_damage(dmg_per_sec * _delta)
 		else:
 			laser_mesh.visible = false
+			$Base3/Turntable3/Lasercannon/AnimationPlayer.stop()
+			$Base3/Turntable3/Lasercannon/CPUParticles3D.emitting = false
 		# var dir = targeting.target.center_of_mass.global_position -  cannon_center.global_position
 		# var xz_angle = rad_to_deg(atan2(dir.x, dir.z))
 		# # set the rotation
@@ -53,6 +59,8 @@ func _on_active_changed(is_active: bool):
 	else:
 		ray.enabled = false
 		laser_mesh.visible = false
+		$Base3/Turntable3/Lasercannon/AnimationPlayer.stop()
+		$Base3/Turntable3/Lasercannon/CPUParticles3D.emitting = false
 
 
 func set_power(has_power_: bool):

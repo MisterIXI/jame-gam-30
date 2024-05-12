@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://bsitwwx57rnls"]
+[gd_scene load_steps=24 format=4 uid="uid://b3di0ecj31l61"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/laser_tower.gd" id="1_w7sxv"]
-[ext_resource type="Material" uid="uid://c3tc1gbc2uhun" path="res://resources/Material/M_waterlaser.tres" id="2_gue33"]
+[ext_resource type="Material" uid="uid://dmv12lwoiswat" path="res://resources/Material/M_waterlaser.tres" id="2_gue33"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="3_mgebc"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_4u6ph"]
 
@@ -130,6 +130,52 @@ top_radius = 0.05
 bottom_radius = 0.05
 height = 1.0
 
+[sub_resource type="Animation" id="Animation_1yfrb"]
+resource_name = "laser_shoot"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.1, 0.9), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nbvf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ev6aw"]
+_data = {
+"RESET": SubResource("Animation_nbvf5"),
+"laser_shoot": SubResource("Animation_1yfrb")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf4ca"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.84, 0, 0.0139998, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5u0dn"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_74g73"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cswyt"]
@@ -189,6 +235,26 @@ collide_with_bodies = false
 
 [node name="Cannon_Center" type="Node3D" parent="Base3/Turntable3/Lasercannon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Base3/Turntable3/Lasercannon"]
+libraries = {
+"": SubResource("AnimationLibrary_ev6aw")
+}
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Base3/Turntable3/Lasercannon"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 1.78814e-07, 1, 0, 0.560549, 1.47345)
+material_override = SubResource("StandardMaterial3D_wf4ca")
+emitting = false
+amount = 16
+lifetime = 0.3
+lifetime_randomness = 0.5
+mesh = SubResource("SphereMesh_5u0dn")
+direction = Vector3(0, 0, 1)
+spread = 30.0
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 
 [node name="TowerTargeting" type="Node" parent="." node_paths=PackedStringArray("distance_trigger")]
 script = ExtResource("3_mgebc")
