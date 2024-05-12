@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bqhmeb0t0nxj0"]
+[gd_scene load_steps=16 format=4 uid="uid://bqhmeb0t0nxj0"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/mortar_turret.gd" id="1_bl1q3"]
 [ext_resource type="PackedScene" uid="uid://c7dqtuhl043e5" path="res://scenes/Projectiles/bomb.tscn" id="2_supt4"]
@@ -107,12 +107,6 @@ shadow_mesh = SubResource("ArrayMesh_0d8wk")
 height = 6.31889
 radius = 40.7299
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_73uem"]
-height = 0.5
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_svd1h"]
-height = 0.463105
-
 [node name="Mortar_Turret" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "test_target", "cannon_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9051, 0, -23.7147)
 script = ExtResource("1_bl1q3")
@@ -121,7 +115,7 @@ tower_base = NodePath("moerser/Base2/Shooter")
 shot_cd_timer = NodePath("Timer")
 bullet = ExtResource("2_supt4")
 bullet_speed = 5.0
-test_target = NodePath("Target_Point")
+test_target = NodePath("")
 cannon_node = NodePath("moerser/Base2/Shooter/ShotDirection")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -163,15 +157,6 @@ script = ExtResource("4_fib2l")
 distance_trigger = NodePath("../DistanceTrigger")
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="Target_Point" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27898, 0, 10.2504)
-mesh = SubResource("CylinderMesh_73uem")
-
-[node name="Area3D" type="Area3D" parent="Target_Point" groups=["Enemy"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Target_Point/Area3D"]
-shape = SubResource("CylinderShape3D_svd1h")
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]
