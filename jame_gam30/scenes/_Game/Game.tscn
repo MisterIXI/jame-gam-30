@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7cnjuv8xx0fj"]
+[gd_scene load_steps=17 format=3 uid="uid://7cnjuv8xx0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="10_1ybim"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="11_eh0w8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="14_qqbmp"]
-[ext_resource type="PackedScene" uid="uid://cqmgbsp57nsoc" path="res://scenes/world_environment.tscn" id="15_u72xp"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
 
@@ -45,12 +44,12 @@ foreground = NodePath("../ForeGround")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ForeGround"]
 shape = SubResource("WorldBoundaryShape3D_2cxim")
 
-[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("path1")]
+[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
 script = ExtResource("6_8cp7c")
 grid_size = 19
 animtionTime = 0.5
 colorSeed = 69
-path1 = NodePath("../Path3D2")
+pathFollow1 = NodePath("../Path3D2/PathFollow3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
@@ -72,6 +71,6 @@ visible = false
 curve = SubResource("Curve3D_ygko2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.894419, 0.182569, -0.408246, 0, 0.912846, 0.408246, 0.447209, 0.365138, -0.816492, 5, 0, -8)
-
-[node name="WorldEnvironment" parent="." instance=ExtResource("15_u72xp")]
+transform = Transform3D(0.136294, -0.0151988, -0.990546, 0.110831, 0.993812, 3.10381e-07, 0.98444, -0.109782, 0.137139, -2.2383, -3.8147e-06, -8.0714)
+progress = 30.3132
+loop = false

@@ -12,11 +12,14 @@ var animationStep : float = 0
 var animation = false
 var timer = 0
 
-@export var path1 : Path3D
-@export var path2 : Path3D
+@export var pathFollow1 : PathFollow3D
+@export var pathFollow2 : PathFollow3D
+@export var pathSteps = 0.2
 
+var isPathing : bool = false
 var pathPoints : Array = []
-var steps = 10
+var path1found = false
+var path2found = false
 
 var character : CharacterBody3D = null
 func _ready() -> void:
@@ -25,20 +28,6 @@ func _ready() -> void:
 	_tile = get_node("tile")
 	animation = true
 	animationStep = animtionTime / grid_size * grid_size
-
-	for i in range(path1.curve.point_count):
-		var newPoint = round(path1.curve.get_point_position(i))
-		if (i > 0):
-			var lastPoint = pathPoints[pathPoints.size()-1]
-
-			for j in range(steps):
-				var x = round(lerp(lastPoint.x, newPoint.x, j / steps))
-				var z = round(lerp(lastPoint.z, newPoint.z, j / steps))
-				var vector = Vector3(x, 0, z)
-				if (vector not in pathPoints):
-					pathPoints.append(vector)
-
-		pathPoints.append(newPoint)
 
 
 
@@ -53,19 +42,54 @@ func _process(delta: float) -> void:
 
 			if grid.size() >= grid_size * grid_size:
 				animation = false
+				isPathing = true
+				if pathFollow1 != null:
+					pathFollow1.progress_ratio = 0
+				if pathFollow2 != null:
+					pathFollow1.progress_ratio = 0
 				_placeCharacter()
-			
+
+	if isPathing:
+		_findPath(pathFollow1)
+		_findPath(pathFollow2)
+
+		if _pathsFound():
+			isPathing = false
+
+
+func _findPath(path : PathFollow3D) -> void:
+	if path != null:
+		var newPoint = Vector3(round(path.position.x) , 0, round(path.position.z))
+		for item in grid:
+			if item.position == newPoint and newPoint not in pathPoints:
+				pathPoints.append(newPoint)
+				item._change_color(Color(0, 0, 0, 1))
+		
+		path.progress += pathSteps
+
+
+func _pathsFound() -> bool:
+	if pathFollow1 == null:
+		path1found = true
+	elif pathFollow1.progress_ratio >= 1:
+		path1found = true
+
+	if pathFollow2 == null:
+		path2found = true
+	elif pathFollow2.progress_ratio >= 1:
+		path2found = true
+
+	if path1found and path2found:
+		return true
+	else:
+		return false
 
 
 func _placeTile(x: int, z: int, color: Color) -> void:
 	var newTile = _tile.duplicate()
 	newTile.set("name", "tile_" + str(x) + "_" + str(z))
-	newTile.set("position", Vector3(x, 0, z))
-
-	if Vector3(x, 0, z) in pathPoints:
-		color = Color(0, 0, 0, 1.0)
-	
-	newTile.set("color", color)
+	newTile.set("position", Vector3(x, 0, z))	
+	newTile.set("_color", color)
 	add_child(newTile)
 	newTile.visible = true
 	grid.append(newTile)
