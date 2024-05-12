@@ -76,14 +76,14 @@ func set_power(has_power_: bool):
 	if has_power:
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
-		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(1,1,1,1), 0.5)
-		signal_tweener.tween_property(trigger_node.material_overlay, "albedo_color", Color(1,1,1,1), 0.5)
+		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(0,0,0,0), 0.5)
+		signal_tweener.tween_property(trigger_node.material_overlay, "albedo_color", Color(0,0,0,0), 0.5)
 		signal_tweener.play()
 	else:
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
-		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(0.5,0.5,0.5,1), 0.3)
-		signal_tweener.tween_property(trigger_node.material_overlay, "albedo_color", Color(0.5,0.5,0.5,1), 0.3)
+		signal_tweener.tween_property(tower_base.material_overlay, "albedo_color", Color(0,0,0,0.75), 0.3)
+		signal_tweener.tween_property(trigger_node.material_overlay, "albedo_color", Color(0,0,0,0.75), 0.3)
 		signal_tweener.play()
 
 func on_distance_trigger_entered():

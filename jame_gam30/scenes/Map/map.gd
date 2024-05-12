@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
 
 		if _pathsFound():
 			isPathing = false
-			# wave_manager.start_spawning()
+			wave_manager.start_spawning()
 			map_ready.emit()
 			if pathFollow1 != null:
 				pathFollow1.progress_ratio = 0
