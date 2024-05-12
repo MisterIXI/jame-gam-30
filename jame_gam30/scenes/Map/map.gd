@@ -33,6 +33,8 @@ var path2found = false
 var towerPoints : Array[Vector3]
 
 var character : CharacterBody3D = null
+
+signal map_ready
 func _ready() -> void:
 	character = get_node("boi")
 
@@ -67,7 +69,8 @@ func _process(delta: float) -> void:
 
 		if _pathsFound():
 			isPathing = false
-			wave_manager.start_spawning()
+			# wave_manager.start_spawning()
+			emit_signal("map_ready")
 			if pathFollow1 != null:
 				pathFollow1.progress_ratio = 0
 			if pathFollow2 != null:
