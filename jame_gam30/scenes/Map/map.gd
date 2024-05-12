@@ -68,6 +68,7 @@ func _findPath(path : PathFollow3D) -> void:
 			if item.position == newPoint and newPoint not in pathPoints:
 				pathPoints.append(newPoint)
 				item._change_color(Color(0, 0, 0, 1))
+				SoundManager.Play_Sound(SoundManager.soundType.hover, Vector3.ZERO)
 		
 		path.progress += pathSteps
 
