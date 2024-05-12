@@ -12,6 +12,7 @@ var wettness_time: float = 0
 const WETNESS_TIME = 5
 const WETTNES_PENALTY = 0.5
 signal on_wettness_changed
+signal killed(enemy)
 
 func _ready():
 	global_position = Vector3(500, 500, 500)
@@ -28,11 +29,13 @@ func follow_path(new_parent: Path3D) -> void:
 func get_shot(damage: float) -> void:
 	health -= damage
 	if health <= 0:
+		killed.emit(self)
 		queue_free()
 		
 func take_damage(damage: float):
 	health -= damage
 	if health <= 0:
+		killed.emit(self)
 		queue_free()
 
 func _physics_process(delta):
@@ -50,6 +53,7 @@ func _physics_process(delta):
 	if progress_ratio < old_ratio:
 		parent_path.remove_child(self)
 		ResourceManager._change_health(-settings.damage)
+		killed.emit(self)
 		queue_free()
 
 func get_wet():

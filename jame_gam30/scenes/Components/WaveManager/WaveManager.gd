@@ -12,8 +12,12 @@ var spawning_active: bool = false
 @export var paths: Array[Path3D]
 @export var spawning_fair: bool = false
 var next_spawn_id: int = 0
+var total_enemy_count: int = 0
+var enemies_killed: int = 0
 
 signal wave_started(wave: int)
+signal all_enemies_killed()
+signal enemy_killed(value: int)
 
 class WaveInfo:
 	func _init(spawn_arr: Array[SpawnInfo]):
@@ -44,20 +48,42 @@ func _init():
 
 func _ready():
 	build_wave()
+	total_enemy_count = count_enemies(waves)
 	current_wave = start_at_wave
 	# call_deferred("start_spawning")
+
+func count_enemies(wave_arr):
+	var count = 0
+	for wave in wave_arr:
+		for spawn_info in wave.spawn_infos:
+			count += spawn_info.unit_count
+	return count
 
 func build_wave():
 	waves = [
 		WaveInfo.new([
-			SpawnInfo.new(1, 7, 50, dog),
-			SpawnInfo.new(3, 5.5, 50, dackel),
-			SpawnInfo.new(4, 9.3, 50, giraphe),
-			SpawnInfo.new(6, 5.3, 50, elephant),
+			SpawnInfo.new(1, 7, 1, dog),
+
 			# SpawnInfo.new(2.5, 0.25, 5, test_enemy),
 			# SpawnInfo.new(5, 0.1, 50, test_enemy),
 			# SpawnInfo.new(5, 0.1, 5000, test_enemy),
 		]),
+		WaveInfo.new([
+			SpawnInfo.new(3, 5.5, 1, dackel),
+		]),
+		WaveInfo.new([
+			SpawnInfo.new(4, 9.3, 1, giraphe),
+		]),
+		WaveInfo.new([
+			SpawnInfo.new(6, 5.3, 1, elephant),
+		]),
+		WaveInfo.new([
+			SpawnInfo.new(9, 1,1,elephant),
+		]),
+		WaveInfo.new([
+			SpawnInfo.new(12,1,1,dackel),
+		]),
+
 	]
 
 func start_spawning():
@@ -65,19 +91,28 @@ func start_spawning():
 	spawning_active = true
 	current_wave = start_at_wave
 	var current_time: float = 0
-	print(waves)
 	while current_wave < waves.size():
-		wave_started.emit(current_wave +1)
-		for spawn_info in waves[current_wave].spawn_infos:
+		for i in range(waves[current_wave].spawn_infos.size()):
+			var spawn_info = waves[current_wave].spawn_infos[i]
 			if spawn_info.start_time > current_time:
-				print("Waiting for " + str(spawn_info.start_time - current_time) + " seconds")
+				# print("Waiting for " + str(spawn_info.start_time - current_time) + " seconds")
 				await get_tree().create_timer(spawn_info.start_time - current_time).timeout
+			if i == 0:
+				wave_started.emit(current_wave +1)
 			trigger_spawn(spawn_info)
 		current_wave += 1
+
+func _on_enemy_killed(enemy: Enemy):
+	enemies_killed += 1
+	enemy_killed.emit(enemy.settings.bounty)
+	print("Enemies killed: " + str(enemies_killed) + " / " + str(total_enemy_count))
+	if enemies_killed == total_enemy_count:
+		all_enemies_killed.emit()
 
 func spawn_unit(unit_type: PackedScene):
 	var unit = unit_type.instantiate() as Enemy
 	unit.follow_path(paths[next_spawn_id])
+	unit.killed.connect(_on_enemy_killed)
 	if spawning_fair:
 		next_spawn_id = (next_spawn_id + 1) % paths.size()
 	else:

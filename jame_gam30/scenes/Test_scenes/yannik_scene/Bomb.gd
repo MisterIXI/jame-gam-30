@@ -50,7 +50,6 @@ func cooler_ci() -> Vector3:
 	return d.lerp(e, t)
 
 func _on_area_entered(_area):
-	print("Area name: " + _area.name)
 	# check area around current position for any objects
 	# reparent explosion_particles to the the parent above
 
@@ -59,7 +58,6 @@ func _on_area_entered(_area):
 	# call queue_free() on the explosion_particles after a delay
 	get_tree().create_timer(explosion_particles.lifetime).timeout.connect(explosion_particles.queue_free)
 	var areas = explosion_area.get_overlapping_areas()
-	print("Area overlap count: " + str(areas.size()))
 	for a in areas:
 		if a.is_in_group("Enemy"):
 			a.get_parent().take_damage(damage)

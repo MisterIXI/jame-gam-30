@@ -13,3 +13,7 @@ class_name EnemySetting
 
 @export_category("Damage")
 @export var damage : int = 1
+
+@export_category("Bounty")
+## The amount of money the player gets for killing this enemy
+@export var bounty : int = 10
