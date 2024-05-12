@@ -18,7 +18,7 @@ func _on_area_entered(area: Area3D) -> void:
 	var body = get_body(area)
 	active_bodies.append(body)
 	if notify_bodies and body.has_method("on_distance_trigger_entered"):
-		body.on_distance_trigger_entered(self)
+		body.on_distance_trigger_entered()
 	if len(active_bodies) == 1: # first body
 		is_active = true
 		on_active_changed.emit(true)
@@ -30,7 +30,7 @@ func _on_area_exited(area: Area3D) -> void:
 		return
 	active_bodies.erase(body)
 	if notify_bodies and body.has_method("on_distance_trigger_exited"):
-		body.on_distance_trigger_exited(self)
+		body.on_distance_trigger_exited()
 	if len(active_bodies) == 0: # last body
 		is_active = false
 		on_active_changed.emit(false)
