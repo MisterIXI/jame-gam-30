@@ -29,11 +29,13 @@ func follow_path(new_parent: Path3D) -> void:
 func get_shot(damage: float) -> void:
 	health -= damage
 	if health <= 0:
+		SoundManager.Play_Sound(SoundManager.soundType.enemy_die,global_position)
 		killed.emit(self)
 		queue_free()
 		
 func take_damage(damage: float):
 	health -= damage
+	SoundManager.Play_Sound(SoundManager.soundType.enemy_hit,global_position)
 	if health <= 0:
 		killed.emit(self)
 		queue_free()
