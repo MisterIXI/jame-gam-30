@@ -2,7 +2,7 @@ extends TextureButton
 
 func on_button_pressed():
 	$AnimationPlayer.play("hit")
-	SoundManager.Play_Sound(SoundManager.soundType.enemy_die, Vector3.ZERO)
+	SoundManager.Play_Sound(SoundManager.soundType.hmenu_pop, Vector3.ZERO)
 	disabled = true
 
 func on_animation_finished():
@@ -10,4 +10,6 @@ func on_animation_finished():
 	$AnimationPlayer.play("idle")
 
 func _on_mouse_entered():
-	SoundManager.Play_Sound(SoundManager.soundType.enemy_walk, Vector3.ZERO)
+	if randf_range(0,20) > 9:
+		pass
+		SoundManager.Play_Sound(SoundManager.soundType.hmenu_scretch, Vector3.ZERO)

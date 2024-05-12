@@ -15,7 +15,9 @@ enum soundType{
 	lose,
 	hover,
 	menu_music,
-	game_music
+	game_music,
+	hmenu_pop,
+	hmenu_scretch
 }
 
 # Menu_Music by Crazyblox_ - 2018-04-24: https://twitter.com/Crazyblox_  -song : https://tinyurl.com/5n88we5p
@@ -37,7 +39,8 @@ enum soundType{
 @onready var menu_music_sound :AudioStreamPlayer=$s_menu_music
 @onready var game_music_sound :AudioStreamPlayer=$s_game_music
 @onready var hover_sound :AudioStreamPlayer=$s_hover
-
+@onready var hmenu_pop_sound : AudioStreamPlayer =$s_hmenu_sound_pop
+@onready var hmenu_scretch_sound : AudioStreamPlayer =$s_hmenu_sound_stretch
 
 func play_global(_sound: AudioStreamPlayer):
 	_sound.play()
@@ -84,3 +87,7 @@ func Play_Sound(_soundtype: soundType, _pos :Vector3):
 			play_global(game_music_sound)
 		soundType.hover:
 			play_global(hover_sound)
+		soundType.hmenu_pop:
+			play_global(hmenu_pop_sound)
+		soundType.hmenu_scretch:
+			play_global(hmenu_scretch_sound)
