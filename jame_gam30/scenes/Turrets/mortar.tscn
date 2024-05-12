@@ -107,7 +107,7 @@ shadow_mesh = SubResource("ArrayMesh_0d8wk")
 height = 6.31889
 radius = 40.7299
 
-[node name="Mortar_Turret" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "test_target", "cannon_node")]
+[node name="Mortar_Turret" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9051, 0, -23.7147)
 script = ExtResource("1_bl1q3")
 targeting = NodePath("TowerTargeting")
@@ -115,7 +115,6 @@ tower_base = NodePath("moerser/Base2/Shooter")
 shot_cd_timer = NodePath("Timer")
 bullet = ExtResource("2_supt4")
 bullet_speed = 5.0
-test_target = NodePath("")
 cannon_node = NodePath("moerser/Base2/Shooter/ShotDirection")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

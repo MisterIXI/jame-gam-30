@@ -109,10 +109,9 @@ shape = SubResource("SphereShape3D_bindg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyDummy1"]
 mesh = SubResource("SphereMesh_cjhbv")
 
-[node name="Mortar_Turret" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "test_target", "cannon_node") instance=ExtResource("7_784np")]
+[node name="Mortar_Turret" parent="." node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon_node") instance=ExtResource("7_784np")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3659, 0, 89.4079)
 targeting = NodePath("TowerTargeting")
 tower_base = NodePath("moerser/Base2/Shooter")
 shot_cd_timer = NodePath("Timer")
-test_target = NodePath("Target_Point")
 cannon_node = NodePath("moerser/Base2/Shooter/ShotDirection")

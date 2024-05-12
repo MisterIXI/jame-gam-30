@@ -7,7 +7,6 @@ class_name MortarTurret
 @export var shot_cd_timer: Timer
 @export var bullet: PackedScene
 @export var bullet_speed: float
-@export var test_target: Node3D
 @export var cannon_node: Node3D
 var active 
 func _ready():
@@ -16,7 +15,6 @@ func _ready():
 
 # func test():
 # 	print("KABOOM!")
-# 	# var speed = calculate_shooting_speed(test_target.global_position, cannon_node, 2, 9.8)
 # 	shoot_bomb(2,0)
 
 func _physics_process(_delta):
