@@ -53,10 +53,11 @@ shadow_mesh = SubResource("ArrayMesh_nob7b")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mn6xm"]
 radius = 9.16713
 
-[node name="RelayTower" type="StaticBody3D" node_paths=PackedStringArray("relay_collision_shape", "body")]
+[node name="RelayTower" type="StaticBody3D" node_paths=PackedStringArray("relay_collision_shape", "body", "distance_trigger")]
 script = ExtResource("1_t7hd0")
 relay_collision_shape = NodePath("Energy_Supplier/CollisionShape3D")
 body = NodePath("Signalbeacon")
+distance_trigger = NodePath("Energy_Supplier")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

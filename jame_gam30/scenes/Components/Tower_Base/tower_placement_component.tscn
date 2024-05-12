@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://co3o1ga7qbrcu"]
+[gd_scene load_steps=12 format=3 uid="uid://co3o1ga7qbrcu"]
 
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_placement_component.gd" id="1_qcpm4"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="2_g53sw"]
@@ -10,11 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="7_gecq4"]
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="8_blpfd"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="9_qm28u"]
+[ext_resource type="PackedScene" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_05.tscn" id="11_cpplm"]
 
 [node name="Tower_Placement_Component" type="Node"]
 script = ExtResource("1_qcpm4")
 towers = Array[PackedScene]([ExtResource("2_g53sw"), ExtResource("3_lkhfe"), ExtResource("4_gp2ra"), ExtResource("5_k40ff"), ExtResource("6_2toyo")])
-tower_placement_holders = Array[PackedScene]([ExtResource("6_isfrm"), ExtResource("7_gecq4"), ExtResource("8_blpfd"), ExtResource("9_qm28u")])
+tower_placement_holders = Array[PackedScene]([ExtResource("6_isfrm"), ExtResource("7_gecq4"), ExtResource("8_blpfd"), ExtResource("9_qm28u"), ExtResource("11_cpplm")])
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
