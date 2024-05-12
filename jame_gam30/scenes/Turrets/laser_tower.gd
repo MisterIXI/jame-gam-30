@@ -8,7 +8,7 @@ class_name LaserTower
 @export var ray: RayCast3D
 @export var dmg_per_sec: float
 @export var laser_mesh: Node3D
-
+@onready var signal_sprite : Node2D =$Signal_Visual_Component
 var active 
 var has_power: bool
 var signal_tweener: Tween
@@ -60,6 +60,7 @@ func set_power(has_power_: bool):
 	if signal_tweener != null:
 		signal_tweener.kill()
 	if has_power:
+		signal_sprite.set_active_object(true)
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
 		signal_tweener.tween_property(cannon_node, "rotation_degrees:x",0,0.3)
@@ -67,6 +68,7 @@ func set_power(has_power_: bool):
 		signal_tweener.tween_property(cannon_node.material_overlay, "albedo_color", Color(0,0,0,0), 0.5)
 		signal_tweener.play()
 	else:
+		signal_sprite.set_active_object(false)
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
 		signal_tweener.tween_property(cannon_node, "rotation_degrees:x",50,0.5)

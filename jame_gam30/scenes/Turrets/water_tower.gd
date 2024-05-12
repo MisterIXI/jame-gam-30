@@ -9,6 +9,7 @@ class_name WaterTower
 @export var cannon: Node3D
 @export var muzzle: Node3D
 @export var muzzle_center: Node3D
+@onready var signal_sprite : Node2D =$Signal_Visual_Component
 var active
 var has_power: bool = false
 var signal_tweener: Tween = null
@@ -54,6 +55,7 @@ func set_power(has_power_: bool):
 	if signal_tweener != null:
 		signal_tweener.kill()
 	if has_power:
+		signal_sprite.set_active_object(true)
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
 		signal_tweener.tween_property(cannon, "rotation_degrees:x", 0, 0.3)
@@ -61,6 +63,7 @@ func set_power(has_power_: bool):
 		signal_tweener.tween_property(cannon.material_overlay, "albedo_color", Color(0, 0, 0, 0), 0.5)
 		signal_tweener.play()
 	else:
+		signal_sprite.set_active_object(false)
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
 		signal_tweener.tween_property(cannon, "rotation_degrees:x", 50, 0.5)
