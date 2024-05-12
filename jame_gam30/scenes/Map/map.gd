@@ -9,6 +9,9 @@ var grid : Array = []
 var animationStep : float = 0
 
 @export var colorSeed :int = 1234
+@export var minColor : Color = Color(0.7, 0.6, 0.4, 1.0)
+@export var maxColor : Color = Color(0.8, 0.6, 0.5, 1.0)
+@export var pathColor : Color = Color(0, 0, 0, 1.0)
 var animation = false
 var timer = 0
 
@@ -70,7 +73,7 @@ func _findPath(path : PathFollow3D) -> void:
 		for item in grid:
 			if item.position == newPoint and newPoint not in pathPoints:
 				pathPoints.append(newPoint)
-				item._change_color(Color(0, 0, 0, 1))
+				item._change_color(pathColor)
 				SoundManager.Play_Sound(SoundManager.soundType.hover, Vector3.ZERO)
 		
 		path.progress += pathSteps
@@ -114,9 +117,9 @@ func _placeCharacter() -> void:
 func generate_random_green() -> Color:
 	var rng = RandomNumberGenerator.new()
 	rng.seed = colorSeed
-	var r = rng.randf_range(0.7, 0.8)
-	var g = rng.randf_range(0.6, 0.6)
-	var b = rng.randf_range(0.4, 0.5)
+	var r = rng.randf_range(minColor.r, maxColor.r)
+	var g = rng.randf_range(minColor.g, maxColor.g)
+	var b = rng.randf_range(minColor.b, maxColor.b)
 	colorSeed += 1
 	return Color(r, g, b, 1.0)
 
