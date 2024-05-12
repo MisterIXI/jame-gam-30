@@ -1,7 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnvfsvkwpwvsl"]
+[gd_scene load_steps=18 format=3 uid="uid://dnvfsvkwpwvsl"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
+[ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
+[ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Components/Tower_Base/Tower_Base.tscn" id="3_wennd"]
+[ext_resource type="PackedScene" uid="uid://cjl3levsiwp6t" path="res://scenes/Components/Tower_Base/Tower_Base_02.tscn" id="4_75tmk"]
+[ext_resource type="PackedScene" uid="uid://c2kohnu2yx86s" path="res://scenes/Components/Tower_Base/Tower_Base_03.tscn" id="5_7svs7"]
+[ext_resource type="PackedScene" uid="uid://ca1762gdd7o1u" path="res://scenes/Components/Tower_Base/Tower_Base_04.tscn" id="6_bcka1"]
+[ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="7_c43aq"]
+[ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="8_05snf"]
+[ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="9_oipnx"]
+[ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="10_0h5ox"]
+[ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="11_eajef"]
+[ext_resource type="Environment" path="res://resources/game_environment.tres" id="12_qdq5k"]
+[ext_resource type="Script" path="res://scenes/Map/map.gd" id="13_b22rh"]
+[ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="14_ketq8"]
+[ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="15_diq7n"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r078r"]
+
+[sub_resource type="Curve3D" id="Curve3D_mn7g1"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, -8, 0, 0, 0, 0, 0, 0, 6, -1, -6, 0, 0, 0, 0, 0, 0, 2.5861, 0.133314, -1.81412, 0, 0, 0, 0, 0, 0, -3.8248, 0, 0.66216, 0, 0, 0, 0, 0, 0, -6.5067, 0, -3.75113, 0, 0, 0, 0, 0, 0, -8.4984, -1.90735e-06, -7.2047, 0, 0, 0, 0, 0, 0, -2.2383, -3.8147e-06, -8.0714),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
 
 [node name="Tutorial" type="Node"]
 
+[node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("hud", "camera", "foreground") instance=ExtResource("2_kt0qy")]
+hud = NodePath("../hud")
+camera = NodePath("../Camera3D")
+towers = Array[PackedScene]([ExtResource("3_wennd"), ExtResource("4_75tmk"), ExtResource("5_7svs7"), ExtResource("6_bcka1"), ExtResource("6_bcka1")])
+tower_placement_holders = Array[PackedScene]([ExtResource("7_c43aq"), ExtResource("8_05snf"), ExtResource("9_oipnx"), ExtResource("10_0h5ox"), ExtResource("10_0h5ox")])
+foreground = NodePath("../ForeGround")
+
 [node name="hud" parent="." instance=ExtResource("1_0aatx")]
+
+[node name="Camera3D" parent="." instance=ExtResource("11_eajef")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.9219, 21.3262, 27.5877)
+environment = ExtResource("12_qdq5k")
+size = 14.8
+
+[node name="ForeGround" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ForeGround"]
+shape = SubResource("WorldBoundaryShape3D_r078r")
+
+[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
+script = ExtResource("13_b22rh")
+grid_size = 19
+animtionTime = 0.5
+colorSeed = 69
+pathColor = Color(0.162066, 0.162066, 0.162066, 1)
+pathFollow1 = NodePath("../Path3D2/PathFollow3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
+light_energy = 0.385
+
+[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation") instance=ExtResource("14_ketq8")]
+visible = false
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+camera = NodePath("")
+visual_rotation = NodePath("Armature")
+player_speed = 2.0
+
+[node name="tile" parent="Map" instance=ExtResource("15_diq7n")]
+visible = false
+
+[node name="tile for scale" parent="Map" instance=ExtResource("15_diq7n")]
+transform = Transform3D(20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, 0, 0)
+visible = false
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_mn7g1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+transform = Transform3D(-0.894419, 0.182569, -0.408246, 0, 0.912846, 0.408246, 0.447209, 0.365138, -0.816492, 5, 0, -8)
+loop = false
