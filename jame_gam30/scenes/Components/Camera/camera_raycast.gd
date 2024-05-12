@@ -9,6 +9,7 @@ func _ready():
 	assert(camera != null)
 	camera.mouse_placeholding.connect(on_placeholding)
 
+
 func _input(event):
 	#new line  : if player is placing a tower
 	if event is InputEventMouseMotion && is_placeholding:

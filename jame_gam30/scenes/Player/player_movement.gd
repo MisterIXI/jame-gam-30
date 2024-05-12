@@ -15,6 +15,11 @@ extends CharacterBody3D
 ## Variables ##
 @onready var anim : AnimationTree = $AnimationTree
 @onready var mouse_marker : Node3D = $Mouse_Marker
+
+@export_group("References")
+@export var _map : map
+@export var hud : Control
+
 var state_machine : AnimationNodeStateMachinePlayback
 var next_direction : Vector3
 var target_velocity : Vector3
@@ -49,12 +54,18 @@ func handle_rotation(target_pos: Vector3):
 
 
 func on_mouse_right_cllicked(pos : Vector3):
-	target_position = pos
-	mouse_marker.visible = true
-	mouse_marker.global_position = target_position
-	state_machine.travel("Walking")
-	#ANIMATE PLAYER WALKING
-	handle_rotation(target_position)
+	if not _map.animation and hud._is_interacting_with_ui():
+		print("in startup or mouse is in UI")
+		return
+	if _map.validate_player_map_bounds(pos):
+		target_position = pos
+		mouse_marker.visible = true
+		mouse_marker.global_position = target_position
+		state_machine.travel("Walking")
+		#ANIMATE PLAYER WALKING
+		handle_rotation(target_position)
+	else:
+		print("player target is outside the bound")
 
 
 # func on_mouse_left_clicked(_pos : Vector3):

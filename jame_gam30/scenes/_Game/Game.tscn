@@ -50,7 +50,8 @@ shape = SubResource("WorldBoundaryShape3D_2cxim")
 [node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("pathFollow1")]
 script = ExtResource("6_8cp7c")
 grid_size = 19
-animtionTime = 0.5
+placeAmount = 4
+soundAmount = 4
 colorSeed = 69
 pathColor = Color(0.162066, 0.162066, 0.162066, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
@@ -59,13 +60,15 @@ pathFollow1 = NodePath("../Path3D2/PathFollow3D")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
 light_energy = 0.385
 
-[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation") instance=ExtResource("6_sqh3a")]
+[node name="boi" parent="Map" node_paths=PackedStringArray("camera", "visual_rotation", "_map", "hud") instance=ExtResource("6_sqh3a")]
 visible = false
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
 player_speed = 2.0
+_map = NodePath("..")
+hud = NodePath("../../hud")
 
 [node name="tile" parent="Map" instance=ExtResource("14_qqbmp")]
 visible = false

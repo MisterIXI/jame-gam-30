@@ -1,13 +1,16 @@
 class_name map
 extends Node3D
-
+@export_group("Grid Placing")
 @export var grid_size: int = 20
 var _tile : Node3D
 var grid : Array = []
 
-@export var animtionTime : float = 1
+@export var animtionTime : float = 0
+@export var placeAmount : int = 1
+@export var soundAmount : int = 2
 var animationStep : float = 0
 
+@export_group("Grid Color")
 @export var colorSeed :int = 1234
 @export var minColor : Color = Color(0.7, 0.6, 0.4, 1.0)
 @export var maxColor : Color = Color(0.8, 0.6, 0.5, 1.0)
@@ -15,6 +18,7 @@ var animationStep : float = 0
 var animation = false
 var timer = 0
 
+@export_group("Pathing")
 @export var pathFollow1 : PathFollow3D
 @export var pathFollow2 : PathFollow3D
 @export var pathSteps = 0.2
@@ -40,20 +44,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if animation:
 		timer += delta
+		
 		if timer >= animationStep:
-			var x = (grid.size() / grid_size) - grid_size / 2
-			var z = (grid.size() % grid_size) - grid_size / 2
+			for i in range(placeAmount):
+				_placeTile(_calcTile(), generate_random_green())
+				if grid.size() >= grid_size * grid_size:
+					animation = false
+					if pathFollow1 != null:
+						pathFollow1.progress_ratio = 0
+					if pathFollow2 != null:
+						pathFollow1.progress_ratio = 0
+					isPathing = true
+					_placeCharacter()
+					break
+			timer = 0
 
-			_placeTile(x,z, generate_random_green())
-
-			if grid.size() >= grid_size * grid_size:
-				animation = false
-				if pathFollow1 != null:
-					pathFollow1.progress_ratio = 0
-				if pathFollow2 != null:
-					pathFollow1.progress_ratio = 0
-				isPathing = true
-				_placeCharacter()
 
 	if isPathing:
 		_findPath(pathFollow1)
@@ -95,16 +100,20 @@ func _pathsFound() -> bool:
 	else:
 		return false
 
+func _calcTile() -> Vector2:
+	var x = (grid.size() / grid_size) - grid_size / 2
+	var z = (grid.size() % grid_size) - grid_size / 2
+	return Vector2(x, z)
 
-func _placeTile(x: int, z: int, color: Color) -> void:
+func _placeTile(pos: Vector2, color: Color) -> void:
 	var newTile = _tile.duplicate()
-	newTile.set("name", "tile_" + str(x) + "_" + str(z))
-	newTile.set("position", Vector3(x, 0, z))	
+	newTile.set("name", "tile_" + str(pos.x) + "_" + str(pos.y))
+	newTile.set("position", Vector3(pos.x, 0, pos.y))	
 	newTile.set("_color", color)
 	add_child(newTile)
 	newTile.visible = true
 	grid.append(newTile)
-	if (z % 2 == 0):
+	if (int(pos.y) % soundAmount == 0):
 		SoundManager.Play_Sound(SoundManager.soundType.hover, Vector3.ZERO)
 
 
@@ -131,6 +140,12 @@ func validate_spawn_position(pos : Vector3):
 		return false
 	if pos in towerPoints:
 		return false
+	if pos.x <= (-grid_size/2)-1 || pos.x >= (grid_size/2)+1:
+		return false
+	if pos.z <= (-grid_size/2)-1 ||pos.z >= (grid_size/2)+1:
+		return false
+	return true
+func validate_player_map_bounds(pos : Vector3):
 	if pos.x <= (-grid_size/2)-1 || pos.x >= (grid_size/2)+1:
 		return false
 	if pos.z <= (-grid_size/2)-1 ||pos.z >= (grid_size/2)+1:
