@@ -46,7 +46,7 @@ func calculate_lead_aim(from: Vector3, bullet_speed: float, iterations: int = 1)
 	# t_cl.global_position = target_position
 	return target_position
 
-func calculate_parabola_aim(from: Vector3, upwards_angle: float, iterations: int = 1) -> Vector3:
+func calculate_parabola_aim() -> Vector3:
 	var target_position = target.global_position
 	
 	return target_position
