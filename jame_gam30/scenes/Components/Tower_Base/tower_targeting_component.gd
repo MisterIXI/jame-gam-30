@@ -14,7 +14,7 @@ func on_active_changed(new_active):
 func on_active_bodies_changed():
 	# target_furthest()
 	target_random()
-	print("Targetting: ", target)
+	# print("Targetting: ", target)
 
 func target_random():
 	if distance_trigger.active_bodies.size() == 0:
@@ -38,7 +38,7 @@ func calculate_lead_aim(from: Vector3, bullet_speed: float, iterations: int = 1)
 	for i in range(iterations):
 		var distance = from.distance_to(target_position)
 		var time = distance / bullet_speed
-		var target_progress = target.progress + target.settings.speed * time
+		var target_progress = target.progress + target.settings.speed * time * target.speed_mult
 		# check if target is overflowing the path
 		if target_progress > target.parent_path.curve.get_baked_length():
 			target_progress = target.parent_path.curve.get_baked_length()

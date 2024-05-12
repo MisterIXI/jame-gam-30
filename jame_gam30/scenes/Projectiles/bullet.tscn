@@ -1,7 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbnn6theu8v4x"]
 
 [ext_resource type="Script" path="res://scenes/GameObjects/Bullets/bullet.gd" id="1_015qh"]
-[ext_resource type="Material" uid="uid://c6q2qmnsbby3c" path="res://resources/Material/Bullet_01_Material.tres" id="2_0l58j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s84xn"]
+albedo_color = Color(1, 0.933333, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_d1pqp"]
 
@@ -22,7 +24,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_015qh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2_0l58j")
+material_override = SubResource("StandardMaterial3D_s84xn")
 mesh = SubResource("SphereMesh_d1pqp")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="MeshInstance3D"]
