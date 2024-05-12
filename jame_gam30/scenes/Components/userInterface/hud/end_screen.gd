@@ -12,9 +12,11 @@ func _ready() -> void:
 
 
 func _win_game():
+	visible = true
 	winText.visible = true
 	loseText.visible = false
 
 func _lose_game():
+	visible = true
 	winText.visible = false
 	loseText.visible = true

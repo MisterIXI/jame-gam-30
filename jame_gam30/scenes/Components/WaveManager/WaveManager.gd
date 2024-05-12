@@ -61,11 +61,11 @@ func start_spawning():
 	var current_time: float = 0
 	print(waves)
 	while current_wave < waves.size():
+		wave_started.emit(current_wave +1)
 		for spawn_info in waves[current_wave].spawn_infos:
 			if spawn_info.start_time > current_time:
 				print("Waiting for " + str(spawn_info.start_time - current_time) + " seconds")
 				await get_tree().create_timer(spawn_info.start_time - current_time).timeout
-			wave_started.emit(current_wave +1)
 			trigger_spawn(spawn_info)
 		current_wave += 1
 
