@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bt7x53g4tlxtw" path="res://assets/userInterface/icons/icons8-baloon-100.png" id="1_je5oi"]
 [ext_resource type="FontFile" uid="uid://crr3howgvsqxv" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="2_a04t7"]
 [ext_resource type="Texture2D" uid="uid://jhukvafddvft" path="res://assets/userInterface/icons/icons8-home-50.png" id="2_yfcea"]
-[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="5_8gkjc"]
+[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/buttonhover.tscn" id="5_8gkjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc2p7"]
 bg_color = Color(0.46618, 0.466181, 0.466181, 1)

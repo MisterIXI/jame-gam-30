@@ -1,0 +1,11 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://c2n1oukxt46pd"]
+
+[ext_resource type="Sky" uid="uid://egs4qvg72uny" path="res://resources/Material/new_sky.tres" id="1_wvy23"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_wvy23")
+fog_light_energy = 1.66
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.295
+volumetric_fog_density = 0.0158

@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw20i0fe1c3v0"]
+[gd_scene load_steps=7 format=3 uid="uid://cw20i0fe1c3v0"]
 
+[ext_resource type="Script" path="res://scenes/Components/Tower_Base/placeHolder/tower_placeholder.gd" id="1_fg6p6"]
 [ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="1_l4e3i"]
+[ext_resource type="Material" uid="uid://bam8e3ajmtpu0" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_ah3te"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ibxrm"]
 
@@ -10,14 +12,18 @@
 inner_radius = 2.345
 outer_radius = 1.575
 
-[node name="Tower_Base" type="StaticBody3D"]
+[node name="Tower_Base" type="StaticBody3D" node_paths=PackedStringArray("tower_parts")]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_fg6p6")
+material_blue = ExtResource("1_l4e3i")
+material_red = ExtResource("3_ah3te")
+tower_parts = [NodePath("Tower"), NodePath("TowerHead/Tower2")]
 
 [node name="Tower" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_l4e3i")
 mesh = SubResource("BoxMesh_ibxrm")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_l4e3i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_5jkfw")
@@ -27,6 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0954101, -0.460009, -0.141
 
 [node name="Tower2" type="MeshInstance3D" parent="TowerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0519986, 1.1361, 0.347864)
-material_override = ExtResource("1_l4e3i")
 mesh = SubResource("TorusMesh_q5iow")
 skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("1_l4e3i")

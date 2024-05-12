@@ -10,14 +10,14 @@ input_name = "screen_uv"
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_un426"]
-default_input_values = [0, 0.0, 1, 0.01, 2, 0.0]
+default_input_values = [0, 0.0, 1, 0.005, 2, 0.0]
 
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_k4kf0"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l05o6"]
 
 [sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_yq8c7"]
-default_input_values = [0, 0.0, 1, -0.01, 2, 0.0]
+default_input_values = [0, 0.0, 1, -0.005, 2, 0.0]
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_rncvd"]
 parameter_name = "skybox_texture"
@@ -44,13 +44,13 @@ void sky() {
 
 
 // MultiplyAdd:13
-	float n_in13p1 = 0.01000;
+	float n_in13p1 = 0.00500;
 	float n_in13p2 = 0.00000;
 	float n_out13p0 = fma(n_out12p0, n_in13p1, n_in13p2);
 
 
 // MultiplyAdd:17
-	float n_in17p1 = -0.01000;
+	float n_in17p1 = -0.00500;
 	float n_in17p2 = 0.00000;
 	float n_out17p0 = fma(n_out12p0, n_in17p1, n_in17p2);
 
@@ -75,7 +75,7 @@ void sky() {
 
 }
 "
-graph_offset = Vector2(379.331, -162.412)
+graph_offset = Vector2(-44.634, -203.403)
 mode = 3
 flags/use_half_res_pass = true
 flags/use_quarter_res_pass = true
@@ -89,13 +89,13 @@ nodes/sky/10/position = Vector2(1160, -240)
 nodes/sky/11/node = SubResource("VisualShaderNodeInput_fay7k")
 nodes/sky/11/position = Vector2(540, -320)
 nodes/sky/12/node = SubResource("VisualShaderNodeInput_egadt")
-nodes/sky/12/position = Vector2(-40, -180)
+nodes/sky/12/position = Vector2(-120, -180)
 nodes/sky/13/node = SubResource("VisualShaderNodeMultiplyAdd_un426")
 nodes/sky/13/position = Vector2(260, -200)
 nodes/sky/14/node = SubResource("VisualShaderNodeVectorCompose_k4kf0")
-nodes/sky/14/position = Vector2(480, -180)
+nodes/sky/14/position = Vector2(520, -180)
 nodes/sky/15/node = SubResource("VisualShaderNodeVectorOp_l05o6")
 nodes/sky/15/position = Vector2(860, -320)
 nodes/sky/17/node = SubResource("VisualShaderNodeMultiplyAdd_yq8c7")
 nodes/sky/17/position = Vector2(260, 0)
-nodes/sky/connections = PackedInt32Array(9, 0, 10, 2, 10, 0, 0, 0, 12, 0, 13, 0, 13, 0, 14, 0, 11, 0, 15, 0, 15, 0, 10, 0, 14, 0, 15, 1, 12, 0, 17, 0, 17, 0, 14, 1)
+nodes/sky/connections = PackedInt32Array(9, 0, 10, 2, 10, 0, 0, 0, 12, 0, 13, 0, 13, 0, 14, 0, 11, 0, 15, 0, 15, 0, 10, 0, 12, 0, 17, 0, 17, 0, 14, 1, 14, 0, 15, 1)
