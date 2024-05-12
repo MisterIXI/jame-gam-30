@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://4ltmeo3rdjef"]
+
+[ext_resource type="PackedScene" uid="uid://bcj817d6hk3gv" path="res://scenes/userInterface/main_menu/Logo_letter.tscn" id="1_p0kmq"]
+[ext_resource type="Texture2D" uid="uid://lsoalosayncg" path="res://assets/Textures/Letter_A.png" id="2_cwahr"]
+[ext_resource type="Texture2D" uid="uid://wg1p7yxgt3nu" path="res://assets/Textures/Letter_L.png" id="3_e4p73"]
+[ext_resource type="Texture2D" uid="uid://pwgwbeocakfe" path="res://assets/Textures/Letter_O.png" id="4_2ooo1"]
+[ext_resource type="Texture2D" uid="uid://dlwretvefd22p" path="res://assets/Textures/Letter_N.png" id="5_ycld1"]
+[ext_resource type="Texture2D" uid="uid://da73nutcxce51" path="res://assets/Textures/Letter_Z.png" id="6_wyixh"]
+[ext_resource type="Texture2D" uid="uid://o4d0cwwincym" path="res://assets/Textures/jimmy.png" id="7_wdn1r"]
+
+[node name="Logo" type="MarginContainer"]
+custom_minimum_size = Vector2(1280, 64)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="B" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.352941, 0.698039, 0.890196, 1)
+position = Vector2(-356, 69)
+
+[node name="A" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.980392, 0.74902, 0.654902, 1)
+position = Vector2(-317, 50)
+
+[node name="B" parent="Panel/A" index="0"]
+texture_normal = ExtResource("2_cwahr")
+texture_pressed = ExtResource("2_cwahr")
+
+[node name="L" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.917647, 0.54902, 0.0627451, 1)
+position = Vector2(-280, 68)
+
+[node name="B" parent="Panel/L" index="0"]
+texture_normal = ExtResource("3_e4p73")
+texture_pressed = ExtResource("3_e4p73")
+
+[node name="L2" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.917647, 0.54902, 0.0627451, 1)
+position = Vector2(-245, 48)
+
+[node name="B" parent="Panel/L2" index="0"]
+texture_normal = ExtResource("3_e4p73")
+texture_pressed = ExtResource("3_e4p73")
+
+[node name="O" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.243137, 0.564706, 0.0980392, 1)
+position = Vector2(-207, 69)
+
+[node name="B" parent="Panel/O" index="0"]
+texture_normal = ExtResource("4_2ooo1")
+texture_pressed = ExtResource("4_2ooo1")
+
+[node name="O2" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.372549, 0.372549, 0.372549, 1)
+position = Vector2(-172, 57)
+
+[node name="B" parent="Panel/O2" index="0"]
+texture_normal = ExtResource("4_2ooo1")
+texture_pressed = ExtResource("4_2ooo1")
+
+[node name="N" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(1, 0.788235, 0, 1)
+position = Vector2(-133, 56)
+
+[node name="B" parent="Panel/N" index="0"]
+texture_normal = ExtResource("5_ycld1")
+texture_pressed = ExtResource("5_ycld1")
+
+[node name="B2" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.576471, 0.576471, 0.576471, 1)
+position = Vector2(-54, 65)
+
+[node name="O3" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.737255, 0.462745, 0.207843, 1)
+position = Vector2(-13, 82)
+
+[node name="B" parent="Panel/O3" index="0"]
+texture_normal = ExtResource("4_2ooo1")
+texture_pressed = ExtResource("4_2ooo1")
+
+[node name="N2" parent="Panel" instance=ExtResource("1_p0kmq")]
+position = Vector2(27, 64)
+
+[node name="B" parent="Panel/N2" index="0"]
+texture_normal = ExtResource("5_ycld1")
+texture_pressed = ExtResource("5_ycld1")
+
+[node name="A2" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.164706, 0.258824, 0.247059, 1)
+position = Vector2(65, 51)
+
+[node name="B" parent="Panel/A2" index="0"]
+texture_normal = ExtResource("2_cwahr")
+texture_pressed = ExtResource("2_cwahr")
+
+[node name="N3" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(1, 0.266667, 0, 1)
+position = Vector2(104, 65)
+
+[node name="B" parent="Panel/N3" index="0"]
+texture_normal = ExtResource("5_ycld1")
+texture_pressed = ExtResource("5_ycld1")
+
+[node name="Z" parent="Panel" instance=ExtResource("1_p0kmq")]
+modulate = Color(0.0117647, 0.243137, 0.25098, 1)
+position = Vector2(142, 64)
+
+[node name="B" parent="Panel/Z" index="0"]
+texture_normal = ExtResource("6_wyixh")
+texture_pressed = ExtResource("6_wyixh")
+
+[node name="A3" parent="Panel" instance=ExtResource("1_p0kmq")]
+position = Vector2(180, 71)
+
+[node name="B" parent="Panel/A3" index="0"]
+texture_normal = ExtResource("2_cwahr")
+texture_pressed = ExtResource("2_cwahr")
+
+[node name="Jimmy" parent="Panel" instance=ExtResource("1_p0kmq")]
+position = Vector2(107, -20)
+
+[node name="B" parent="Panel/Jimmy" index="0"]
+offset_right = 96.0
+offset_bottom = 96.0
+texture_normal = ExtResource("7_wdn1r")
+texture_pressed = ExtResource("7_wdn1r")
+
+[editable path="Panel/A"]
+[editable path="Panel/L"]
+[editable path="Panel/L2"]
+[editable path="Panel/O"]
+[editable path="Panel/O2"]
+[editable path="Panel/N"]
+[editable path="Panel/O3"]
+[editable path="Panel/N2"]
+[editable path="Panel/A2"]
+[editable path="Panel/N3"]
+[editable path="Panel/Z"]
+[editable path="Panel/A3"]
+[editable path="Panel/Jimmy"]
