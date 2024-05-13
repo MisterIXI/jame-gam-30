@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7cnjuv8xx0fj"]
+[gd_scene load_steps=13 format=3 uid="uid://7cnjuv8xx0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_h8xip"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="2_7y48r"]
@@ -6,20 +6,24 @@
 [ext_resource type="Environment" path="res://resources/game_environment.tres" id="3_x3xrp"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="6_8cp7c"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="6_sqh3a"]
-[ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="8_n5jxw"]
-[ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="9_6s53o"]
-[ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="10_1ybim"]
-[ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="11_eh0w8"]
 [ext_resource type="PackedScene" uid="uid://c66w4evwnc0oo" path="res://scenes/Components/WaveManager/wave_manager.tscn" id="13_udbrd"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="14_qqbmp"]
 [ext_resource type="PackedScene" uid="uid://daugp24xlwj5d" path="res://scenes/Components/map/oob.tscn" id="16_004uy"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2cxim"]
 
+[sub_resource type="Curve3D" id="Curve3D_yauq7"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -20, 0, 5, 0, 0, 0, 0, 0, 0, -14, 0, 5, 0, 0, 0, 0, 0, 0, -14, 0, -1, 0, 0, 0, 0, 0, 0, -8, 0, -1, 0, 0, 0, 0, 0, 0, -8, 0, 13, 0, 0, 0, 0, 0, 0, 20, 0, 13),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
 [sub_resource type="Curve3D" id="Curve3D_ygko2"]
 bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, -8, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, -5, 0, 5, 0, 0, 0, 0, 0, 0, -10, 0, 5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -20, 0, -12, 0, 0, 0, 0, 0, 0, -11, 0, -12, 0, 0, 0, 0, 0, 0, -11, 0, -5, 0, 0, 0, 0, 0, 0, 4, 0, -5, 0, 0, 0, 0, 0, 0, 4, 0, -16, 0, 0, 0, 0, 0, 0, 20, 0, -16),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -29,7 +33,6 @@ point_count = 6
 [node name="Tower_Placement_Component" parent="." node_paths=PackedStringArray("hud", "camera", "foreground") instance=ExtResource("3_rnm01")]
 hud = NodePath("../hud")
 camera = NodePath("../Camera3D")
-tower_placement_holders = Array[PackedScene]([ExtResource("8_n5jxw"), ExtResource("9_6s53o"), ExtResource("10_1ybim"), ExtResource("11_eh0w8"), ExtResource("11_eh0w8")])
 foreground = NodePath("../ForeGround")
 
 [node name="hud" parent="." instance=ExtResource("1_h8xip")]
@@ -44,7 +47,7 @@ size = 31.9
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ForeGround"]
 shape = SubResource("WorldBoundaryShape3D_2cxim")
 
-[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "pathFollow1")]
+[node name="Map" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "pathFollow1", "pathFollow2")]
 script = ExtResource("6_8cp7c")
 wave_manager = NodePath("../WaveManager")
 grid_size = 40
@@ -55,6 +58,7 @@ minColor = Color(0.45088, 0.6907, 0.301901, 1)
 maxColor = Color(0.51382, 0.731393, 0.096331, 1)
 pathColor = Color(0.74, 0.42513, 0.2294, 1)
 pathFollow1 = NodePath("../Path3D2/PathFollow3D")
+pathFollow2 = NodePath("../Path3D3/PathFollow3D2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.737755, 19.1941, 0.88916)
@@ -74,17 +78,25 @@ hud = NodePath("../../hud")
 visible = false
 
 [node name="tile for scale" parent="Map" instance=ExtResource("14_qqbmp")]
-transform = Transform3D(20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0)
 visible = false
 
 [node name="OOB" parent="Map" instance=ExtResource("16_004uy")]
 
 [node name="Path3D2" type="Path3D" parent="."]
-curve = SubResource("Curve3D_ygko2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0886698, 0.0342484, 0.0792046)
+curve = SubResource("Curve3D_yauq7")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.99999, 0, -8.74222e-08, 0, 0.999972, 0, 8.74219e-08, 0, -0.999993, 5, 0, -8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 5)
+loop = false
+
+[node name="Path3D3" type="Path3D" parent="."]
+curve = SubResource("Curve3D_ygko2")
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, -12)
 loop = false
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("13_udbrd")]
-paths = [NodePath("../Path3D2")]
+paths = [NodePath("../Path3D2"), NodePath("../Path3D3")]

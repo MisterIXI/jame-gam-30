@@ -69,6 +69,7 @@ func _process(delta: float) -> void:
 		_findPath(pathFollow2)
 
 		if _pathsFound():
+			print("Paths found!")
 			isPathing = false
 			if not is_in_tutorial:
 				wave_manager.start_spawning()
