@@ -225,7 +225,6 @@ visible = false
 
 [node name="LaserMesh" type="MeshInstance3D" parent="Base3/Turntable3/Lasercannon/LaserParent"]
 transform = Transform3D(1, 0, 0, 0, -5.96046e-08, -1, 0, 1, -5.96046e-08, 0, 0, 0)
-visible = false
 mesh = SubResource("CylinderMesh_dqk8u")
 skeleton = NodePath("../../../../..")
 
@@ -235,7 +234,7 @@ target_position = Vector3(0, 0, 100)
 collision_mask = 17
 collide_with_areas = true
 collide_with_bodies = false
-debug_shape_thickness = 5
+debug_shape_thickness = 1
 
 [node name="Cannon_Center" type="Node3D" parent="Base3/Turntable3/Lasercannon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553, 0)

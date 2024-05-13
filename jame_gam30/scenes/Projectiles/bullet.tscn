@@ -56,6 +56,7 @@ offsets = PackedFloat32Array(0, 0.662698, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.890196, 1, 1, 1, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s1cnf"]
+radius = 1.58746
 
 [node name="Bullet" type="Node3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

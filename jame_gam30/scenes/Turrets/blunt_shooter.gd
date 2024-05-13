@@ -45,7 +45,7 @@ func _on_cd_timer_timeout():
 	if has_power and targeting.target:
 		var new_bullet = bullet.instantiate() as Bullet
 		var shot_direction = targeting.calculate_lead_aim(muzzle.global_position, bullet_speed, 4) + Vector3.UP * targeting.target.vertical_offset - muzzle.global_position
-		new_bullet.shoot_at(shot_direction, bullet_speed, 0)
+		new_bullet.shoot_at(shot_direction, bullet_speed,1)
 		get_parent().add_child(new_bullet)
 		new_bullet.global_position = muzzle.global_position
 		new_bullet.look_at(targeting.target.global_position)

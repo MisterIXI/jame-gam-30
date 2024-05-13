@@ -513,7 +513,7 @@ _data = {
 radius = 0.103303
 height = 0.923278
 
-[node name="Enemy" type="PathFollow3D" node_paths=PackedStringArray("center_of_mass")]
+[node name="Enemy" type="PathFollow3D" node_paths=PackedStringArray("center_of_mass") groups=["Enemy"]]
 script = ExtResource("1_gfhrq")
 settings = ExtResource("2_vbo4n")
 center_of_mass = NodePath("CenterOfMass")

@@ -35,8 +35,7 @@ func _physics_process(_delta):
 			if point.distance_to(ray.global_position) > 0.1:
 				var mesh_pos = ray.global_position + (point - ray.global_position) / 2
 				laser_mesh.global_position = mesh_pos
-				laser_mesh.scale = Vector3(1,1,point.distance_to(ray.global_position)*1.5)
-
+				laser_mesh.scale = Vector3(1,1,point.distance_to(ray.global_position)*2)
 				laser_mesh.look_at(point, Vector3(0,0,1), true)
 				var area = ray.get_collider()
 				if not area == null and area.is_in_group("Enemy"):

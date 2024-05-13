@@ -1,8 +1,8 @@
 extends Node3D
 class_name Bullet
 var target: Vector3 = Vector3.ZERO
-var velocity: float = 0
-var damage: float = 0
+var velocity: float = 1
+var damage: float = 1
 var target_locked: bool
 @export var particles: CPUParticles3D
 @export var explosion_area: Area3D
