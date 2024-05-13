@@ -71,26 +71,27 @@ func build_tutorial_wave():
 func build_wave():
 	waves = [
 		WaveInfo.new([
-			SpawnInfo.new(1, 7, 1, dog),
-
+			SpawnInfo.new(1, 4, 10, dog),
+			SpawnInfo.new(5, 8, 5, dackel),
 			# SpawnInfo.new(2.5, 0.25, 5, test_enemy),
 			# SpawnInfo.new(5, 0.1, 50, test_enemy),
 			# SpawnInfo.new(5, 0.1, 5000, test_enemy),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(3, 5.5, 1, dackel),
+			SpawnInfo.new(44, 1, 10, dackel),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(4, 9.3, 1, giraphe),
+			SpawnInfo.new(60, 0.5, 20, giraphe),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(6, 5.3, 1, elephant),
+			SpawnInfo.new(75, 1, 10, elephant),
+			SpawnInfo.new(80, 0.5, 10, giraphe),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(9, 1,1,elephant),
+			SpawnInfo.new(90, 0.3,50,dog),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(12,1,1,dackel),
+			SpawnInfo.new(120,0.3,100,elephant),
 		]),
 
 	]
@@ -106,6 +107,7 @@ func start_spawning():
 			if spawn_info.start_time > current_time:
 				# print("Waiting for " + str(spawn_info.start_time - current_time) + " seconds")
 				await get_tree().create_timer(spawn_info.start_time - current_time).timeout
+			current_time = spawn_info.start_time
 			if i == 0:
 				wave_started.emit(current_wave +1)
 			trigger_spawn(spawn_info)
