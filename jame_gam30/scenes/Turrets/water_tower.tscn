@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=4 uid="uid://em3epmltrcgk"]
+[gd_scene load_steps=31 format=4 uid="uid://em3epmltrcgk"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/water_tower.gd" id="1_6ffhy"]
-[ext_resource type="Material" uid="uid://dmv12lwoiswat" path="res://resources/Material/M_waterlaser.tres" id="1_phjh6"]
+[ext_resource type="Material" uid="uid://c3tc1gbc2uhun" path="res://resources/Material/M_waterlaser.tres" id="1_phjh6"]
 [ext_resource type="PackedScene" uid="uid://c5bivbifmv6mk" path="res://scenes/Projectiles/water_balloon.tscn" id="2_c4a5o"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="3_1c7l4"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="4_lgk0w"]
 [ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_7xg1l"]
+[ext_resource type="Script" path="res://scenes/Turrets/range_indicator.gd" id="7_6ufax"]
+[ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="8_fy4o3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8m6pi"]
 
@@ -120,6 +122,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d573e")
 
+[sub_resource type="Animation" id="Animation_k7wr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_uchea"]
 resource_name = "water_shoot"
 length = 0.3
@@ -149,33 +178,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_k7wr4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CPUParticles3D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cu4a1"]
 _data = {
 "RESET": SubResource("Animation_k7wr4"),
@@ -193,6 +195,97 @@ height = 3.97007
 radius = 8.26857
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k2i7q"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_dwlfb"]
+inner_radius = 1.02
+
+[sub_resource type="Animation" id="Animation_l8it3"]
+resource_name = "enable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999),
+"transitions": PackedFloat32Array(2.2974, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e2ser"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sb2st"]
+resource_name = "placeholder_activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmabq"]
+_data = {
+"RESET": SubResource("Animation_e2ser"),
+"enable": SubResource("Animation_l8it3"),
+"placeholder_activate": SubResource("Animation_sb2st")
+}
 
 [node name="WaterTower" type="StaticBody3D" node_paths=PackedStringArray("targeting", "tower_base", "shot_cd_timer", "cannon", "muzzle", "muzzle_center")]
 script = ExtResource("1_6ffhy")
@@ -284,6 +377,20 @@ shape = SubResource("BoxShape3D_k2i7q")
 
 [node name="Signal_Visual_Component" parent="." instance=ExtResource("6_7xg1l")]
 transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 1.95, 0)
+
+[node name="Range_Indicator" type="Node3D" parent="."]
+script = ExtResource("7_6ufax")
+
+[node name="Range_donut" type="MeshInstance3D" parent="Range_Indicator"]
+transform = Transform3D(8.065, 0, 0, 0, 8.065, 0, 0, 0, 8.065, 0, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_dwlfb")
+surface_material_override/0 = ExtResource("8_fy4o3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Range_Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_lmabq")
+}
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]

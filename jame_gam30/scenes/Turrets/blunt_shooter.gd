@@ -11,6 +11,7 @@ class_name BluntShooter
 @export var muzzle_center: Node3D
 # SIGNAL OBJECT
 @onready var signal_sprite : Node3D =$Signal_Visual_Component
+@onready var range_indicator:Node3D =$Range_Indicator
 var active
 var has_power: bool = false
 var signal_tweener: Tween = null
@@ -57,6 +58,7 @@ func set_power(has_power_: bool):
 	if signal_tweener != null:
 		signal_tweener.kill()
 	if has_power:
+		range_indicator.range_activate()
 		signal_sprite.set_active_object(true)
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)

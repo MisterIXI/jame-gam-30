@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://p2y8403u37nt"]
+[gd_scene load_steps=21 format=4 uid="uid://p2y8403u37nt"]
 
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/placeHolder/tower_placeholder.gd" id="1_l7xqn"]
 [ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="1_od5ju"]
 [ext_resource type="Material" uid="uid://bam8e3ajmtpu0" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_vqsv6"]
+[ext_resource type="Script" path="res://scenes/Turrets/range_indicator.gd" id="4_5b2p1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
 
@@ -145,6 +146,97 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v5lrl")
 
+[sub_resource type="TorusMesh" id="TorusMesh_wgu5h"]
+inner_radius = 1.02
+
+[sub_resource type="Animation" id="Animation_l8it3"]
+resource_name = "enable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999),
+"transitions": PackedFloat32Array(2.2974, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e2ser"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sb2st"]
+resource_name = "placeholder_activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmabq"]
+_data = {
+"RESET": SubResource("Animation_e2ser"),
+"enable": SubResource("Animation_l8it3"),
+"placeholder_activate": SubResource("Animation_sb2st")
+}
+
 [node name="Tower_Base" type="StaticBody3D" node_paths=PackedStringArray("tower_parts")]
 collision_layer = 0
 collision_mask = 0
@@ -182,3 +274,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621005, 0)
 mesh = SubResource("ArrayMesh_vqsk3")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_od5ju")
+
+[node name="Range_Indicator" type="Node3D" parent="."]
+script = ExtResource("4_5b2p1")
+
+[node name="Range_donut" type="MeshInstance3D" parent="Range_Indicator"]
+transform = Transform3D(8.065, 0, 0, 0, 8.065, 0, 0, 0, 8.065, 0, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_wgu5h")
+surface_material_override/0 = ExtResource("1_od5ju")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Range_Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_lmabq")
+}

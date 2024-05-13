@@ -7,6 +7,7 @@ var signal_tweener: Tween = null
 var has_power: bool = false
 var power_provider: int = 0
 @export var distance_trigger: DistanceTrigger
+@onready var range_indicator:Node3D =$Range_Indicator
 
 func _ready():
 	body.material_overlay = body.material_overlay.duplicate()
@@ -16,6 +17,7 @@ func set_power(has_power_: bool):
 	if signal_tweener != null:
 		signal_tweener.kill()
 	if has_power:
+		range_indicator.range_activate()
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)
 		signal_tweener.tween_property(body.material_overlay, "albedo_color", Color(0,0,0,0), 0.5)

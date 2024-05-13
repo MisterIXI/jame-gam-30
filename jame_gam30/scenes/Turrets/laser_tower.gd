@@ -9,6 +9,7 @@ class_name LaserTower
 @export var dmg_per_sec: float
 @export var laser_mesh: Node3D
 @onready var signal_sprite : Node3D =$Signal_Visual_Component
+@onready var range_indicator:Node3D =$Range_Indicator
 var active 
 var has_power: bool
 var signal_tweener: Tween
@@ -34,7 +35,8 @@ func _physics_process(_delta):
 			if point.distance_to(ray.global_position) > 0.1:
 				var mesh_pos = ray.global_position + (point - ray.global_position) / 2
 				laser_mesh.global_position = mesh_pos
-				laser_mesh.scale = Vector3(1,1,point.distance_to(ray.global_position))
+				laser_mesh.scale = Vector3(1,1,point.distance_to(ray.global_position)*1.5)
+
 				laser_mesh.look_at(point, Vector3(0,0,1), true)
 				var area = ray.get_collider()
 				if not area == null and area.is_in_group("Enemy"):
@@ -68,6 +70,7 @@ func set_power(has_power_: bool):
 	if signal_tweener != null:
 		signal_tweener.kill()
 	if has_power:
+		range_indicator.range_activate()
 		signal_sprite.set_active_object(true)
 		signal_tweener = create_tween()
 		signal_tweener.set_parallel(true)

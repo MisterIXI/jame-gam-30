@@ -241,8 +241,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vcd1e"]
-radius = 0.103303
-height = 0.582941
+radius = 0.435283
+height = 1.2005
 
 [node name="Enemy" type="PathFollow3D" node_paths=PackedStringArray("center_of_mass")]
 script = ExtResource("1_ueq85")

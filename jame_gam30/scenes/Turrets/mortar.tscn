@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bqhmeb0t0nxj0"]
+[gd_scene load_steps=31 format=4 uid="uid://bqhmeb0t0nxj0"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/mortar_turret.gd" id="1_bl1q3"]
 [ext_resource type="PackedScene" uid="uid://c7dqtuhl043e5" path="res://scenes/Projectiles/bomb.tscn" id="2_supt4"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="3_un4wv"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="4_fib2l"]
 [ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_dl3uv"]
+[ext_resource type="Script" path="res://scenes/Turrets/range_indicator.gd" id="7_20e83"]
+[ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="8_7need"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_biyhu"]
 
@@ -127,6 +129,45 @@ emission = Color(1, 1, 0.509804, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_urgna"]
 
+[sub_resource type="Animation" id="Animation_pc3d3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shooter/Trigger:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shooter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shooter/MuzzleEffect:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_4lj1f"]
 resource_name = "mortar_fire"
 length = 0.3
@@ -168,45 +209,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_pc3d3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Shooter/Trigger:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Shooter:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Shooter/MuzzleEffect:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_68ab3"]
 _data = {
 "RESET": SubResource("Animation_pc3d3"),
@@ -215,9 +217,100 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pi5ec"]
 height = 6.31889
-radius = 40.7299
+radius = 18.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_skye1"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_7qart"]
+inner_radius = 1.02
+
+[sub_resource type="Animation" id="Animation_l8it3"]
+resource_name = "enable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999),
+"transitions": PackedFloat32Array(2.2974, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e2ser"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sb2st"]
+resource_name = "placeholder_activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Range_donut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Range_donut:transparency")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmabq"]
+_data = {
+"RESET": SubResource("Animation_e2ser"),
+"enable": SubResource("Animation_l8it3"),
+"placeholder_activate": SubResource("Animation_sb2st")
+}
 
 [node name="Mortar_Turret" type="StaticBody3D" node_paths=PackedStringArray("targeting", "shot_cd_timer", "cannon_node", "tower_base", "trigger_node")]
 script = ExtResource("1_bl1q3")
@@ -308,6 +401,20 @@ shape = SubResource("BoxShape3D_skye1")
 
 [node name="Signal_Visual_Component" parent="." instance=ExtResource("6_dl3uv")]
 transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 2.375, 0)
+
+[node name="Range_Indicator" type="Node3D" parent="."]
+script = ExtResource("7_20e83")
+
+[node name="Range_donut" type="MeshInstance3D" parent="Range_Indicator"]
+transform = Transform3D(17.52, 0, 0, 0, 17.52, 0, 0, 0, 17.52, 0, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_7qart")
+surface_material_override/0 = ExtResource("8_7need")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Range_Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_lmabq")
+}
 
 [connection signal="on_active_bodies_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_bodies_changed"]
 [connection signal="on_active_changed" from="DistanceTrigger" to="TowerTargeting" method="on_active_changed"]

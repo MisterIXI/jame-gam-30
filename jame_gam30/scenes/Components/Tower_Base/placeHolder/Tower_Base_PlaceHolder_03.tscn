@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://cw20i0fe1c3v0"]
+[gd_scene load_steps=16 format=4 uid="uid://cw20i0fe1c3v0"]
 
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/placeHolder/tower_placeholder.gd" id="1_fg6p6"]
 [ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="1_l4e3i"]
 [ext_resource type="Material" uid="uid://bam8e3ajmtpu0" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_ah3te"]
+[ext_resource type="PackedScene" uid="uid://cec862r77p01q" path="res://scenes/Turrets/range_indicator.tscn" id="4_w51er"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
 
@@ -182,3 +183,5 @@ material_override = ExtResource("1_l4e3i")
 mesh = SubResource("ArrayMesh_1wv3t")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_l4e3i")
+
+[node name="Range_Indicator" parent="." instance=ExtResource("4_w51er")]

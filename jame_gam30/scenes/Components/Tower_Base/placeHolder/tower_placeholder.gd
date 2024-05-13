@@ -5,8 +5,11 @@ extends StaticBody3D
 @export var material_red : Material
 
 @export var tower_parts :Array[MeshInstance3D]
-
+@onready var range_indicator:Node3D =$Range_Indicator
 var state :int = 0 # 0 is Blue - 1 is Red
+func _ready():
+	# START ANIMATION FOR RANGE INDICATOR
+	range_indicator.range_placeholder_spawn()
 
 func set_material_red():
 	if state != 1:
