@@ -1,6 +1,8 @@
 extends PathFollow3D
 class_name Enemy
 
+@export var mesh_to_jiggle : MeshInstance3D
+var jiggle_tween : Tween
 @export var settings : EnemySetting
 var parent_path : Path3D
 var health: float = 3
@@ -13,6 +15,7 @@ const WETNESS_TIME = 5
 const WETTNES_PENALTY = 0.5
 signal on_wettness_changed
 signal killed(enemy)
+var is_alive = true
 
 func _ready():
 	global_position = Vector3(500, 500, 500)
@@ -29,19 +32,33 @@ func follow_path(new_parent: Path3D) -> void:
 	# rotation = parent_path.curve.get_point_position(1) - position
 
 func get_shot(damage: float) -> void:
+	damage_wiggle()	
 	health -= damage
-	if health <= 0:
+	if health <= 0 and is_alive:
+		is_alive = false
 		SoundManager.Play_Sound(SoundManager.soundType.enemy_die,global_position)
 		killed.emit(self)
 		queue_free()
 		
 func take_damage(damage: float):
-	
+	damage_wiggle()	
 	health -= damage
 	SoundManager.Play_Sound(SoundManager.soundType.enemy_hit,global_position)
-	if health <= 0:
+	if health <= 0 and is_alive:
+		is_alive = false
 		killed.emit(self)
 		queue_free()
+
+func damage_wiggle():
+	if jiggle_tween == null or jiggle_tween.is_running() == false:
+		jiggle_tween = create_tween()
+		jiggle_tween.set_trans(Tween.TRANS_BOUNCE)
+		jiggle_tween.tween_property(mesh_to_jiggle, "scale",Vector3.ONE * 1.05,0.05)
+		jiggle_tween.tween_property(mesh_to_jiggle, "scale",Vector3.ONE * 0.95,0.05)
+		jiggle_tween.tween_property(mesh_to_jiggle, "scale",Vector3.ONE,0.05)
+		# jiggle_tween.set_loops(3)
+	jiggle_tween.play()
+
 
 func _physics_process(delta):
 	if is_wet:

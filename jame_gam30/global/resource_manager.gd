@@ -50,8 +50,8 @@ func _on_scene_changed():
 		wave_manager.all_enemies_killed.connect(_on_final_enemy_killed)
 		wave_manager.enemy_killed.connect(_change_money)
 		_change_wave(0)
-		_change_health(start_health)
-		_reset_money()
+		health = start_health
+		money = start_money
 
 	tower_cost1 = start_tower_cost_1
 	tower_cost2 = start_tower_cost_2
@@ -70,9 +70,6 @@ func _change_health(amount: int) -> void:
 
 func _get_health() -> int:
 	return health
-
-func _reset_money() -> void:
-	money = start_money
 
 func _change_money(amount: int) -> void:
 	money += amount

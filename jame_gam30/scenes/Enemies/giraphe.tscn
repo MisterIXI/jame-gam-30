@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dhl62rls0qa08"]
+[gd_scene load_steps=14 format=4 uid="uid://c1s54hx6dcpoh"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/Enemy.gd" id="1_0c0u0"]
 [ext_resource type="Resource" uid="uid://dgjksm1clo4yo" path="res://resources/giraphe_enemy.tres" id="2_le0ex"]
@@ -653,8 +653,9 @@ _data = {
 radius = 0.117188
 height = 0.700936
 
-[node name="Enemy" type="PathFollow3D" node_paths=PackedStringArray("center_of_mass") groups=["Enemy"]]
+[node name="Enemy" type="PathFollow3D" node_paths=PackedStringArray("mesh_to_jiggle", "center_of_mass") groups=["Enemy"]]
 script = ExtResource("1_0c0u0")
+mesh_to_jiggle = NodePath("giraffe/Armature_Giraffe/Skeleton3D/Giraffe")
 settings = ExtResource("2_le0ex")
 center_of_mass = NodePath("CenterOfMass")
 

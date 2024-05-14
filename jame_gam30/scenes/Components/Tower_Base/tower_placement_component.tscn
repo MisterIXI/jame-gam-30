@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_placement_component.gd" id="1_qcpm4"]
 [ext_resource type="PackedScene" uid="uid://c8ldnghlk8r5c" path="res://scenes/Turrets/BB_Shooter.tscn" id="2_g53sw"]
 [ext_resource type="PackedScene" uid="uid://bqhmeb0t0nxj0" path="res://scenes/Turrets/mortar.tscn" id="3_lkhfe"]
-[ext_resource type="PackedScene" uid="uid://bsitwwx57rnls" path="res://scenes/Turrets/laser_tower.tscn" id="4_gp2ra"]
-[ext_resource type="PackedScene" uid="uid://c4ekqylc3yo3n" path="res://scenes/Turrets/water_tower.tscn" id="5_k40ff"]
+[ext_resource type="PackedScene" uid="uid://b3di0ecj31l61" path="res://scenes/Turrets/laser_tower.tscn" id="4_gp2ra"]
+[ext_resource type="PackedScene" uid="uid://em3epmltrcgk" path="res://scenes/Turrets/water_tower.tscn" id="5_k40ff"]
 [ext_resource type="PackedScene" uid="uid://bk5bf5f3lclkd" path="res://scenes/Turrets/RelayTower.tscn" id="6_2toyo"]
 [ext_resource type="PackedScene" uid="uid://dql76f13og10p" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_01.tscn" id="6_isfrm"]
 [ext_resource type="PackedScene" uid="uid://c4pp0tdoj7ixy" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_02.tscn" id="7_gecq4"]
 [ext_resource type="PackedScene" uid="uid://cw20i0fe1c3v0" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_03.tscn" id="8_blpfd"]
 [ext_resource type="PackedScene" uid="uid://p2y8403u37nt" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_04.tscn" id="9_qm28u"]
-[ext_resource type="PackedScene" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_05.tscn" id="11_cpplm"]
+[ext_resource type="PackedScene" uid="uid://b7cosfq74d8tk" path="res://scenes/Components/Tower_Base/placeHolder/Tower_Base_PlaceHolder_05.tscn" id="11_cpplm"]
 
 [node name="Tower_Placement_Component" type="Node"]
 script = ExtResource("1_qcpm4")

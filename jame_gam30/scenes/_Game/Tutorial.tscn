@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqyyrrnwkml13" path="res://scenes/userInterface/hud/hud.tscn" id="1_0aatx"]
 [ext_resource type="PackedScene" uid="uid://co3o1ga7qbrcu" path="res://scenes/Components/Tower_Base/tower_placement_component.tscn" id="2_kt0qy"]
 [ext_resource type="PackedScene" uid="uid://bfq1nh3654e6x" path="res://scenes/Components/Camera/camera_game.tscn" id="11_eajef"]
-[ext_resource type="Environment" path="res://resources/game_environment.tres" id="12_qdq5k"]
+[ext_resource type="Environment" uid="uid://cf6c2vks0v1si" path="res://resources/game_environment.tres" id="12_qdq5k"]
 [ext_resource type="Script" path="res://scenes/Map/map.gd" id="13_b22rh"]
 [ext_resource type="PackedScene" uid="uid://bec23mahagyx8" path="res://scenes/Test_scenes/Phil/prota.tscn" id="14_ketq8"]
 [ext_resource type="PackedScene" uid="uid://cxnurvyt2hhaq" path="res://scenes/Components/map/tile.tscn" id="15_diq7n"]
@@ -43,6 +43,7 @@ camera = NodePath("../Camera3D")
 foreground = NodePath("../ForeGround")
 
 [node name="hud" parent="." instance=ExtResource("1_0aatx")]
+process_mode = 0
 
 [node name="Camera3D" parent="." instance=ExtResource("11_eajef")]
 transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 26.9219, 21.3262, 27.5877)
