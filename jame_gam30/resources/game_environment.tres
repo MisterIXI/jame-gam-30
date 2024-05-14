@@ -1,12 +1,12 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://cf6c2vks0v1si"]
 
-[ext_resource type="Sky" path="res://resources/Material/new_sky.tres" id="1_wvy23"]
+[ext_resource type="Sky" uid="uid://egs4qvg72uny" path="res://resources/Material/new_sky.tres" id="1_wvy23"]
 
 [resource]
 background_mode = 2
 sky = ExtResource("1_wvy23")
 ambient_light_source = 2
-ambient_light_color = Color(0.886116, 0.739058, 0.626068, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.8
 fog_light_energy = 1.66
 fog_aerial_perspective = 1.0
