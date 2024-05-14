@@ -17,6 +17,8 @@ signal killed(enemy)
 func _ready():
 	global_position = Vector3(500, 500, 500)
 	vertical_offset = center_of_mass.position.y
+	health = settings.start_health
+
 
 func follow_path(new_parent: Path3D) -> void:
 	
@@ -34,6 +36,7 @@ func get_shot(damage: float) -> void:
 		queue_free()
 		
 func take_damage(damage: float):
+	
 	health -= damage
 	SoundManager.Play_Sound(SoundManager.soundType.enemy_hit,global_position)
 	if health <= 0:

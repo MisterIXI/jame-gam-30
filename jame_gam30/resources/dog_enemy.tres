@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ts5sj")
-start_health = 25
+start_health = 1
 regeneration = 0.0
 normal_resistance = 0.0
 explosion_resistance = 0.0

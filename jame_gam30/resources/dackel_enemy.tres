@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="EnemySetting" load_steps=2 format=3 uid="uid://d0e472igpduw"]
+[gd_resource type="Resource" script_class="EnemySetting" load_steps=2 format=3 uid="uid://dlolvt1pae61s"]
 
 [ext_resource type="Script" path="res://resources/enemy_setting.gd" id="1_sjp0e"]
 
 [resource]
 script = ExtResource("1_sjp0e")
-start_health = 100
+start_health = 5
 regeneration = 0.0
 normal_resistance = 0.0
 explosion_resistance = 0.0
 laser_resistance = 0.0
-speed = 1.0
+speed = 2.0
 damage = 1
+bounty = 20
