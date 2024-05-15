@@ -71,29 +71,29 @@ func build_tutorial_wave():
 func build_wave():
 	waves = [
 		WaveInfo.new([
-			SpawnInfo.new(1, 4, 10, dog),
-			SpawnInfo.new(5, 8, 5, dackel),
+			SpawnInfo.new(1, 5, 8, dog),
+			SpawnInfo.new(5, 7, 5, dackel),
 			# SpawnInfo.new(2.5, 0.25, 5, test_enemy),
 			# SpawnInfo.new(5, 0.1, 50, test_enemy),
 			# SpawnInfo.new(5, 0.1, 5000, test_enemy),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(44, 1, 10, dackel),
+			SpawnInfo.new(47, 4, 10, dog),
+			SpawnInfo.new(44, 3, 6, dackel),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(60, 0.5, 20, giraphe),
+			SpawnInfo.new(60, 1, 10, giraphe),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(75, 1, 10, elephant),
+			SpawnInfo.new(75, 2, 5, elephant),
 			SpawnInfo.new(80, 0.5, 10, giraphe),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(90, 0.3,50,dog),
+			SpawnInfo.new(90, 1,50,dog),
 		]),
 		WaveInfo.new([
-			SpawnInfo.new(120,0.3,100,elephant),
+			SpawnInfo.new(120,0.3,60,elephant),
 		]),
-
 	]
 
 func start_spawning():

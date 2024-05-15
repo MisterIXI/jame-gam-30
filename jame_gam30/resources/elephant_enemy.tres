@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemySetting" load_steps=2 format=3 uid="uid://d0q80kgjalo8n"]
+[gd_resource type="Resource" script_class="EnemySetting" load_steps=2 format=3 uid="uid://chqg57rmdikig"]
 
 [ext_resource type="Script" path="res://resources/enemy_setting.gd" id="1_efnqs"]
 
@@ -11,4 +11,4 @@ explosion_resistance = 0.0
 laser_resistance = 0.0
 speed = 0.5
 damage = 1
-bounty = 100
+bounty = 30

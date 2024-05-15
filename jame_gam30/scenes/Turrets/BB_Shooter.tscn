@@ -5,8 +5,8 @@
 [ext_resource type="Material" path="res://resources/Material/M_cannonmortar.tres" id="3_p5rus"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_e5sjo"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="5_ib0cy"]
-[ext_resource type="PackedScene" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_uawx5"]
-[ext_resource type="PackedScene" uid="uid://cec862r77p01q" path="res://scenes/Turrets/range_indicator.tscn" id="7_osws6"]
+[ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="6_uawx5"]
+[ext_resource type="PackedScene" path="res://scenes/Turrets/range_indicator.tscn" id="7_osws6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e645f"]
 resource_name = "cannon"
