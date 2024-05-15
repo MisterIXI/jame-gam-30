@@ -78,7 +78,6 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 camera = NodePath("../../Camera3D")
 visual_rotation = NodePath("Armature")
-player_speed = 2.0
 _map = NodePath("..")
 hud = NodePath("../../hud")
 

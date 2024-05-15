@@ -89,7 +89,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0886698, 0.0342484, 0.0792
 curve = SubResource("Curve3D_yauq7")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.0014079, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.0014079, -20, 0, 9.93169)
+transform = Transform3D(-0.0014079, 0, -0.999995, 0, 1, 0, 0.999995, 0, -0.0014079, -20, 0, 9.93169)
 loop = false
 
 [node name="Path3D3" type="Path3D" parent="."]
