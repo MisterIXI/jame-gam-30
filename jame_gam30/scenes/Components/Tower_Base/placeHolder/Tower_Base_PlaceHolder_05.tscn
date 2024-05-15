@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/placeHolder/tower_placeholder.gd" id="1_ni5wt"]
 [ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="2_v4hsb"]
-[ext_resource type="Material" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_cgwh7"]
+[ext_resource type="Material" uid="uid://bam8e3ajmtpu0" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_cgwh7"]
 [ext_resource type="Script" path="res://scenes/Turrets/range_indicator.gd" id="4_uvx3h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
@@ -185,7 +185,7 @@ tower_parts = [NodePath("Node3D/buildings/tile"), NodePath("Node3D/buildings/Sig
 shape = SubResource("BoxShape3D_5jkfw")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.5, 0)
 
 [node name="buildings" type="Node3D" parent="Node3D"]
 

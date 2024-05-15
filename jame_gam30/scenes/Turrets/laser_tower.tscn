@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/tower_targeting_component.gd" id="3_mgebc"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="4_4u6ph"]
 [ext_resource type="PackedScene" uid="uid://bln7a14nufbg3" path="res://scenes/Turrets/signal_visual_component.tscn" id="5_1p5k3"]
-[ext_resource type="PackedScene" path="res://scenes/Turrets/range_indicator.tscn" id="6_86gki"]
+[ext_resource type="PackedScene" uid="uid://cec862r77p01q" path="res://scenes/Turrets/range_indicator.tscn" id="6_86gki"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nuf4x"]
 
@@ -200,7 +200,7 @@ laser_mesh = NodePath("Base3/Turntable3/Lasercannon/LaserParent")
 shape = SubResource("BoxShape3D_nuf4x")
 
 [node name="Base3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.565, 0, 0, 0, 0.565, 0, 0, 0, 0.565, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 mesh = SubResource("ArrayMesh_57f3x")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_gue33")
