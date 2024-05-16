@@ -1,10 +1,10 @@
-[gd_resource type="Sky" load_steps=3 format=3 uid="uid://c7nq1udetfsj3"]
+[gd_resource type="Sky" load_steps=3 format=3 uid="uid://b112uvmkqhyli"]
 
 [ext_resource type="Shader" path="res://scenes/Components/userInterface/hud/sky_webGL.gdshader" id="1_k5urh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_heavk"]
 shader = ExtResource("1_k5urh")
-shader_parameter/schrott_color = Color(1, 0.564706, 1, 1)
+shader_parameter/schrott_color = Color(0.415686, 0.0588235, 0.811765, 1)
 
 [resource]
 sky_material = SubResource("ShaderMaterial_heavk")

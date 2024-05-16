@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfq1nh3654e6x"]
+[gd_scene load_steps=5 format=3 uid="uid://bfq1nh3654e6x"]
 
+[ext_resource type="Environment" uid="uid://bsxwsg3ahqmo1" path="res://resources/web_environment.tres" id="1_vhpsa"]
 [ext_resource type="Script" path="res://scenes/Components/Camera/camera_main.gd" id="1_wjel4"]
 [ext_resource type="Script" path="res://scenes/Components/Camera/camera_raycast.gd" id="2_gsfo8"]
+[ext_resource type="Environment" uid="uid://cf6c2vks0v1si" path="res://resources/game_environment.tres" id="3_isffw"]
 
 [node name="Camera3D" type="Camera3D"]
+environment = ExtResource("1_vhpsa")
 projection = 1
 current = true
 script = ExtResource("1_wjel4")
+normalEnv = ExtResource("3_isffw")
+webEnv = ExtResource("1_vhpsa")
 
 [node name="CameraRaycast" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("2_gsfo8")

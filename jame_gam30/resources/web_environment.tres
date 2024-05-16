@@ -1,10 +1,10 @@
-[gd_resource type="Environment" load_steps=2 format=3 uid="uid://cf6c2vks0v1si"]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://bsxwsg3ahqmo1"]
 
-[ext_resource type="Sky" uid="uid://egs4qvg72uny" path="res://resources/Material/new_sky.tres" id="1_uc5pv"]
+[ext_resource type="Sky" uid="uid://b112uvmkqhyli" path="res://resources/Material/sky_WebGL.tres" id="1_wwc2u"]
 
 [resource]
 background_mode = 2
-sky = ExtResource("1_uc5pv")
+sky = ExtResource("1_wwc2u")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.8

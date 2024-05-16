@@ -28,6 +28,10 @@ func emit_mouse_clicked_right(pos: Vector3):
 @export var camera_scroll_speed : float = 5
 @export var camera_zoom_factor : float = 0.5
 
+@export_group("Skybox")
+@export var normalEnv : Environment
+@export var webEnv : Environment
+
 
 var camera_current_zoom : float  =31.9
 var camera_isdragging : bool =false
@@ -41,6 +45,12 @@ var camera_center_position :Vector3
 
 func _ready(): 
 	camera_center_position = global_position
+
+	if OS.get_name() == "Web":
+		environment = webEnv
+	else:
+		environment = normalEnv
+
 func _process(delta):
 	if camera_movement_vector == Vector3.ZERO:
 		return
