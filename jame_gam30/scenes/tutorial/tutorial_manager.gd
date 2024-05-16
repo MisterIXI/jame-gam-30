@@ -15,7 +15,7 @@ var index : int = 0
     "[center]Give your character a nudge!\nJust right click on the ground where you want to move.[/center]",
     "[center]Peek around! Use WASD to move the camera around. Zoom with your scroll wheel![/center]",
     "[center]Time to build!\nClick the first tower or 1 and place it on the field with leftclick.[/center]",
-    "[center]Towers need to be connected to Jimmy backpack to work! Move and activate a tower.[/center]",
+    "[center]Towers need to be connected to Jimmy's backpack to work! Move and activate a tower.[/center]",
     "[center]Need a signal booster? Get a signal tower by pressing 5! It helps your other towers reach farther.[/center]",
     "[center]Practice makes perfect! Blast those target dummies with your toy towers! Feeling confident? Press start![/center]"
 ]

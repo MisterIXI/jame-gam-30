@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="1_7hvbb"]
 [ext_resource type="Script" path="res://scenes/Components/Tower_Base/placeHolder/tower_placeholder.gd" id="1_dcjmb"]
-[ext_resource type="Material" uid="uid://bam8e3ajmtpu0" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_jrd1g"]
+[ext_resource type="Material" path="res://resources/Material/PlaceHolder_Tower_red.tres" id="3_jrd1g"]
 [ext_resource type="PackedScene" uid="uid://cec862r77p01q" path="res://scenes/Turrets/range_indicator.tscn" id="4_gr08x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jkfw"]
