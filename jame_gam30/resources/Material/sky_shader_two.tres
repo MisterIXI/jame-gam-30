@@ -75,6 +75,7 @@ void sky() {
 
 }
 "
+graph_offset = Vector2(-108.976, -182.824)
 mode = 3
 flags/use_half_res_pass = true
 flags/use_quarter_res_pass = true
