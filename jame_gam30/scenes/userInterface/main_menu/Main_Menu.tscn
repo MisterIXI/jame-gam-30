@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://cyhdehb4p623l" path="res://scenes/Components/userInterface/menu/menu_background.tscn" id="1_an7dg"]
 [ext_resource type="Theme" uid="uid://cgnq60kbsgot1" path="res://resources/Themes/button2.tres" id="2_eo2dl"]
-[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
+[ext_resource type="PackedScene" uid="uid://cydmsfuud4efh" path="res://scenes/Components/userInterface/buttonhover.tscn" id="3_j686n"]
 [ext_resource type="PackedScene" uid="uid://dmbcyacjc480c" path="res://scenes/Components/userInterface/Vignette_Effect.tscn" id="5_s2tn3"]
 [ext_resource type="Script" path="res://scenes/Components/userInterface/menu/quit.gd" id="5_sfqs2"]
-[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
+[ext_resource type="PackedScene" uid="uid://cgcngxpx526sr" path="res://scenes/Components/userInterface/swap_container.tscn" id="6_3fers"]
 [ext_resource type="PackedScene" uid="uid://53reqbpg72wj" path="res://scenes/userInterface/main_menu/logo.tscn" id="6_mn0n8"]
 [ext_resource type="PackedScene" uid="uid://l0jo8am20c60" path="res://scenes/Components/userInterface/menu/settings.tscn" id="6_sf5sh"]
 [ext_resource type="PackedScene" uid="uid://b2gstoaqud0ge" path="res://scenes/Components/userInterface/menu/credits.tscn" id="8_5otex"]
-[ext_resource type="PackedScene" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
+[ext_resource type="PackedScene" uid="uid://bun3avuvb7dce" path="res://scenes/Components/userInterface/swap_scene.tscn" id="10_40urw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -227,3 +227,19 @@ button = NodePath("../Panel/HBoxContainer/TutorialButton")
 [node name="SwapScene2" parent="Confirm" node_paths=PackedStringArray("button") instance=ExtResource("10_40urw")]
 layout_mode = 1
 button = NodePath("../Panel/HBoxContainer/TutorialSkipButton")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -55.0
+offset_right = -18.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_eo2dl")
+text = "v1.1 - 15.05.2024"
