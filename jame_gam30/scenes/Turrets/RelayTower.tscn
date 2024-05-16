@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://bk5bf5f3lclkd"]
 
 [ext_resource type="Script" path="res://scenes/Turrets/relay_tower.gd" id="1_t7hd0"]
-[ext_resource type="Material" uid="uid://crkdsoy87mg1h" path="res://resources/Material/M_cannonmortar.tres" id="2_a6dmk"]
+[ext_resource type="Material" path="res://resources/Material/M_cannonmortar.tres" id="2_a6dmk"]
 [ext_resource type="Script" path="res://scenes/Components/DistanceTrigger/DistanceTrigger.gd" id="3_unnoj"]
 [ext_resource type="Script" path="res://scenes/Turrets/range_indicator.gd" id="4_wfmgk"]
 [ext_resource type="Material" uid="uid://dgfvvk0ddwmo3" path="res://resources/Material/PlaceHolder_Tower.tres" id="5_yb8in"]
