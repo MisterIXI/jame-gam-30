@@ -11,7 +11,6 @@ var power_provider: int = 0
 
 func _ready():
 	body.material_overlay = body.material_overlay.duplicate()
-	set_power(true)
 
 func set_power(has_power_: bool):
 	has_power = has_power_
